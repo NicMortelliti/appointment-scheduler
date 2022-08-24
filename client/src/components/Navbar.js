@@ -2,7 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 
-function Navbar() {
+function Navbar({ toggler }) {
   const NavUnlisted = styled.ul`
     display: flex;
 
@@ -33,6 +33,9 @@ function Navbar() {
       <NavLink to="/new_appointment" activeClassName="current">
         <li>Schedule Appointment</li>
       </NavLink>
+      <li>
+        <button onClick={toggler}>Switch Theme</button>
+      </li>
       <li>
         <button
           className="nav"

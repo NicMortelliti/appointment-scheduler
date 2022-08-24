@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { ThemeProvider } from "styled-components";
 import { GlobalStyles } from "../style/GlobalStyles";
 import { lightTheme, darkTheme } from "../style/Themes";
@@ -18,8 +18,7 @@ function App() {
       <>
         <GlobalStyles />
         <div className="App">
-          <Navbar />
-          <button onClick={themeToggler}>Switch Theme</button>
+          <Navbar toggler={themeToggler} />
           <Switch>
             <Route exact path="/">
               "home"
