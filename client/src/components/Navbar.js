@@ -1,26 +1,46 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-
-import { Box, Flex, Link } from "rebass";
+import styled from "styled-components";
 
 function Navbar() {
+  const NavUnlisted = styled.ul`
+    display: flex;
+
+    a {
+      text-decoration: none;
+    }
+
+    li {
+      color: red;
+      margin: 0 0.8rem;
+      font-size: 1.3rem;
+      position: relative;
+      list-style: none;
+    }
+
+    .current {
+      li {
+        border-bottom: 2px solid black;
+      }
+    }
+  `;
+
   return (
-    <Flex px={2} color="white" bg="black" alignItems="center">
-      <NavLink to="/" exact>
-        <Link variant="nav" m={2}>
-          Home
-        </Link>
+    <NavUnlisted className="nav">
+      <NavLink to="/" activeClassName="current" exact>
+        <li>Home</li>
       </NavLink>
-      <NavLink to="/new_appointment" exact>
-        <Link variant="nav" m={2}>
-          Schedule Appointment
-        </Link>
+      <NavLink to="/new_appointment" activeClassName="current">
+        <li>Schedule Appointment</li>
       </NavLink>
-      <Box mx="auto" />
-      {/* <Link variant="nav" href="/new_appointment" m={2}>
-        Logout
-      </Link> */}
-    </Flex>
+      <li>
+        <button
+          className="nav"
+          onClick={() => console.log("you clicked logout")}>
+          Logout
+        </button>
+      </li>
+    </NavUnlisted>
   );
 }
 
