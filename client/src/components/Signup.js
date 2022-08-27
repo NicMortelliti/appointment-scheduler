@@ -68,16 +68,6 @@ function Signup({ onLogin, setSignUp }) {
           setFormData({ ...formData, [e.target.id]: e.target.value })
         }
       />
-      <label htmlFor="password">Password</label>
-      <input
-        type="password"
-        id="password"
-        value={formData.password}
-        onChange={(e) =>
-          setFormData({ ...formData, [e.target.id]: e.target.value })
-        }
-        autoComplete="current-password"
-      />
       <label htmlFor="email">Email</label>
       <input
         type="email"
@@ -87,6 +77,16 @@ function Signup({ onLogin, setSignUp }) {
         onChange={(e) =>
           setFormData({ ...formData, [e.target.id]: e.target.value })
         }
+      />
+      <label htmlFor="password">Password</label>
+      <input
+        type="password"
+        id="password"
+        value={formData.password}
+        onChange={(e) =>
+          setFormData({ ...formData, [e.target.id]: e.target.value })
+        }
+        autoComplete="current-password"
       />
       <label htmlFor="password">Password Confirmation</label>
       <input
