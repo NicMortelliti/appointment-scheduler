@@ -11,7 +11,7 @@ import Signup from "./Signup";
 
 function App() {
   const [theme, setTheme] = useState("light");
-  const [signUp, setSignUp] = useState(true);
+  const [signUp, setSignUp] = useState(false);
   const themeToggler = () => {
     theme === "light" ? setTheme("dark") : setTheme("light");
   };
@@ -27,7 +27,11 @@ function App() {
               "home"
             </Route>
             <Route exact path="/signup">
-              {signUp ? <Signup setSignUp={setSignUp} /> : <Login />}
+              {signUp ? (
+                <Signup setSignUp={setSignUp} />
+              ) : (
+                <Login setSignUp={setSignUp} />
+              )}
             </Route>
             <Route exact path="/new_appointment">
               "new appointment"
