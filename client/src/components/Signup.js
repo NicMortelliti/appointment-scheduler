@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function Signup({ onLogin }) {
+function Signup({ onLogin, setSignUp }) {
   const [errors, setErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -29,6 +29,20 @@ function Signup({ onLogin }) {
       } else {
         r.json().then((err) => setErrors(err.errors));
       }
+    });
+  }
+
+  // Set signup to false
+  // Clear data from form
+  function resetForm(e) {
+    e.preventDefault();
+    setSignUp(false);
+    setFormData({
+      firstName: "",
+      lastName: "",
+      email: "",
+      password: "",
+      passwordConf: "",
     });
   }
 
@@ -85,6 +99,7 @@ function Signup({ onLogin }) {
         autoComplete="current-password"
       />
       <button type="submit">{isLoading ? "Loading..." : "Sign Up"}</button>
+      <button onClick={(e) => resetForm(e)}>I have an account</button>
       {/* {errors.map((err) => (
           <Error key={err}>{err}</Error>
         ))} */}
