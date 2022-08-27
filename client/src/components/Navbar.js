@@ -33,6 +33,9 @@ function Navbar({ toggler }) {
       <NavLink to="/new_appointment" activeClassName="current">
         <li>Schedule Appointment</li>
       </NavLink>
+      <NavLink to="/signup" activeClassName="current">
+        <li>Signup</li>
+      </NavLink>
       <li>
         <button onClick={toggler}>Switch Theme</button>
       </li>

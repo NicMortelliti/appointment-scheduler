@@ -6,6 +6,7 @@ import { Route, Switch } from "react-router-dom";
 
 // Import components
 import Navbar from "./Navbar";
+import Signup from "./Signup";
 
 function App() {
   const [theme, setTheme] = useState("light");
@@ -24,7 +25,7 @@ function App() {
               "home"
             </Route>
             <Route exact path="/signup">
-              "signup"
+              <Signup />
             </Route>
             <Route exact path="/new_appointment">
               "new appointment"
