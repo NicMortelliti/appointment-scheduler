@@ -21,13 +21,7 @@ function Signup({ onLogin }) {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({
-        username,
-        password,
-        password_confirmation: passwordConfirmation,
-        image_url: imageUrl,
-        bio,
-      }),
+      body: JSON.stringify({ formData }),
     }).then((r) => {
       setIsLoading(false);
       if (r.ok) {
@@ -40,36 +34,37 @@ function Signup({ onLogin }) {
 
   return (
     <form onSubmit={handleSubmit}>
-      <form>
-        <label htmlFor="formData.firstName">First Name</label>
-        <input
-          type="text"
-          id="username"
-          autoComplete="off"
-          value={formData.firstName}
-          onChange={(e) => setFormData(formData.firstName[e.target.value])}
-        />
-        <label htmlFor="password">Password</label>
-        <input
-          type="password"
-          id="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          autoComplete="current-password"
-        />
-        <label htmlFor="password">Password Confirmation</label>
-        <input
-          type="password"
-          id="password_confirmation"
-          value={passwordConfirmation}
-          onChange={(e) => setPasswordConfirmation(e.target.value)}
-          autoComplete="current-password"
-        />
-        <button type="submit">{isLoading ? "Loading..." : "Sign Up"}</button>
-        {/* {errors.map((err) => (
+      <label htmlFor="formData.firstName">First Name</label>
+      <input
+        type="text"
+        id="firstName"
+        name="firstName"
+        autoComplete="off"
+        value={formData.firstName}
+        onChange={(e) =>
+          setFormData({ ...formData, [e.target.name]: e.target.value })
+        }
+      />
+      <label htmlFor="password">Password</label>
+      <input
+        type="password"
+        id="password"
+        value={formData.password}
+        onChange={(e) => setFormData(formData.password[e.target.value])}
+        autoComplete="current-password"
+      />
+      <label htmlFor="password">Password Confirmation</label>
+      <input
+        type="password"
+        id="password_confirmation"
+        value={formData.passwordConf}
+        onChange={(e) => setFormData(formData.passwordConf[e.target.value])}
+        autoComplete="current-password"
+      />
+      <button type="submit">{isLoading ? "Loading..." : "Sign Up"}</button>
+      {/* {errors.map((err) => (
           <Error key={err}>{err}</Error>
         ))} */}
-      </form>
     </form>
   );
 }
