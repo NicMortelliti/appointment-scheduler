@@ -5,11 +5,13 @@ import { lightTheme, darkTheme } from "../style/Themes";
 import { Route, Switch } from "react-router-dom";
 
 // Import components
+import Login from "./Login";
 import Navbar from "./Navbar";
 import Signup from "./Signup";
 
 function App() {
   const [theme, setTheme] = useState("light");
+  const [signUp, setSignUp] = useState(true);
   const themeToggler = () => {
     theme === "light" ? setTheme("dark") : setTheme("light");
   };
@@ -25,7 +27,7 @@ function App() {
               "home"
             </Route>
             <Route exact path="/signup">
-              <Signup />
+              {signUp ? <Signup setSignUp={setSignUp} /> : <Login />}
             </Route>
             <Route exact path="/new_appointment">
               "new appointment"
