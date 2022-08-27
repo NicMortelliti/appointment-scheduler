@@ -1,13 +1,16 @@
 import React, { useState } from "react";
 
 function Signup({ onLogin }) {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [passwordConfirmation, setPasswordConfirmation] = useState("");
-  const [imageUrl, setImageUrl] = useState("");
-  const [bio, setBio] = useState("");
   const [errors, setErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: "",
+    passwordConf: "",
+  });
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -38,13 +41,13 @@ function Signup({ onLogin }) {
   return (
     <form onSubmit={handleSubmit}>
       <form>
-        <label htmlFor="username">Username</label>
+        <label htmlFor="formData.firstName">First Name</label>
         <input
           type="text"
           id="username"
           autoComplete="off"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
+          value={formData.firstName}
+          onChange={(e) => setFormData(formData.firstName[e.target.value])}
         />
         <label htmlFor="password">Password</label>
         <input
@@ -61,20 +64,6 @@ function Signup({ onLogin }) {
           value={passwordConfirmation}
           onChange={(e) => setPasswordConfirmation(e.target.value)}
           autoComplete="current-password"
-        />
-        <label htmlFor="imageUrl">Profile Image</label>
-        <input
-          type="text"
-          id="imageUrl"
-          value={imageUrl}
-          onChange={(e) => setImageUrl(e.target.value)}
-        />
-        <label htmlFor="bio">Bio</label>
-        <textarea
-          rows="3"
-          id="bio"
-          value={bio}
-          onChange={(e) => setBio(e.target.value)}
         />
         <button type="submit">{isLoading ? "Loading..." : "Sign Up"}</button>
         {/* {errors.map((err) => (
