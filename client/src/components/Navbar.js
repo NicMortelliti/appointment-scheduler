@@ -11,16 +11,16 @@ function Navbar({ toggler }) {
     }
 
     li {
-      color: red;
+      // color: red;
       margin: 0 0.8rem;
-      font-size: 1.3rem;
+      font-size: 1rem;
       position: relative;
       list-style: none;
     }
 
     .current {
       li {
-        border-bottom: 2px solid black;
+        border-bottom: 2px solid;
       }
     }
   `;
