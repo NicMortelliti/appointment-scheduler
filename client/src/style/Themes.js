@@ -1,15 +1,19 @@
+// /#522157
+// /#8B4C70
+// /#C2649A
+// /#E4C7B7
+// /#E4DFD9
+
 // Light Theme
 export const lightTheme = {
-  body: "#1b2232",
-  text: "#d7ccb1",
-  toggleBorder: "#1b2232",
-  background: "#c49bbb",
+  sixty: "#E4DFD9",
+  thirty: "#C2649A",
+  ten: "#522157",
 };
 
 // Dark Theme
 export const darkTheme = {
-  body: "#1C1231",
-  text: "#FF019A",
-  toggleBorder: "#9B00E8",
-  background: "#0161E8",
+  sixty: "#522157",
+  thirty: "#E4DFD9",
+  ten: "#C2649A",
 };
