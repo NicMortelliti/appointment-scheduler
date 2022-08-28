@@ -1,6 +1,5 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
-import StyledNavLink from "../style/components/StyledNavLink";
+import NavLink from "../style/components/NavLink.styled";
 import styled from "styled-components";
 
 function Navbar({ toggler }) {
@@ -12,7 +11,6 @@ function Navbar({ toggler }) {
     }
 
     li {
-      // color: red;
       margin: 0 0.8rem;
       font-size: 1rem;
       position: relative;
@@ -28,21 +26,21 @@ function Navbar({ toggler }) {
 
   return (
     <NavUnlisted className="nav">
-      <StyledNavLink to="/" activeClassName="current" exact>
+      <NavLink to="/" activeClassName="current" exact>
         <li>Home</li>
-      </StyledNavLink>
-      <StyledNavLink to="/new_appointment" activeClassName="current">
+      </NavLink>
+      <NavLink to="/new_appointment" activeClassName="current">
         <li>Schedule Appointment</li>
-      </StyledNavLink>
-      <StyledNavLink to="/signup" activeClassName="current">
+      </NavLink>
+      <NavLink to="/signup" activeClassName="current">
         <li>Signup</li>
-      </StyledNavLink>
+      </NavLink>
       <li>
         <button onClick={toggler}>Switch Theme</button>
       </li>
-      <StyledNavLink to="/">
+      <NavLink to="/">
         <li>Logout</li>
-      </StyledNavLink>
+      </NavLink>
     </NavUnlisted>
   );
 }
