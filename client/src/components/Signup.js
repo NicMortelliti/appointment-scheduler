@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Button from "../style/components/Button";
+import Button from "../style/components/Button.styled";
 
 function Signup({ onLogin, setSignUp }) {
   const [errors, setErrors] = useState([]);
