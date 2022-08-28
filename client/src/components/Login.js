@@ -28,17 +28,6 @@ function Login({ onLogin, setSignUp }) {
     });
   }
 
-  // Set signup to false
-  // Clear data from form
-  function resetForm(e) {
-    e.preventDefault();
-    setSignUp(false);
-    setFormData({
-      email: "",
-      password: "",
-    });
-  }
-
   return (
     <form>
       <label htmlFor="email">Email</label>
