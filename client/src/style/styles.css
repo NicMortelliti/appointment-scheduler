@@ -21,5 +21,32 @@ body {
   margin: auto;
   width: 50%;
   padding: 10px;
-  border: 3px solid green;
+}
+
+/* Full-width input fields */
+input[type="text"],
+input[type="password"],
+input[type="email"] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+}
+
+input [type="text"]:focus,
+input[type="password"]:focus,
+input[type="email"] {
+  background-color: #ddd;
+  outline: none;
+}
+
+.txt-btn {
+  border: none;
+  background-color: inherit;
+  padding: 14px 28px;
+  font-size: 16px;
+  cursor: pointer;
+  display: inline-block;
 }

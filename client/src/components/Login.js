@@ -34,6 +34,7 @@ function Login({ onLogin, setSignUp }) {
       <input
         type="email"
         id="email"
+        placeholder="Enter Email"
         autoComplete="off"
         value={formData.email}
         onChange={(e) =>
@@ -44,6 +45,7 @@ function Login({ onLogin, setSignUp }) {
       <input
         type="password"
         id="password"
+        placeholder="Enter Password"
         value={formData.password}
         onChange={(e) =>
           setFormData({ ...formData, [e.target.id]: e.target.value })

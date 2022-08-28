@@ -52,6 +52,7 @@ function Signup({ onLogin, setSignUp }) {
       <input
         type="text"
         id="firstName"
+        placeholder="Enter your first name"
         autoComplete="off"
         value={formData.firstName}
         onChange={(e) =>
@@ -62,6 +63,7 @@ function Signup({ onLogin, setSignUp }) {
       <input
         type="text"
         id="lastName"
+        placeholder="Enter your last name"
         autoComplete="off"
         value={formData.lastName}
         onChange={(e) =>
@@ -72,6 +74,7 @@ function Signup({ onLogin, setSignUp }) {
       <input
         type="email"
         id="email"
+        placeholder="Enter your email"
         autoComplete="off"
         value={formData.email}
         onChange={(e) =>
@@ -82,6 +85,7 @@ function Signup({ onLogin, setSignUp }) {
       <input
         type="password"
         id="password"
+        placeholder="Enter a password"
         value={formData.password}
         onChange={(e) =>
           setFormData({ ...formData, [e.target.id]: e.target.value })
@@ -92,6 +96,7 @@ function Signup({ onLogin, setSignUp }) {
       <input
         type="password"
         id="password_confirmation"
+        placeholder="Repeat your password"
         value={formData.passwordConf}
         onChange={(e) =>
           setFormData({ ...formData, [e.target.id]: e.target.value })
@@ -99,7 +104,9 @@ function Signup({ onLogin, setSignUp }) {
         autoComplete="current-password"
       />
       <button type="submit">{isLoading ? "Loading..." : "Sign Up"}</button>
-      <button onClick={(e) => resetForm(e)}>I have an account</button>
+      <button onClick={(e) => resetForm(e)} className="txt-btn">
+        I have an account
+      </button>
       {/* {errors.map((err) => (
           <Error key={err}>{err}</Error>
         ))} */}
