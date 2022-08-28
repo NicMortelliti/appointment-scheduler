@@ -18,27 +18,25 @@ function App() {
 
   return (
     <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
-      <>
-        <GlobalStyles />
-        <div className="App">
-          <Navbar toggler={themeToggler} />
-          <Switch>
-            <Route exact path="/">
-              "home"
-            </Route>
-            <Route exact path="/signup">
-              {signUp ? (
-                <Signup setSignUp={setSignUp} />
-              ) : (
-                <Login setSignUp={setSignUp} />
-              )}
-            </Route>
-            <Route exact path="/new_appointment">
-              "new appointment"
-            </Route>
-          </Switch>
-        </div>
-      </>
+      <GlobalStyles />
+      <div className="App">
+        <Navbar toggler={themeToggler} />
+        <Switch>
+          <Route exact path="/">
+            "home"
+          </Route>
+          <Route exact path="/signup">
+            {signUp ? (
+              <Signup setSignUp={setSignUp} />
+            ) : (
+              <Login setSignUp={setSignUp} />
+            )}
+          </Route>
+          <Route exact path="/new_appointment">
+            "new appointment"
+          </Route>
+        </Switch>
+      </div>
     </ThemeProvider>
   );
 }
