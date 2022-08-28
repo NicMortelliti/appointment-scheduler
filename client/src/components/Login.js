@@ -29,7 +29,7 @@ function Login({ onLogin, setSignUp }) {
   }
 
   return (
-    <form>
+    <form className="center">
       <label htmlFor="email">Email</label>
       <input
         type="email"
