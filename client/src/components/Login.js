@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Button from "../style/components/Button";
 
 function Login({ onLogin, setSignUp }) {
   const [errors, setErrors] = useState([]);
@@ -52,8 +53,10 @@ function Login({ onLogin, setSignUp }) {
         }
         autoComplete="current-password"
       />
-      <button type="submit">Log In</button>
-      <button onClick={() => setSignUp(true)}>Sign Up</button>
+      <Button primary type="submit">
+        Log In
+      </Button>
+      <Button onClick={() => setSignUp(true)}>Sign Up</Button>
     </form>
   );
 }

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Button from "../style/components/Button";
 
 function Signup({ onLogin, setSignUp }) {
   const [errors, setErrors] = useState([]);
@@ -103,10 +104,10 @@ function Signup({ onLogin, setSignUp }) {
         }
         autoComplete="current-password"
       />
-      <button type="submit">{isLoading ? "Loading..." : "Sign Up"}</button>
-      <button onClick={(e) => resetForm(e)} className="txt-btn">
-        I have an account
-      </button>
+      <Button primary type="submit">
+        {isLoading ? "Loading..." : "Sign Up"}
+      </Button>
+      <Button onClick={(e) => resetForm(e)}>I have an account</Button>
       {/* {errors.map((err) => (
           <Error key={err}>{err}</Error>
         ))} */}
