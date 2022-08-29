@@ -1,31 +1,10 @@
 import React from "react";
+import NavBar from "../style/components/NavBar.styled";
 import NavLink from "../style/components/NavLink.styled";
-import styled from "styled-components";
 
 function Navbar({ toggler }) {
-  const NavUnlisted = styled.ul`
-    display: flex;
-
-    a {
-      text-decoration: none;
-    }
-
-    li {
-      margin: 0 0.8rem;
-      font-size: 1rem;
-      position: relative;
-      list-style: none;
-    }
-
-    .current {
-      li {
-        border-bottom: 2px solid;
-      }
-    }
-  `;
-
   return (
-    <NavUnlisted className="nav">
+    <NavBar>
       <NavLink to="/" activeClassName="current" exact>
         <li>Home</li>
       </NavLink>
@@ -41,7 +20,7 @@ function Navbar({ toggler }) {
       <NavLink to="/">
         <li>Logout</li>
       </NavLink>
-    </NavUnlisted>
+    </NavBar>
   );
 }
 
