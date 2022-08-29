@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { NavLink as RouterNavLink } from "react-router-dom";
 
 const NavLink = styled(RouterNavLink)`
-  color: ${(props) => props.theme.sixty};
+  color: ${(props) => props.theme.thirty};
 
   font-size: 1em;
   margin: 1em;
