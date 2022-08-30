@@ -6,8 +6,10 @@ const NavLink = styled(RouterNavLink)`
   width: auto;
   font-size: 17px;
   text-decoration: none;
+  transition: all 0.2s ease-out 0s;
 
   &:hover {
+    transition: all 0.5s ease 0s;
     background-color: ${(props) => props.theme.sixty};
     opacity: 0.5;
   }
