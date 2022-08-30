@@ -2,10 +2,8 @@ import styled from "styled-components";
 import { NavLink as RouterNavLink } from "react-router-dom";
 
 const NavLink = styled(RouterNavLink)`
-  float: left;
-  display: block;
-  text-align: center;
-  padding: 14px 16px;
+  padding: 14px;
+  width: auto;
   font-size: 17px;
   text-decoration: none;
 
