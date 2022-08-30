@@ -8,6 +8,8 @@ const NavLink = styled(RouterNavLink)`
   text-decoration: none;
   transition: all 0.2s ease-out 0s;
 
+  float: ${(props) => (props.right ? "right" : "left")};
+
   &:hover {
     transition: all 0.5s ease 0s;
     background-color: ${(props) => props.theme.sixty};
