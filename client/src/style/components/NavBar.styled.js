@@ -14,17 +14,16 @@ const NavBar = styled.ul`
   display: flex;
 
   // justify-content: space-between;
-  // align-items: center;
-  
+
   // Misc
   overflow: hidden;
 
   .current {
-     {
-      background-color: ${(props) => props.theme.sixty};
-      color: ${(props) => props.theme.thirty};
-    }
+    background-color: ${(props) => props.theme.sixty};
+    color: ${(props) => props.theme.thirty};
   }
+
+  // float: ${(props) => (props.right ? "right" : "left")};
 `;
 
 export default NavBar;
