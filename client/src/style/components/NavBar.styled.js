@@ -8,14 +8,17 @@ const NavBar = styled.ul`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 2rem;
   padding: 0 1rem;
   margin: 0;
   overflow: hidden;
+  list-style-type: none;
+
+  display: flex;
 
   .current {
-    button {
-      border-top: 2pk solid;
+     {
+      background-color: ${(props) => props.theme.sixty};
+      color: ${(props) => props.theme.thirty};
     }
   }
 

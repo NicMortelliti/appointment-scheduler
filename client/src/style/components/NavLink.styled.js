@@ -2,23 +2,16 @@ import styled from "styled-components";
 import { NavLink as RouterNavLink } from "react-router-dom";
 
 const NavLink = styled(RouterNavLink)`
-  display: flex;
+  float: left;
+  display: block;
+  text-align: center;
+  padding: 14px 16px;
+  font-size: 17px;
+  text-decoration: none;
 
-  a {
-    text-decoration: none;
-  }
-
-  li {
-    margin: 0 0.8rem;
-    font-size: 17px;
-    position: relative;
-    list-style: none;
-  }
-
-  .current {
-    li {
-      border-bottom: 2px solid;
-    }
+  &:hover {
+    background-color: ${(props) => props.theme.sixty};
+    opacity: 0.5;
   }
 `;
 

@@ -7,10 +7,8 @@ const Button = styled.button`
   font-size: 1em;
   margin: 1em;
   padding: 0.25em 1em;
-  border-color: ${(props) => (props.primary ? props.theme.ten : "none")};
   border-style: none;
-  box-shadow: ${(props) => (props.primary ? "2px 2px 2px black" : "none")};
-  border-radius: 0px;
+  box-shadow: ${(props) => (props.primary ? "5px 5px black" : "none")};
   cursor: pointer;
 `;
 

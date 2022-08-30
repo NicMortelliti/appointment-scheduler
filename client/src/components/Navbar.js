@@ -6,20 +6,16 @@ function Navbar({ toggler }) {
   return (
     <NavBar>
       <NavLink to="/" activeClassName="current" exact>
-        <li>Home</li>
+        Home
       </NavLink>
       <NavLink to="/new_appointment" activeClassName="current">
-        <li>Schedule Appointment</li>
+        Schedule Appointment
       </NavLink>
       <NavLink to="/signup" activeClassName="current">
-        <li>Signup</li>
+        Signup
       </NavLink>
-      <li>
-        <button onClick={toggler}>Switch Theme</button>
-      </li>
-      <NavLink to="/">
-        <li>Logout</li>
-      </NavLink>
+      <button onClick={toggler}>Switch Theme</button>
+      <NavLink to="/">Logout</NavLink>
     </NavBar>
   );
 }
