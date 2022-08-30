@@ -15,7 +15,9 @@ function Navbar({ toggler }) {
         Signup
       </NavLink>
       <button onClick={toggler}>Switch Theme</button>
-      <NavLink to="/">Logout</NavLink>
+      <NavLink to="/" right>
+        Logout
+      </NavLink>
     </NavBar>
   );
 }
