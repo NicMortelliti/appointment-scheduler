@@ -1,24 +1,52 @@
 import React from "react";
-import NavBar from "../style/components/NavBar.styled";
-import NavLink from "../style/components/NavLink.styled";
+import {
+  Nav,
+  NavbarContainer,
+  NavLogo,
+  NavIcon,
+  Menu,
+  MenuItem,
+  MenuItemBtn,
+  MenuLink,
+  MenuLinkBtn,
+} from "../style/components/NavBar.styled";
 
 function Navbar({ toggler }) {
   return (
-    <NavBar>
-      <NavLink to="/" activeClassName="current" exact>
-        Home
-      </NavLink>
-      <NavLink to="/new_appointment" activeClassName="current">
-        Schedule Appointment
-      </NavLink>
-      <NavLink to="/signup" activeClassName="current">
-        Signup
-      </NavLink>
-      <button onClick={toggler}>Switch Theme</button>
-      <NavLink to="/" right>
-        Logout
-      </NavLink>
-    </NavBar>
+    <div>
+      <Nav>
+        <NavbarContainer>
+          <MenuItem>
+            <MenuLink
+              to="/"
+              className={({ isActive }) => (isActive ? "active" : "inactive")}
+              exact>
+              Home
+            </MenuLink>
+          </MenuItem>
+          <MenuItem>
+            <MenuLink to="/new_appointment" activeclassname="current">
+              Schedule Appointment
+            </MenuLink>
+          </MenuItem>
+          <MenuItem>
+            <MenuLink
+              to="/signup"
+              className={({ isActive }) => (isActive ? "active" : "inactive")}>
+              Signup
+            </MenuLink>
+          </MenuItem>
+          <MenuItemBtn>
+            <MenuLinkBtn onClick={toggler}>Switch Theme</MenuLinkBtn>
+          </MenuItemBtn>
+          <MenuItem>
+            <MenuLink to="/" right>
+              Logout
+            </MenuLink>
+          </MenuItem>
+        </NavbarContainer>
+      </Nav>
+    </div>
   );
 }
 

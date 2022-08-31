@@ -4,6 +4,8 @@ import { NavLink as RouterNavLink } from "react-router-dom";
 const NavLink = styled(RouterNavLink)`
   padding: 14px;
   width: auto;
+  height: 100%;
+  align-content: center;
   font-size: 17px;
   text-decoration: none;
   transition: all 0.2s ease-out 0s;
