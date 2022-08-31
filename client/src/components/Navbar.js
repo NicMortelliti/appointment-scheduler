@@ -1,9 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import MenuToggle from "./subcomponents/MenuToggle";
 
 function Navbar({ toggler }) {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggle = () => setIsOpen(!isOpen);
+
   return (
     <div>
+      <MenuToggle toggle={toggle} isOpen={isOpen} />
       <li>
         <Link
           to="/"
