@@ -1,0 +1,15 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding-top: 80px;
+  /* overflow: hidden; Hide scroll bars */
+}
+
+.center {
+  margin: auto;
+  width: 50%;
+  padding: 10px;
+}
