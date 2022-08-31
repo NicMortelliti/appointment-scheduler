@@ -52,9 +52,7 @@ function Login({ onLogin, setSignUp }) {
         }
         autoComplete="current-password"
       />
-      <button primary type="submit">
-        Log In
-      </button>
+      <button type="submit">Log In</button>
       <button onClick={() => setSignUp(true)}>Sign Up</button>
     </form>
   );

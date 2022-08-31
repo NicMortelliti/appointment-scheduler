@@ -1,15 +1,75 @@
+:root {
+  --sixty: #b8dbd9;
+  --thirty: #371e30;
+  --ten: #a790a5;
+  --header-text: var(--thirty);
+}
+
+[data-theme="dark"] {
+  --sixty: #371e30;
+  --thirty: #a790a5;
+  --ten: #b8dbd9;
+  --header-text: var(--sixty);
+}
+
 * {
+  font-family: "Inconsolata", monospace;
+  color: var(--thirty);
   box-sizing: border-box;
 }
 
 body {
+  background-color: var(--sixty);
   margin: 0;
-  padding-top: 80px;
   /* overflow: hidden; Hide scroll bars */
 }
 
-.center {
-  margin: auto;
-  width: 50%;
-  padding: 10px;
+ul.topnav {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: var(--thirty);
+}
+
+ul.topnav li {
+  float: left;
+}
+
+ul.topnav li a,
+ul.topnav .navbtn {
+  display: block;
+  color: var(--sixty);
+  text-align: center;
+  padding: 12px;
+  text-decoration: none;
+  border: none;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+ul.topnav .navbtn:hover,
+ul.topnav li a:hover:not(.active) {
+  background-color: var(--ten);
+  color: var(--header-text);
+}
+
+ul.topnav li a.active {
+  background-color: var(--sixty);
+  color: var(--thirty);
+}
+
+.navbtn {
+  background-color: transparent;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 600px) {
+  ul.topnav li.right,
+  ul.topnav li {
+    float: none;
+  }
 }

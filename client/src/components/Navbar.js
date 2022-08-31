@@ -1,38 +1,34 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+import SwitchTheme from "./SwitchTheme";
 
-function Navbar({ toggler }) {
+function Navbar() {
   return (
-    <div>
+    <ul className="topnav">
       <li>
-        <Link
-          to="/"
-          className={({ isActive }) => (isActive ? "active" : "inactive")}
-          exact>
+        <NavLink to="/" activeClassName="active" exact>
           Home
-        </Link>
+        </NavLink>
       </li>
       <li>
-        <Link to="/new_appointment" activeclassname="current">
+        <NavLink to="/new_appointment" activeClassName="active">
           Schedule Appointment
-        </Link>
+        </NavLink>
       </li>
       <li>
-        <Link
-          to="/signup"
-          className={({ isActive }) => (isActive ? "active" : "inactive")}>
+        <NavLink to="/signup" activeClassName="active">
           Signup
-        </Link>
+        </NavLink>
       </li>
       <li>
-        <button onClick={toggler}>Switch Theme</button>
+        <SwitchTheme />
       </li>
-      <li>
-        <Link to="/" right>
+      <li style={{ float: "right" }}>
+        <button className="navbtn" onClick={() => console.log("Logging Out")}>
           Logout
-        </Link>
+        </button>
       </li>
-    </div>
+    </ul>
   );
 }
 

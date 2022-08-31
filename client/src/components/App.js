@@ -7,15 +7,11 @@ import Navbar from "./Navbar";
 import Signup from "./Signup";
 
 function App() {
-  const [theme, setTheme] = useState("light");
   const [signUp, setSignUp] = useState(false);
-  const themeToggler = () => {
-    theme === "light" ? setTheme("dark") : setTheme("light");
-  };
 
   return (
     <div className="App">
-      <Navbar toggler={themeToggler} />
+      <Navbar />
       <div className="main">
         <Switch>
           <Route exact path="/">
