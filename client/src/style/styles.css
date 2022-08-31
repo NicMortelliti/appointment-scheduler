@@ -21,6 +21,7 @@
 body {
   background-color: var(--sixty);
   margin: 0;
+  padding-top: 70px;
   /* overflow: hidden; Hide scroll bars */
 }
 
@@ -44,7 +45,7 @@ ul.topnav .navbtn {
   display: block;
   color: var(--sixty);
   text-align: center;
-  padding: 12px;
+  padding: 20px 12px;
   text-decoration: none;
   border: none;
   font-size: 18px;
@@ -72,4 +73,41 @@ ul.topnav li a.active {
   ul.topnav li {
     float: none;
   }
+}
+
+input {
+  background-color: white;
+  border-style: none;
+  width: 60%;
+  margin: 20px;
+  padding: 12px;
+}
+
+button.primary {
+  background-color: var(--ten);
+  color: var(--thirty);
+  border-style: none;
+  margin: 20px;
+  padding: 20px;
+  font-size: 16px;
+  font-weight: bold;
+  box-shadow: 2px 2px black;
+}
+
+button.primary:hover {
+  /* transform: translate(-1px, -1px);
+  box-shadow: 3px 3px black; */
+  opacity: 0.8;
+}
+
+button.primary:active {
+  transform: translate(2px, 2px);
+  box-shadow: none;
+}
+
+button.secondary {
+  background: none;
+  border: none;
+  font-size: 14px;
+  font-weight: bold;
 }
