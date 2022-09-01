@@ -5,6 +5,7 @@ import { Route, Switch } from "react-router-dom";
 import Login from "./Login";
 import Navbar from "./Navbar";
 import Signup from "./Signup";
+import Stack from "./Stack";
 
 function App() {
   const [signUp, setSignUp] = useState(false);
@@ -15,7 +16,7 @@ function App() {
       <div className="main">
         <Switch>
           <Route exact path="/">
-            "home"
+            <Stack />
           </Route>
           <Route exact path="/signup">
             {signUp ? (
