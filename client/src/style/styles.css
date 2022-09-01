@@ -147,6 +147,36 @@ label {
   border-style: solid;
   border-color: var(--thirty);
   background-color: white;
-  padding: 30px;
   margin-bottom: 20px;
+}
+
+.card > div {
+  display: inline-block;
+}
+
+.date {
+  border-right-style: solid;
+  padding: 20px;
+  text-align: center;
+}
+
+.date .day {
+  font-size: 40px;
+}
+
+.details {
+  padding: 20px;
+}
+
+.details .label {
+  font-size: 16px;
+}
+
+.details 
+
+.card-btn-group {
+  background-color: teal;
+  width: 20%;
+  float: right;
+  justify-content: center;
 }
