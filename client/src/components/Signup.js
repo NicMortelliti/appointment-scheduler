@@ -103,10 +103,12 @@ function Signup({ onLogin, setSignUp }) {
         }
         autoComplete="current-password"
       />
-      <button primary type="submit">
+      <button className="primary" type="submit">
         {isLoading ? "Loading..." : "Sign Up"}
       </button>
-      <button onClick={(e) => resetForm(e)}>I have an account</button>
+      <button className="secondary" onClick={(e) => resetForm(e)}>
+        I have an account
+      </button>
       {/* {errors.map((err) => (
           <Error key={err}>{err}</Error>
         ))} */}
