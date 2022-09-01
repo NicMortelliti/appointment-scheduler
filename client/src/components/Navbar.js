@@ -20,9 +20,6 @@ function Navbar() {
           Signup
         </NavLink>
       </li>
-      <li>
-        <SwitchTheme />
-      </li>
       <li style={{ float: "right" }}>
         <button className="navbtn" onClick={() => console.log("Logging Out")}>
           Logout
