@@ -1,15 +1,7 @@
 :root {
-  --sixty: #b8dbd9;
-  --thirty: #371e30;
-  --ten: #a790a5;
-  --header-text: var(--thirty);
-}
-
-[data-theme="dark"] {
-  --sixty: #371e30;
-  --thirty: #a790a5;
-  --ten: #b8dbd9;
-  --header-text: var(--sixty);
+  --sixty: #e4c7b7;
+  --thirty: #522157;
+  --ten: #c2649a;
 }
 
 * {
@@ -23,6 +15,12 @@ body {
   margin: 0;
   padding-top: 70px;
   /* overflow: hidden; Hide scroll bars */
+}
+
+.center {
+  margin: auto;
+  width: 80%;
+  padding: 10px;
 }
 
 ul.topnav {
@@ -55,7 +53,7 @@ ul.topnav .navbtn {
 ul.topnav .navbtn:hover,
 ul.topnav li a:hover:not(.active) {
   background-color: var(--ten);
-  color: var(--header-text);
+  color: var(--thirty);
 }
 
 ul.topnav li a.active {
@@ -67,6 +65,11 @@ ul.topnav li a.active {
   background-color: transparent;
   cursor: pointer;
 }
+@media screen and (max-width: 600px) {
+  body {
+    padding-top: 300px;
+  }
+}
 
 @media screen and (max-width: 600px) {
   ul.topnav li.right,
@@ -75,13 +78,13 @@ ul.topnav li a.active {
   }
 }
 
-input {
+/* input {
   background-color: white;
   border-style: none;
   width: 60%;
   margin: 20px;
   padding: 12px;
-}
+} */
 
 button.primary {
   background-color: var(--ten);
@@ -110,4 +113,38 @@ button.secondary {
   border: none;
   font-size: 14px;
   font-weight: bold;
+}
+
+/* Style inputs */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+select {
+  width: 100%;
+  padding: 20px 20px;
+  margin-bottom: 30px;
+  display: inline-block;
+  /* border: 1px 0; */
+  /* border-radius: 4px; */
+  border-style: none;
+  box-shadow: 2px 2px black;
+  box-sizing: border-box;
+  font-size: 24px;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+select {
+  outline-style: solid;
+  outline-color: var(--thirty);
+  outline-width: 2px;
+}
+
+label {
+  width: 100%;
+  padding-bottom: 1px;
+  margin-bottom: 5px;
+  display: inline-block;
+  box-sizing: border-box;
 }
