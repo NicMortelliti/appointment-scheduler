@@ -14,6 +14,13 @@ function NewAppointmentForm() {
     { value: "2", label: "John Down" },
   ];
 
+  const locations = [
+    { value: "1", label: "Lake Oswego" },
+    { value: "2", label: "Wilsonville" },
+    { value: "3", label: "Tigard" },
+    { value: "4", label: "Portland" },
+  ];
+
   function handleSubmit(e) {
     e.preventDefault(e);
     console.log("Submitting form");
@@ -39,6 +46,10 @@ function NewAppointmentForm() {
       <div>
         <label htmlFor="selectDoctor">Doctor</label>
         <Select name="selectDoctor" options={doctors} />
+      </div>
+      <div>
+        <label htmlFor="location">Location</label>
+        <ApptSelectField name="selectLocation" options={locations} />
       </div>
       <label htmlFor="date">Date</label>
       <label htmlFor="time">Time</label>
