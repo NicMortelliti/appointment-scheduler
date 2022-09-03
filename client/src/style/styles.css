@@ -206,3 +206,30 @@ h1 {
   margin: 0;
   padding: 0em 0.5em 0.5em 0.5em;
 }
+
+@media screen and (max-width: 600px) {
+  .card-date,
+  .details,
+  .card-reschedule-btn,
+  .card-cancel-btn {
+    grid-column: 1;
+  }
+  .card-date {
+    grid-row: 1;
+    border-right: none;
+    border-bottom: solid;
+  }
+  .details {
+    grid-row: 2;
+  }
+  .card-reschedule-btn,
+  .card-cancel-btn {
+    text-align: center;
+  }
+  .card-reschedule-btn {
+    grid-row: 3;
+  }
+  .card-cancel-btn {
+    grid-row: 4;
+  }
+}
