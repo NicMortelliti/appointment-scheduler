@@ -152,7 +152,7 @@ label {
   border-width: 1px;
   border-color: black;
   background-color: white;
-  margin: 20px;
+  margin: 10px;
   display: grid;
   grid-template-columns: auto auto auto;
   padding: 1em;
@@ -209,27 +209,34 @@ h1 {
 
 @media screen and (max-width: 600px) {
   .card-date,
-  .details,
-  .card-reschedule-btn,
-  .card-cancel-btn {
+  .card-details,
+  .card-reschedule-btn {
     grid-column: 1;
   }
   .card-date {
-    grid-row: 1;
+    grid-row-start: 1;
+    grid-row-end: 3;
     border-right: none;
-    border-bottom: solid;
+    margin-top: auto;
+    margin-bottom: auto;
   }
-  .details {
-    grid-row: 2;
+  .card-details {
+    grid-row: 3;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    border-top: solid;
+    padding: 1em 0 0em;
   }
   .card-reschedule-btn,
   .card-cancel-btn {
-    text-align: center;
+    grid-column: 2;
+    margin: auto;
+    padding: auto;
   }
   .card-reschedule-btn {
-    grid-row: 3;
+    grid-row: 1;
   }
   .card-cancel-btn {
-    grid-row: 4;
+    grid-row: 2;
   }
 }
