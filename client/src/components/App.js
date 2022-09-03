@@ -4,6 +4,7 @@ import { Route, Switch } from "react-router-dom";
 // Import components
 import Login from "./Login";
 import Navbar from "./Navbar";
+import NewAppointmentForm from "./NewAppointmentForm";
 import Stack from "./Stack";
 
 function App() {
@@ -27,7 +28,7 @@ function App() {
             {user ? <Stack /> : <Login onLogin={setUser} />}
           </Route>
           <Route exact path="/new_appointment">
-            "new appointment"
+            <NewAppointmentForm />
           </Route>
         </Switch>
       </div>
