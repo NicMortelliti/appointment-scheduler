@@ -18,19 +18,13 @@ function App() {
     });
   }, []);
 
-  // if (!user) setShowLogin(true);
-
   return (
     <>
       <Navbar user={user} setUser={setUser} />
       <div className="main">
         <Switch>
           <Route exact path="/">
-            {user ? (
-              <Stack />
-            ) : (
-              <Login onLogin={setUser} />
-            )}
+            {user ? <Stack /> : <Login onLogin={setUser} />}
           </Route>
           <Route exact path="/new_appointment">
             "new appointment"
