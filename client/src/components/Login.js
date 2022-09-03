@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Error from "../style/Error";
 
 function Login({ onLogin, setSignUp }) {
   const [errors, setErrors] = useState([]);
@@ -52,6 +53,9 @@ function Login({ onLogin, setSignUp }) {
         }
         autoComplete="current-password"
       />
+      {errors.map((err) => (
+        <Error key={err}>{err}</Error>
+      ))}
       <button className="primary" type="submit">
         {isLoading ? "Loading..." : "Log In"}
       </button>
