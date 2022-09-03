@@ -1,9 +1,9 @@
 import React, { useState } from "react";
+import Error from "../style/Error";
 
 function Signup({ onLogin, setSignUp }) {
   const [errors, setErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -109,9 +109,9 @@ function Signup({ onLogin, setSignUp }) {
       <button className="secondary" onClick={(e) => resetForm(e)}>
         I have an account
       </button>
-      {/* {errors.map((err) => (
-          <Error key={err}>{err}</Error>
-        ))} */}
+      {errors.map((err) => (
+        <Error key={err}>{err}</Error>
+      ))}
     </form>
   );
 }
