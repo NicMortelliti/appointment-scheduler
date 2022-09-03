@@ -8,7 +8,19 @@ import Signup from "./Signup";
 import Stack from "./Stack";
 
 function App() {
+  const [user, setUser] = useState(null);
   const [signUp, setSignUp] = useState(false);
+
+  useEffect(() => {
+    // auto-login
+    fetch("/me").then((r) => {
+      if (r.ok) {
+        r.json().then((user) => setUser(user));
+      }
+    });
+  }, []);
+
+  if (!user) return <Login onLogin={setUser} setSignUp={setSignUp} />;
 
   return (
     <div className="App">
