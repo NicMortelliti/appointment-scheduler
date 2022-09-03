@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Route, Switch } from "react-router-dom";
 
 // Import components
@@ -31,11 +31,7 @@ function App() {
             <Stack />
           </Route>
           <Route exact path="/signup">
-            {signUp ? (
-              <Signup setSignUp={setSignUp} />
-            ) : (
-              <Login setSignUp={setSignUp} />
-            )}
+            <Signup setSignUp={setSignUp} />
           </Route>
           <Route exact path="/new_appointment">
             "new appointment"
