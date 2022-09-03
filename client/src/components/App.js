@@ -4,12 +4,10 @@ import { Route, Switch } from "react-router-dom";
 // Import components
 import Login from "./Login";
 import Navbar from "./Navbar";
-import Signup from "./Signup";
 import Stack from "./Stack";
 
 function App() {
   const [user, setUser] = useState(null);
-  const [signUp, setSignUp] = useState(false);
 
   useEffect(() => {
     // auto-login
@@ -20,7 +18,7 @@ function App() {
     });
   }, []);
 
-  if (!user) return <Login onLogin={setUser} setSignUp={setSignUp} />;
+  // if (!user) setShowLogin(true);
 
   return (
     <>
@@ -28,10 +26,11 @@ function App() {
       <div className="main">
         <Switch>
           <Route exact path="/">
-            <Stack />
-          </Route>
-          <Route exact path="/signup">
-            <Signup setSignUp={setSignUp} />
+            {user ? (
+              <Stack />
+            ) : (
+              <Login onLogin={setUser} />
+            )}
           </Route>
           <Route exact path="/new_appointment">
             "new appointment"
