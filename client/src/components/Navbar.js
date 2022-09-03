@@ -1,7 +1,14 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-function Navbar() {
+function Navbar({ user, setUser }) {
+  function handleLogoutClick() {
+    fetch("/logout", { method: "DELETE" }).then((r) => {
+      if (r.ok) {
+        setUser(null);
+      }
+    });
+  }
   return (
     <ul className="topnav">
       <li>
@@ -20,7 +27,7 @@ function Navbar() {
         </NavLink>
       </li>
       <li style={{ float: "right" }}>
-        <button className="navbtn" onClick={() => console.log("Logging Out")}>
+        <button className="navbtn" onClick={handleLogoutClick}>
           Logout
         </button>
       </li>
