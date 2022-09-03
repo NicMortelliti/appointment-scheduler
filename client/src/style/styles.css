@@ -65,18 +65,18 @@ ul.topnav li a.active {
   background-color: transparent;
   cursor: pointer;
 }
-@media screen and (max-width: 600px) {
+
+/* @media screen and (max-width: 600px) {
   body {
     padding-top: 300px;
   }
-}
+} */
 
-@media screen and (max-width: 600px) {
-  ul.topnav li.right,
+/* @media screen and (max-width: 600px) {
   ul.topnav li {
     float: none;
   }
-}
+} */
 
 button.primary {
   background-color: var(--ten);
