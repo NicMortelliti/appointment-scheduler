@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import Select from "react-select";
 import DatePicker from "react-datepicker";
-import { subDays, addDays } from "date-fns";
-// import "react-datepicker/dist/react-datepicker-cssmodules.css";
 import "react-datepicker/dist/react-datepicker.css";
 
 function NewAppointmentForm() {
@@ -88,6 +86,9 @@ function NewAppointmentForm() {
         <label htmlFor="time">Time</label>
         <Select name="selectTime" options={times}></Select>
       </div>
+      <button className="primary" type="submit">
+        Submit
+      </button>
     </form>
   );
 }

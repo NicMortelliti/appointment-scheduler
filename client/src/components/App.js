@@ -9,7 +9,7 @@ import Signup from "./Signup";
 import Stack from "./Stack";
 
 function App() {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState("nic");
 
   useEffect(() => {
     // auto-login
