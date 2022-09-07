@@ -110,7 +110,7 @@ button.secondary {
 }
 
 /* Style inputs */
-input[type="text"],
+.styled-text-field,
 input[type="email"],
 input[type="password"],
 select {
