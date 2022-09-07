@@ -52,6 +52,7 @@ function Signup({ onLogin, setShowSignup }) {
         <input
           type="text"
           id="firstName"
+          className="styled-text-field"
           placeholder="Enter your first name"
           autoComplete="off"
           value={formData.firstName}
@@ -63,6 +64,7 @@ function Signup({ onLogin, setShowSignup }) {
         <input
           type="text"
           id="lastName"
+          className="styled-text-field"
           placeholder="Enter your last name"
           autoComplete="off"
           value={formData.lastName}

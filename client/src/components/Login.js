@@ -41,6 +41,7 @@ function Login({ onLogin }) {
             <label htmlFor="email">Email</label>
             <input
               type="email"
+              className="styled-text-field"
               id="email"
               placeholder="Enter Email"
               autoComplete="off"
