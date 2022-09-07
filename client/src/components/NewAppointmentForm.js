@@ -33,6 +33,13 @@ function NewAppointmentForm() {
     new Date("09/16/2022"),
   ];
 
+  const times = [
+    { value: "1", label: "11:00 AM" },
+    { value: "2", label: "11:30 AM" },
+    { value: "3", label: "2:00 PM" },
+    { value: "4", label: "2:30 PM" },
+  ];
+
   // FETCH next fields content based on current fields selection
   // const handleFieldSelection = (e) => {
   //   e.preventDefault();
@@ -79,6 +86,7 @@ function NewAppointmentForm() {
       </div>
       <div>
         <label htmlFor="time">Time</label>
+        <Select name="selectTime" options={times}></Select>
       </div>
     </form>
   );
