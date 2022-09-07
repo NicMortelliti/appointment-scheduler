@@ -5,6 +5,7 @@ import { Route, Switch } from "react-router-dom";
 import Login from "./Login";
 import Navbar from "./Navbar";
 import NewAppointmentForm from "./NewAppointmentForm";
+import Signup from "./Signup";
 import Stack from "./Stack";
 
 function App() {
@@ -21,11 +22,14 @@ function App() {
 
   return (
     <>
-      <Navbar user={user} setUser={setUser} />
+      {user && <Navbar user={user} setUser={setUser} />}
       <div className="main">
         <Switch>
           <Route exact path="/">
             {user ? <Stack /> : <Login onLogin={setUser} />}
+          </Route>
+          <Route path="/signup">
+            <Signup />
           </Route>
           <Route exact path="/new_appointment">
             <NewAppointmentForm />

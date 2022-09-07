@@ -1,7 +1,8 @@
 import React, { useState } from "react";
+import { NavLink } from "react-router-dom";
 import Error from "../style/Error";
 
-function Signup({ onLogin, setShowSignup }) {
+function Signup({ onLogin }) {
   const [errors, setErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({
@@ -109,9 +110,7 @@ function Signup({ onLogin, setShowSignup }) {
           {isLoading ? "Loading..." : "Sign Up"}
         </button>
       </form>
-      <button className="secondary" onClick={() => setShowSignup(false)}>
-        I have an account
-      </button>
+      <NavLink to="/">I have an account</NavLink>
       {errors.map((err) => (
         <Error key={err}>{err}</Error>
       ))}

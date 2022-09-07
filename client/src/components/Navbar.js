@@ -21,11 +21,6 @@ function Navbar({ user, setUser }) {
           Schedule Appointment
         </NavLink>
       </li>
-      <li>
-        <NavLink to="/signup" activeClassName="active">
-          Signup
-        </NavLink>
-      </li>
       <li style={{ float: "right" }}>
         <button className="navbtn" onClick={handleLogoutClick}>
           Logout
