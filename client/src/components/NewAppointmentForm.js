@@ -74,6 +74,7 @@ function NewAppointmentForm() {
           selected={formData.date}
           onChange={(e) => setFormData({ ...formData, date: e })}
           highlightDates={dates}
+          includeDates={dates}
         />
       </div>
       <div>
