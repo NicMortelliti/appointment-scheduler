@@ -25,6 +25,14 @@ function NewAppointmentForm() {
     { value: "4", label: "Portland" },
   ];
 
+  const dates = [
+    new Date("09/12/2022"),
+    new Date("09/13/2022"),
+    new Date("09/14/2022"),
+    new Date("09/15/2022"),
+    new Date("09/16/2022"),
+  ];
+
   // FETCH next fields content based on current fields selection
   // const handleFieldSelection = (e) => {
   //   e.preventDefault();
@@ -65,8 +73,7 @@ function NewAppointmentForm() {
         <DatePicker
           selected={formData.date}
           onChange={(e) => setFormData({ ...formData, date: e })}
-          // onChange={(e) => console.log(e)}
-          highlightDates={[Date(2022, 9, 6), addDays(new Date(), 7)]}
+          highlightDates={dates}
         />
       </div>
       <div>
