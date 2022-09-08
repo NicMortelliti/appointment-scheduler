@@ -90,6 +90,9 @@ function NewAppointmentForm() {
         <button className="primary center" type="submit">
           Submit
         </button>
+        <div>
+          <button className="secondary">Cancel</button>
+        </div>
       </div>
     </form>
   );
