@@ -14,12 +14,21 @@ body {
   background-color: var(--sixty);
   margin: 0;
   padding-top: 70px;
+  padding-bottom: 20px;
   /* overflow: hidden; Hide scroll bars */
+}
+.button-group {
+  width: 100%;
+  display: block;
+  position: relative;
+  text-align: center;
+  height: auto;
 }
 
 .center {
   margin: auto;
-  width: 80%;
+  align-content: center;
+  justify-self: center;
   padding: 10px;
 }
 
@@ -143,9 +152,10 @@ label {
   box-sizing: border-box;
 }
 
-/* .card-stack {
+.card-stack {
   margin-bottom: 30px;
-} */
+  width: 80%;
+}
 
 .card-grid-container {
   border-style: solid;

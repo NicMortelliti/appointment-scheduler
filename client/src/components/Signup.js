@@ -106,11 +106,15 @@ function Signup({ onLogin }) {
           }
           autoComplete="current-password"
         />
-        <button className="primary" type="submit">
-          {isLoading ? "Loading..." : "Sign Up"}
-        </button>
+        <div className="button-group">
+          <button className="primary" type="submit">
+            {isLoading ? "Loading..." : "Sign Up"}
+          </button>
+          <div>
+            <NavLink to="/">I have an account</NavLink>
+          </div>
+        </div>
       </form>
-      <NavLink to="/">I have an account</NavLink>
       {errors.map((err) => (
         <Error key={err}>{err}</Error>
       ))}

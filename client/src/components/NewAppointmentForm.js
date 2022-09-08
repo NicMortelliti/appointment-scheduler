@@ -86,9 +86,11 @@ function NewAppointmentForm() {
         <label htmlFor="time">Time</label>
         <Select name="selectTime" options={times}></Select>
       </div>
-      <button className="primary" type="submit">
-        Submit
-      </button>
+      <div className="button-group">
+        <button className="primary center" type="submit">
+          Submit
+        </button>
+      </div>
     </form>
   );
 }

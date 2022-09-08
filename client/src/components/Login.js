@@ -61,11 +61,15 @@ function Login({ onLogin }) {
         {errors.map((err) => (
           <Error key={err}>{err}</Error>
         ))}
-        <button className="primary" type="submit">
-          {isLoading ? "Loading..." : "Log In"}
-        </button>
+        <div className="button-group">
+          <button className="primary" type="submit">
+            {isLoading ? "Loading..." : "Log In"}
+          </button>
+          <div>
+            <NavLink to="/signup">Sign Up</NavLink>
+          </div>
+        </div>
       </form>
-      <NavLink to="/signup">Sign Up</NavLink>
     </>
   );
 }
