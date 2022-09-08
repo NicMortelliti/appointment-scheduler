@@ -53,7 +53,7 @@ function Signup({ onLogin }) {
         <input
           type="text"
           id="firstName"
-          className="styled-text-field"
+          className="form-field"
           placeholder="Enter your first name"
           autoComplete="off"
           value={formData.firstName}
