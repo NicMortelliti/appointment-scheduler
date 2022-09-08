@@ -1,7 +1,11 @@
 import React, { useState } from "react";
-import Select from "react-select";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+
+// Components
+import StyledCenterDiv from "../style/StyledCenterDiv";
+import StyledSelectField from "../style/StyledSelectField";
+import StyledDateSelectField from "../style/StyledDateSelectField";
 
 function NewAppointmentForm() {
   const [formData, setFormData] = useState({
@@ -49,51 +53,62 @@ function NewAppointmentForm() {
     console.log("Submitting form");
   }
 
-  const ApptSelectField = ({ name, options }) => {
-    return (
-      <Select
-        className="basic-single"
-        defaultValue={null}
-        isDisabled={false}
-        isLoading={false}
-        isSearchable={true}
-        name={name}
-        options={options}
-      />
-    );
+  const handleCancelClick = (e) => {
+    e.preventDefault();
+    setFormData({
+      date: "",
+      time: "",
+      location: "",
+      doctor: "",
+    });
   };
 
   return (
-    <form className="center" onSubmit={handleSubmit}>
-      <div>
+    <form onSubmit={handleSubmit}>
+      <StyledCenterDiv>
         <label htmlFor="selectDoctor">Doctor</label>
-        <Select name="selectDoctor" options={doctors} />
-      </div>
-      <div>
+        <StyledSelectField
+          name="selectDoctor"
+          id="doctor"
+          options={doctors}
+          onChange={
+            (e) => console.log(e)
+            // setFormData({ ...formData, [e.target.id]: e.target.value })
+          }
+        />
+      </StyledCenterDiv>
+      <StyledCenterDiv>
         <label htmlFor="location">Location</label>
-        <ApptSelectField name="selectLocation" options={locations} />
-      </div>
-      <div>
+        <StyledSelectField
+          name="selectLocation"
+          id="location"
+          options={locations}
+        />
+      </StyledCenterDiv>
+      <StyledCenterDiv>
         <label htmlFor="date">Date</label>
-        <DatePicker
+        <StyledDateSelectField
+          id="date"
           selected={formData.date}
           onChange={(e) => setFormData({ ...formData, date: e })}
           highlightDates={dates}
           includeDates={dates}
         />
-      </div>
-      <div>
+      </StyledCenterDiv>
+      <StyledCenterDiv>
         <label htmlFor="time">Time</label>
-        <Select name="selectTime" options={times}></Select>
-      </div>
-      <div className="button-group">
+        <StyledSelectField name="selectTime" id="time" options={times} />
+      </StyledCenterDiv>
+      <StyledCenterDiv className="button-group">
         <button className="primary center" type="submit">
           Submit
         </button>
         <div>
-          <button className="secondary">Cancel</button>
+          <button className="secondary" onClick={(e) => handleCancelClick(e)}>
+            Cancel
+          </button>
         </div>
-      </div>
+      </StyledCenterDiv>
     </form>
   );
 }
