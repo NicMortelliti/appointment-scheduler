@@ -1,8 +1,9 @@
 import React from "react";
+import { Button, ButtonGroup, Card as CardComp } from "@blueprintjs/core";
 
 function Card() {
   return (
-    <div className="card-grid-container">
+    <CardComp className="bp4-elevation-3 card">
       <div className="card-date">
         <p className="month">SEP</p>
         <h1 className="day">10</h1>
@@ -19,13 +20,22 @@ function Card() {
           <p className="address-town-state">Hillsboro, OR 97123</p>
         </div>
       </div>
-      <div className="card-reschedule-btn">
-        <button className="primary">Reschedule</button>
-      </div>
-      <div className="card-cancel-btn">
-        <button className="secondary">Cancel Appointment</button>
-      </div>
-    </div>
+      <ButtonGroup vertical className="card-btn-group">
+        <Button
+          intent="primary"
+          large
+          className="card-reschedule-btn"
+          text="Reschedule"
+        />
+        <Button
+          intent="danger"
+          minimal
+          large
+          className="card-cancel-btn"
+          text="Cancel"
+        />
+      </ButtonGroup>
+    </CardComp>
   );
 }
 

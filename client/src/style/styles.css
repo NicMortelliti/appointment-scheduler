@@ -3,7 +3,7 @@
 @import "~@blueprintjs/icons/lib/css/blueprint-icons.css";
 @import "~@blueprintjs/datetime/lib/css/blueprint-datetime.css";
 
-: root {
+:root {
   --sixty: #e4c7b7;
   --thirty: #522157;
   --ten: #c2649a;
@@ -16,9 +16,91 @@
 }
 
 body {
-  /* background-color: var(--sixty); */
-  /* margin: 0; */
+  margin: 0;
   padding-top: 60px;
   padding-bottom: 20px;
-  /* overflow: hidden; Hide scroll bars */
+}
+
+.card {
+  width: 80%;
+  margin: 1rem auto;
+  padding: 1em;
+  display: grid;
+  border-style: solid;
+  border-width: 1px;
+}
+
+.card-grid-container > div {
+  display: inline-block;
+}
+
+.card-date {
+  text-align: center;
+  border-right-style: solid;
+  margin: auto 0;
+  padding: auto;
+  text-align: center;
+  grid-row: 1;
+}
+
+.card-details {
+  grid-column: 2;
+  grid-row: 1;
+  padding: 1em;
+}
+
+.card-details .label {
+  font-size: 1em;
+}
+
+.card-reschedule-btn,
+.card-cancel-btn {
+  grid-column: 3;
+  text-align: right;
+  margin: auto 0;
+}
+.card-btn-group {
+  grid-column: 3;
+}
+
+.details .card-btn-group {
+  width: 20%;
+  float: right;
+  justify-content: center;
+}
+
+.details h5,
+.details p {
+  margin: 0;
+  padding: 0em 0.5em 0.5em 0.5em;
+}
+
+@media screen and (max-width: 600px) {
+  .card-date {
+    grid-row: 1;
+    border-right: none;
+    margin: auto 0;
+  }
+  .card-details {
+    grid-row: 2;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    border-top: solid;
+    padding: 1em 0 0 0;
+  }
+  .card-btn-group {
+    grid-row: 1;
+    grid-column: 2;
+    margin: auto 0 auto auto;
+    padding: auto;
+  }
+
+  .month,
+  .day,
+  .time {
+    margin: 0;
+  }
+  .card-date {
+    margin-bottom: 1rem;
+  }
 }
