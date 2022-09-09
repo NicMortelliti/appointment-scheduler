@@ -11,21 +11,27 @@ function Navbar({ user, setUser }) {
     });
   }
   return (
-    <Nav>
+    <Nav fixedToTop>
       <Nav.Group>
-        <Nav.Heading>Scheduler</Nav.Heading>
+        <Nav.Heading>PacNW Health</Nav.Heading>
         <Nav.Divider />
         <NavLink to="/" activeClassName="active" exact>
-          Home
+          <Button className="bp4-minimal" icon="home" text="Home" />
         </NavLink>
         <NavLink to="/new_appointment" activeClassName="active">
-          Schedule Appointment
+          <Button
+            className="bp4-minimal"
+            icon="calendar"
+            text="New Appointment"
+          />
         </NavLink>
-        <button className="navbtn" onClick={handleLogoutClick}>
-          Logout
-        </button>
-        <Button className="bp4-minimal" icon="home" text="Home" />
-        <Button className="bp4-minimal" icon="document" text="Files" />
+      </Nav.Group>
+      <Nav.Group className="bp4-align-right">
+        <Button
+          className="bp4-minimal"
+          onClick={handleLogoutClick}
+          text="Logout"
+        />
       </Nav.Group>
     </Nav>
   );
