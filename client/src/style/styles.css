@@ -1,3 +1,7 @@
+@import "~normalize.css";
+@import "~@blueprintjs/core/lib/css/blueprint.css";
+@import "~@blueprintjs/icons/lib/css/blueprint-icons.css";
+
 :root {
   --sixty: #e4c7b7;
   --thirty: #522157;
@@ -6,13 +10,13 @@
 
 * {
   font-family: "Inconsolata", monospace;
-  color: var(--thirty);
-  box-sizing: border-box;
+  /* color: var(--thirty); */
+  /* box-sizing: border-box; */
 }
 
 body {
-  background-color: var(--sixty);
-  margin: 0;
-  padding-bottom: 20px;
+  /* background-color: var(--sixty); */
+  /* margin: 0; */
+  /* padding-bottom: 20px; */
   /* overflow: hidden; Hide scroll bars */
 }
