@@ -2,11 +2,11 @@ import React, { useEffect, useState } from "react";
 import { Route, Switch } from "react-router-dom";
 
 // Import components
-// import Login from "./Login";
+import Login from "./Login";
 import Navbar from "./Navbar";
-// import NewAppointmentForm from "./NewAppointmentForm";
-// import Signup from "./Signup";
-// import Stack from "./Stack";
+import NewAppointmentForm from "./NewAppointmentForm";
+import Signup from "./Signup";
+import Stack from "./Stack";
 
 function App() {
   const [user, setUser] = useState("nic");
@@ -23,7 +23,7 @@ function App() {
   return (
     <>
       {user && <Navbar user={user} setUser={setUser} />}
-      {/* <div className="main">
+      <div className="main">
         <Switch>
           <Route exact path="/">
             {user ? <Stack /> : <Login onLogin={setUser} />}
@@ -35,7 +35,7 @@ function App() {
             <NewAppointmentForm />
           </Route>
         </Switch>
-      </div> */}
+      </div>
     </>
   );
 }
