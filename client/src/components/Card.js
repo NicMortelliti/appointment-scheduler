@@ -1,23 +1,42 @@
 import React from "react";
-import { Button, ButtonGroup, Card as CardComp } from "@blueprintjs/core";
+import {
+  Alert,
+  Button,
+  ButtonGroup,
+  Card as CardComp,
+} from "@blueprintjs/core";
 
-function Card() {
+function Card({ setCancelOpen, setApptDetails }) {
+  const apptDetails = {
+    month: "SEP",
+    day: 10,
+    time: "12:30 PM",
+    doctor: "Dr. Firstname Lastname",
+    locStreet: "15270 SW Holly Hill Rd",
+    locCity: "Hillsboro, OR 97123",
+  };
+
+  const handleCancelClick = (e) => {
+    setCancelOpen(true);
+    setApptDetails(apptDetails);
+  };
+
   return (
     <CardComp className="bp4-elevation-3 card">
       <div className="card-date">
-        <p className="month">SEP</p>
-        <h1 className="day">10</h1>
-        <p className="time">12:30 PM</p>
+        <p className="month">{apptDetails.month}</p>
+        <h1 className="day">{apptDetails.day}</h1>
+        <p className="time">{apptDetails.time}</p>
       </div>
       <div className="card-details">
         <div className="details card-doctor">
           <h5 className="label">Doctor:</h5>
-          <p className="doctor-name">Dr. Firstname Lastname</p>
+          <p className="doctor-name">{apptDetails.doctor}</p>
         </div>
         <div className="details card-location">
           <h5 className="label">Location:</h5>
-          <p className="address-street">15270 SW Holly Hill Rd</p>
-          <p className="address-town-state">Hillsboro, OR 97123</p>
+          <p className="address-street">{apptDetails.locStreet}</p>
+          <p className="address-town-state">{apptDetails.locCity}</p>
         </div>
       </div>
       <ButtonGroup vertical className="card-btn-group">
@@ -33,6 +52,7 @@ function Card() {
           large
           className="card-cancel-btn"
           text="Cancel"
+          onClick={() => handleCancelClick(true)}
         />
       </ButtonGroup>
     </CardComp>

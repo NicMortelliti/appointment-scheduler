@@ -136,11 +136,7 @@ function NewAppointmentForm() {
         <Button intent="primary" large type="submit">
           Submit
         </Button>
-        <Button
-          intent="danger"
-          large
-          minimal
-          onClick={(e) => handleCancelClick(e)}>
+        <Button intent="danger" large minimal>
           Cancel
         </Button>
       </ButtonGroup>
