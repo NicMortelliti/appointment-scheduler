@@ -2,12 +2,13 @@ import React, { useState } from "react";
 import {
   Button,
   ButtonGroup,
+  Dialog,
   FormGroup,
   HTMLSelect,
 } from "@blueprintjs/core";
 import { DatePicker } from "@blueprintjs/datetime";
 
-function NewAppointmentForm() {
+function RescheduleForm({ isOpen, setRescheduleOpen }) {
   const [formData, setFormData] = useState({
     date: "",
     time: "",
@@ -41,12 +42,6 @@ function NewAppointmentForm() {
     { value: "3", label: "2:00 PM" },
     { value: "4", label: "2:30 PM" },
   ];
-
-  // FETCH next fields content based on current fields selection
-  // const handleFieldSelection = (e) => {
-  //   e.preventDefault();
-  //   console.log("Selection made!");
-  // };
 
   // Create reusable select component
   const Select = ({ label, id, name, options }) => {
@@ -100,47 +95,55 @@ function NewAppointmentForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <Select
-        label="Doctor"
-        id="selectDoctor"
-        name="doctor"
-        options={doctors}
-      />
-      <Select
-        label="Location"
-        id="selectLocation"
-        name="location"
-        options={locations}
-      />
-      <div>
-        <style>{birthdayStyle}</style>
-        <label htmlFor="date">Date</label>
-        <DatePicker
-          value={formData.date ? formData.date : null}
-          onChange={(date) => setFormData({ ...formData, date: date })}
-          modifiers={modifiers}
-          // modifiersStyles={modifiersStyles}
-        />
-        {/* <Select
-          id="date"
-          selected={formData.date}
-          onChange={(e) => setFormData({ ...formData, date: e })}
-          highlightDates={dates}
-          includeDates={dates}
-        /> */}
+    <Dialog
+      isOpen={isOpen}
+      autoFocus
+      canEscapeKeyCancel
+      enforceFocus
+      isCloseButtonShown
+      title="Modify Appointment">
+      <div class="bp4-dialog-body">
+        <form onSubmit={handleSubmit}>
+          <Select
+            label="Doctor"
+            id="selectDoctor"
+            name="doctor"
+            options={doctors}
+          />
+          <Select
+            label="Location"
+            id="selectLocation"
+            name="location"
+            options={locations}
+          />
+          <div>
+            <style>{birthdayStyle}</style>
+            <label htmlFor="date">Date</label>
+            <DatePicker
+              value={formData.date ? formData.date : null}
+              onChange={(date) => setFormData({ ...formData, date: date })}
+              modifiers={modifiers}
+              // modifiersStyles={modifiersStyles}
+            />
+          </div>
+          <Select label="Time" id="selectTime" name="time" options={times} />
+        </form>
       </div>
-      <Select label="Time" id="selectTime" name="time" options={times} />
-      <ButtonGroup vertical>
-        <Button intent="primary" large type="submit">
-          Submit
-        </Button>
-        <Button intent="danger" large minimal>
-          Cancel
-        </Button>
-      </ButtonGroup>
-    </form>
+      <div className="bp4-dialog-footer">
+        <div className="bp4-dialog-footer-actions">
+          <Button
+            intent="danger"
+            minimal
+            onClick={() => setRescheduleOpen(false)}>
+            Discard Changes
+          </Button>
+          <Button intent="primary" onClick={() => console.log("clicked")}>
+            Submit Changes
+          </Button>
+        </div>
+      </div>
+    </Dialog>
   );
 }
 
-export default NewAppointmentForm;
+export default RescheduleForm;

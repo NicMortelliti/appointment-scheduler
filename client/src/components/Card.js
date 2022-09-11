@@ -6,7 +6,7 @@ import {
   Card as CardComp,
 } from "@blueprintjs/core";
 
-function Card({ setCancelOpen, setApptDetails }) {
+function Card({ setCancelOpen, setRescheduleOpen, setApptDetails }) {
   const apptDetails = {
     month: "SEP",
     day: 10,
@@ -42,9 +42,11 @@ function Card({ setCancelOpen, setApptDetails }) {
       <ButtonGroup vertical className="card-btn-group">
         <Button
           intent="primary"
+          outlined
           large
           className="card-reschedule-btn"
           text="Reschedule"
+          onClick={() => setRescheduleOpen(true)}
         />
         <Button
           intent="danger"
