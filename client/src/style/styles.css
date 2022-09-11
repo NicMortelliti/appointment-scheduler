@@ -21,6 +21,11 @@ body {
   padding-bottom: 20px;
 }
 
+.bp4-form-group > div {
+  width: 80%;
+  margin: 0.5rem auto;
+}
+
 .card {
   width: 80%;
   margin: 1rem auto;

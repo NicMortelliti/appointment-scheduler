@@ -1,10 +1,5 @@
 import React, { useState } from "react";
-import {
-  Button,
-  ButtonGroup,
-  FormGroup,
-  HTMLSelect,
-} from "@blueprintjs/core";
+import { Button, ButtonGroup, FormGroup, HTMLSelect } from "@blueprintjs/core";
 import { DatePicker } from "@blueprintjs/datetime";
 
 function NewAppointmentForm() {
@@ -100,7 +95,7 @@ function NewAppointmentForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="bp4-form-group">
       <Select
         label="Doctor"
         id="selectDoctor"
