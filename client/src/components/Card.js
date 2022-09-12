@@ -41,23 +41,15 @@ function Card({ setCancelOpen, setRescheduleOpen, setApptDetails }) {
       </div>
       <ButtonGroup vertical className="card-btn-group">
         <Button
-          intent="primary"
-          outlined
           large
-          className="card-reschedule-btn"
-          style={{
-            background: "#D37387",
-            color: "white",
-            borderColor: "#D37387",
-          }}
+          className="primary card-reschedule-btn"
           text="Reschedule"
           onClick={() => setRescheduleOpen(true)}
         />
         <Button
-          intent="danger"
           minimal
           large
-          className="card-cancel-btn"
+          className="secondary card-cancel-btn"
           text="Cancel"
           onClick={() => handleCancelClick(true)}
         />

@@ -4,15 +4,14 @@
 @import "~@blueprintjs/datetime/lib/css/blueprint-datetime.css";
 
 :root {
-  --sixty: #e4c7b7;
-  --thirty: #522157;
-  --ten: #c2649a;
+  --brand: #8bcdbc;
+  --sixty: #ffeec5;
+  --thirty: #5c255c;
+  --ten: #cd8b9c;
 }
 
 * {
   font-family: "Inconsolata", "Poiret One", monospace;
-  /* color: var(--thirty); */
-  /* box-sizing: border-box; */
 }
 
 body {
@@ -21,9 +20,14 @@ body {
   padding-bottom: 20px;
 }
 
-.bp4-form-group > div {
+.bp4-form-group {
   width: 80%;
   margin: 0.5rem auto;
+}
+
+.calendar {
+  width: auto;
+  float: left;
 }
 
 .card {
@@ -108,4 +112,16 @@ body {
   .card-date {
     margin-bottom: 1rem;
   }
+}
+
+.primary {
+  background-color: var(--ten) !important;
+  color: white !important;
+  font-weight: bold;
+  border-style: none !important;
+}
+
+.secondary {
+  color: var(--thirty) !important;
+  font-weight: bold;
 }
