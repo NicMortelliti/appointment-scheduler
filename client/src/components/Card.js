@@ -45,6 +45,11 @@ function Card({ setCancelOpen, setRescheduleOpen, setApptDetails }) {
           outlined
           large
           className="card-reschedule-btn"
+          style={{
+            background: "#D37387",
+            color: "white",
+            borderColor: "#D37387",
+          }}
           text="Reschedule"
           onClick={() => setRescheduleOpen(true)}
         />
