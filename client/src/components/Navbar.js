@@ -16,22 +16,14 @@ function Navbar({ user, setUser }) {
         <Nav.Heading>PacNW Health</Nav.Heading>
         <Nav.Divider />
         <NavLink to="/" activeClassName="active" exact>
-          <Button className="bp4-minimal" icon="home" text="Home" />
+          <Button minimal icon="home" text="Home" />
         </NavLink>
         <NavLink to="/new_appointment" activeClassName="active">
-          <Button
-            className="bp4-minimal"
-            icon="calendar"
-            text="New Appointment"
-          />
+          <Button minimal icon="calendar" text="New Appointment" />
         </NavLink>
       </Nav.Group>
-      <Nav.Group className="bp4-align-right">
-        <Button
-          className="bp4-minimal"
-          onClick={handleLogoutClick}
-          text="Logout"
-        />
+      <Nav.Group align="right">
+        <Button minimal onClick={handleLogoutClick} text="Logout" />
       </Nav.Group>
     </Nav>
   );
