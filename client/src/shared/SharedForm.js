@@ -56,7 +56,7 @@ function SharedForm({
         formData={formData}
       />
       <ButtonGroup large vertical>
-        <Button intent="primary" type="submit" text="Submit" />
+        <Button className="primary" type="submit" text="Submit" />
         {navlink ? (
           <NavLink to={navlink} exact>
             <Button intent="danger" minimal text="Discard Changes" />
