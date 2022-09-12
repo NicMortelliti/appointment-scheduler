@@ -34,8 +34,8 @@ function Stack() {
         apptDetails={selectedApptDetails}
       />
       <RescheduleForm
-        isOpen={rescheduleOpen}
-        setRescheduleOpen={setRescheduleOpen}
+        formOpen={rescheduleOpen}
+        setFormOpen={setRescheduleOpen}
       />
     </div>
   );
