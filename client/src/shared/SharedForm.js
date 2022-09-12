@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 // Components
 import { default as Select } from "./SharedSelect";
@@ -6,8 +7,15 @@ import { default as Date } from "./SharedDateSelect";
 
 // Test data
 import { doctors, locations, dates, times } from "./TestData";
+import { Button, ButtonGroup } from "@blueprintjs/core";
 
-function SharedForm({ formData, setFormData, handleSubmit, handleCancel }) {
+function SharedForm({
+  formData,
+  setFormData,
+  handleSubmit,
+  handleCancel,
+  navlink = null,
+}) {
   return (
     <form onSubmit={handleSubmit} className="bp4-form-group">
       {/* Doctor selection */}
@@ -47,6 +55,21 @@ function SharedForm({ formData, setFormData, handleSubmit, handleCancel }) {
         setFormData={setFormData}
         formData={formData}
       />
+      <ButtonGroup large vertical>
+        <Button intent="primary" type="submit" text="Submit" />
+        {navlink ? (
+          <NavLink to={navlink} exact>
+            <Button intent="danger" minimal text="Discard Changes" />
+          </NavLink>
+        ) : (
+          <Button
+            intent="danger"
+            minimal
+            text="Discard Changes"
+            onClick={handleCancel}
+          />
+        )}
+      </ButtonGroup>
     </form>
   );
 }
