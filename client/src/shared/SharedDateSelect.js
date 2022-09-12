@@ -1,7 +1,7 @@
 import React from "react";
 import { DatePicker } from "@blueprintjs/datetime";
 
-function SharedDateSelect({ label, id, setFormData, formData }) {
+const SharedDateSelect = ({ label, id, setFormData, formData }) => {
   return (
     <div>
       <label htmlFor={id}>{label}</label>
@@ -11,6 +11,6 @@ function SharedDateSelect({ label, id, setFormData, formData }) {
       />
     </div>
   );
-}
+};
 
 export default SharedDateSelect;

@@ -1,22 +1,15 @@
-import React, { useState } from "react";
+import React from "react";
 
 // Components
-import { SharedSelect as Select } from "./SharedSelect";
-import { SharedDateSelect as Date } from "./SharedDateSelect";
+import { default as Select } from "./SharedSelect";
+import { default as Date } from "./SharedDateSelect";
 
 // Test data
 import { doctors, locations, dates, times } from "./TestData";
 
-function SharedForm({ label, id, name, options }) {
-  const [formData, setFormData] = useState({
-    doctor: "",
-    location: "",
-    date: "",
-    time: "",
-  });
-
+function SharedForm({ formData, setFormData, handleSubmit, handleCancel }) {
   return (
-    <div>
+    <form onSubmit={handleSubmit} className="bp4-form-group">
       {/* Doctor selection */}
       <Select
         label="Doctor"
@@ -32,7 +25,7 @@ function SharedForm({ label, id, name, options }) {
         label="Location"
         id="location"
         name="location"
-        options="locations"
+        options={locations}
         setFormData={setFormData}
         formData={formData}
       />
@@ -50,11 +43,11 @@ function SharedForm({ label, id, name, options }) {
         label="Time"
         id="time"
         name="time"
-        options="times"
+        options={times}
         setFormData={setFormData}
         formData={formData}
       />
-    </div>
+    </form>
   );
 }
 
