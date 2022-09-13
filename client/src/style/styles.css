@@ -32,11 +32,12 @@ body {
 
 .card {
   width: 80%;
-  margin: 1rem auto;
+  margin: 2rem auto;
   padding: 1em;
   display: grid;
-  border-style: solid;
-  border-width: 1px;
+  border-radius: 12px;
+  background: #e0e0e0;
+  box-shadow: 20px 20px 60px #bebebe, -20px -20px 60px #ffffff;
 }
 
 .card-grid-container > div {
@@ -118,7 +119,12 @@ body {
   background-color: var(--ten) !important;
   color: white !important;
   font-weight: bold;
-  border-style: none !important;
+  border-style: none;
+}
+
+.primary:active {
+  background: #cd8b9c !important;
+  box-shadow: inset 5px 5px 10px #ae7685, inset -5px -5px 10px #eca0b3 !important;
 }
 
 .secondary {
