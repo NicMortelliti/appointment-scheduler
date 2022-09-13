@@ -20,7 +20,6 @@ const RescheduleForm = ({ formOpen, setFormOpen }) => {
   };
 
   // Cancel logic
-  // TODO Fetch Get to API "/"
   const handleCancel = (e) => {
     e.preventDefault();
     setFormOpen(false);
@@ -39,6 +38,7 @@ const RescheduleForm = ({ formOpen, setFormOpen }) => {
       canEscapeKeyCancel
       enforceFocus
       isCloseButtonShown
+      onClose={handleCancel}
       title="Modify Appointment">
       <Form
         formData={formData}
