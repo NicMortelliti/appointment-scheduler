@@ -12,6 +12,10 @@ const RescheduleForm = ({ formOpen, setFormOpen, appointment }) => {
     setFormData(appointment);
   }, [appointment]);
 
+  const handleSelectChange = (e, key) => {
+    setFormData({ ...formData, [key]: e });
+  };
+
   // Submit logic
   // TODO Fetch PATCH to API "/appointment/[:id]"
   const handleSubmit = (e) => {
