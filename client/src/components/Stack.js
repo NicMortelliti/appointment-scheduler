@@ -31,7 +31,6 @@ function Stack() {
       <CancelAppointmentConfirm
         isOpen={cancelConfirmOpen}
         setCancelOpen={setCancelConfirmOpen}
-        apptDetails={selectedApptDetails}
       />
       <RescheduleForm
         formOpen={rescheduleOpen}
