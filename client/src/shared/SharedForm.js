@@ -16,45 +16,46 @@ function SharedForm({
   handleCancel,
   navlink = null,
 }) {
-  return (
-    <form onSubmit={handleSubmit} className="bp4-form-group">
-      {/* Doctor selection */}
-      <Select
-        label="Doctor"
-        id="doctor"
-        name="doctor"
-        options={doctors}
-        setFormData={setFormData}
-        formData={formData}
-      />
-
-      {/* Location selection */}
-      <Select
-        label="Location"
-        id="location"
-        name="location"
-        options={locations}
-        setFormData={setFormData}
-        formData={formData}
-      />
-
-      {/* Date selection */}
-      <Date
-        label="Date"
-        id="date"
-        setFormData={setFormData}
-        formData={formData}
-      />
-
-      {/* Time selection */}
-      <Select
-        label="Time"
-        id="time"
-        name="time"
-        options={times}
-        setFormData={setFormData}
-        formData={formData}
-      />
+  const RenderForm = () => {
+    return (
+      <form onSubmit={handleSubmit} className="bp4-form-group">
+        {/* Doctor selection */}
+        <Select
+          label="Doctor"
+          name="doctor"
+          value={formData.doctor}
+          options={doctors}
+          optionLabel={(option) => option.name}
+          setFormData={setFormData}
+          formData={formData}
+        />
+        {/* Location selection */}
+        <Select
+          label="Location"
+          name="location"
+          value={formData.location}
+          options={locations}
+          optionLabel={(option) => option.city}
+          setFormData={setFormData}
+          formData={formData}
+        />
+        {/* Date selection */}
+        <Date
+          label="Date"
+          id="date"
+          setFormData={setFormData}
+          formData={formData}
+        />
+        {/* Time selection */}
+        <Select
+          label="Time"
+          name="time"
+          value={formData.time}
+          options={times}
+          optionLabel={(option) => option.time}
+          setFormData={setFormData}
+          formData={formData}
+        />
       <ButtonGroup large vertical>
         <Button className="primary" type="submit" text="Submit" />
         {navlink ? (
