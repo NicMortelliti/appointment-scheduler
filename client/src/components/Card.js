@@ -27,7 +27,7 @@ function Card({ setCancelOpen, setRescheduleOpen, setApptDetails }) {
   };
 
   return (
-    <CardComp className="bp4-elevation-3 card">
+    <CardComp className="card">
       <div className="card-date">
         <p className="month">
           {apptDetails.date.toLocaleString("default", { month: "long" })}
