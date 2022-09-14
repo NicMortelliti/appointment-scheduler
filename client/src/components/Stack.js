@@ -9,7 +9,7 @@ import RescheduleForm from "./RescheduleForm";
 function Stack() {
   const [cancelConfirmOpen, setCancelConfirmOpen] = useState(false);
   const [rescheduleOpen, setRescheduleOpen] = useState(false);
-  const [selectedApptDetails, setSelectedApptDetails] = useState("");
+  const [selectedAppointment, setSelectedAppointment] = useState(null);
 
   return (
     <div className="card-stack center">
@@ -25,6 +25,7 @@ function Stack() {
       <RescheduleForm
         formOpen={rescheduleOpen}
         setFormOpen={setRescheduleOpen}
+        appointment={selectedAppointment}
       />
     </div>
   );
