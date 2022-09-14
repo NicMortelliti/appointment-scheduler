@@ -54,7 +54,7 @@ function Card({ setCancelOpen, setRescheduleOpen, setApptDetails }) {
           large
           className="secondary card-cancel-btn"
           text="Cancel"
-          onClick={() => handleCancelClick(true)}
+          onClick={(e) => handleCancelClick(e)}
         />
       </div>
     </CardComp>
