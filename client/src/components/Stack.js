@@ -16,17 +16,7 @@ function Stack() {
       <Card
         setCancelOpen={setCancelConfirmOpen}
         setRescheduleOpen={setRescheduleOpen}
-        setApptDetails={setSelectedApptDetails}
-      />
-      <Card
-        setCancelOpen={setCancelConfirmOpen}
-        setRescheduleOpen={setRescheduleOpen}
-        setApptDetails={setSelectedApptDetails}
-      />
-      <Card
-        setCancelOpen={setCancelConfirmOpen}
-        setRescheduleOpen={setRescheduleOpen}
-        setApptDetails={setSelectedApptDetails}
+        setApptDetails={setSelectedAppointment}
       />
       <CancelAppointmentConfirm
         isOpen={cancelConfirmOpen}
