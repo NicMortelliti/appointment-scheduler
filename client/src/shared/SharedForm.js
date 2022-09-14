@@ -6,8 +6,9 @@ import { default as Select } from "./SharedSelect";
 import { default as Date } from "./SharedDateSelect";
 
 // Test data
-import { doctors, locations, dates, times } from "./TestData";
-import { Button, ButtonGroup } from "@blueprintjs/core";
+import { doctors, locations, times } from "./TestData";
+// import { dates } from "./TestData";
+import { Button } from "@blueprintjs/core";
 
 function SharedForm({
   formData,
@@ -56,11 +57,10 @@ function SharedForm({
           setFormData={setFormData}
           formData={formData}
         />
-      <ButtonGroup large vertical>
-        <Button className="primary" type="submit" text="Submit" />
+        <Button className="primary" type="submit" text="Submit" fill large />
         {navlink ? (
           <NavLink to={navlink} exact>
-            <Button intent="danger" minimal text="Discard Changes" />
+            <Button intent="danger" minimal text="Discard Changes" fill large />
           </NavLink>
         ) : (
           <Button
@@ -68,11 +68,14 @@ function SharedForm({
             minimal
             text="Discard Changes"
             onClick={handleCancel}
+            fill
+            large
           />
         )}
-      </ButtonGroup>
-    </form>
-  );
+      </form>
+    );
+  };
+  return <RenderForm />;
 }
 
 export default SharedForm;
