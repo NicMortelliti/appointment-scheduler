@@ -3,6 +3,7 @@ import { Button, Card as CardComp } from "@blueprintjs/core";
 
 function Card({ setCancelOpen, setRescheduleOpen, setApptDetails }) {
   const apptDetails = {
+    id: 1,
     date: new Date("09/12/2022"),
     time: { id: 3, time: "12:30 PM" },
     doctor: { id: 2, name: "Joe Moe" },
