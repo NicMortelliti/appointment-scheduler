@@ -1,16 +1,16 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Dialog } from "@blueprintjs/core";
 
 // Components
 import { default as Form } from "../shared/SharedForm";
 
-const RescheduleForm = ({ formOpen, setFormOpen }) => {
-  const [formData, setFormData] = useState({
-    date: "",
-    time: "",
-    location: "",
-    doctor: "",
-  });
+const RescheduleForm = ({ formOpen, setFormOpen, appointment }) => {
+  const [formData, setFormData] = useState(null);
+
+  // Populate form with appointment details
+  useEffect(() => {
+    setFormData(appointment);
+  }, [appointment]);
 
   // Submit logic
   // TODO Fetch PATCH to API "/appointment/[:id]"
