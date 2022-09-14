@@ -13,6 +13,11 @@ function Card({ setCancelOpen, setRescheduleOpen, setApptDetails }) {
     doctor: { id: 2, name: "Joe Moe" },
     location: { id: 5, city: "Hillsboro" },
   };
+
+  const handleRescheduleClick = (e) => {
+    e.preventDefault();
+    setApptDetails(apptDetails);
+    setRescheduleOpen(true);
   };
 
   const handleCancelClick = (e) => {
@@ -43,7 +48,7 @@ function Card({ setCancelOpen, setRescheduleOpen, setApptDetails }) {
           large
           className="primary card-reschedule-btn"
           text="Reschedule"
-          onClick={() => setRescheduleOpen(true)}
+          onClick={(e) => handleRescheduleClick(e)}
         />
         <Button
           minimal
