@@ -1,10 +1,5 @@
 import React from "react";
-import {
-  Alert,
-  Button,
-  ButtonGroup,
-  Card as CardComp,
-} from "@blueprintjs/core";
+import { Button, Card as CardComp } from "@blueprintjs/core";
 
 function Card({ setCancelOpen, setRescheduleOpen, setApptDetails }) {
   const apptDetails = {
