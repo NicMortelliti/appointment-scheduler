@@ -8,12 +8,11 @@ import {
 
 function Card({ setCancelOpen, setRescheduleOpen, setApptDetails }) {
   const apptDetails = {
-    month: "SEP",
-    day: 10,
-    time: "12:30 PM",
-    doctor: "Dr. Firstname Lastname",
-    locStreet: "15270 SW Holly Hill Rd",
-    locCity: "Hillsboro, OR 97123",
+    date: new Date("09/12/2022"),
+    time: { id: 3, time: "12:30 PM" },
+    doctor: { id: 2, name: "Joe Moe" },
+    location: { id: 5, city: "Hillsboro" },
+  };
   };
 
   const handleCancelClick = (e) => {
