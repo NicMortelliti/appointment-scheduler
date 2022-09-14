@@ -18,6 +18,14 @@ function Stack({ url }) {
       .then((data) => setAllAppointments(data));
   }, []);
 
+  // Delete appointment
+  const handleDeleteAppointment = (id) => {
+    const updatedData = allAppointments.filter(
+      (eachAppointment) => eachAppointment.id !== id
+    );
+    setAllAppointments(updatedData);
+  };
+
   return (
     <div className="card-stack center">
       <Card
@@ -29,6 +37,7 @@ function Stack({ url }) {
         apptId={selectedAppointment}
         isOpen={cancelConfirmOpen}
         setCancelOpen={setCancelConfirmOpen}
+        handleDeleteAppointment={handleDeleteAppointment}
         url={url}
       />
       <RescheduleForm
