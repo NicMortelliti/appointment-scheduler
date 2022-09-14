@@ -1,19 +1,30 @@
 import React from "react";
-import { FormGroup, HTMLSelect } from "@blueprintjs/core";
+import { FormGroup } from "@blueprintjs/core";
+import Select from "react-select";
 
-const SharedSelect = ({ label, id, name, options, setFormData, formData }) => {
+const SharedSelect = ({
+  label,
+  name,
+  value,
+  options,
+  optionLabel,
+  setFormData,
+  formData,
+}) => {
   return (
     // Create reusable select component
     <FormGroup label={label}>
-      <HTMLSelect
-        id={id}
+      <Select
+        id={name}
         name={name}
         large
         fill
+        defaultValue={options[0]}
+        value={value}
         options={options}
-        onChange={(e) =>
-          setFormData({ ...formData, [e.target.name]: e.target.value })
-        }
+        getOptionLabel={optionLabel}
+        getOptionValue={(option) => option.id}
+        onChange={(e) => setFormData({ ...formData, [name]: e })}
       />
     </FormGroup>
   );
