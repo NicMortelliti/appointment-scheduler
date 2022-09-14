@@ -43,8 +43,9 @@ function Card({ setCancelOpen, setRescheduleOpen, setApptDetails }) {
           <p className="address-town-state">{apptDetails.locCity}</p>
         </div>
       </div>
-      <ButtonGroup vertical className="card-btn-group">
+      <div className="card-btn-group">
         <Button
+          fill
           large
           className="primary card-reschedule-btn"
           text="Reschedule"
@@ -52,12 +53,13 @@ function Card({ setCancelOpen, setRescheduleOpen, setApptDetails }) {
         />
         <Button
           minimal
+          fill
           large
           className="secondary card-cancel-btn"
           text="Cancel"
           onClick={() => handleCancelClick(true)}
         />
-      </ButtonGroup>
+      </div>
     </CardComp>
   );
 }
