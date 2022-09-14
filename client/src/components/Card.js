@@ -28,19 +28,20 @@ function Card({ setCancelOpen, setRescheduleOpen, setApptDetails }) {
   return (
     <CardComp className="bp4-elevation-3 card">
       <div className="card-date">
-        <p className="month">{apptDetails.month}</p>
-        <h1 className="day">{apptDetails.day}</h1>
-        <p className="time">{apptDetails.time}</p>
+        <p className="month">
+          {apptDetails.date.toLocaleString("default", { month: "long" })}
+        </p>
+        <h1 className="day">{apptDetails.date.getDate() + 1}</h1>
+        <p className="time">{apptDetails.time.time}</p>
       </div>
       <div className="card-details">
         <div className="details card-doctor">
           <h5 className="label">Doctor:</h5>
-          <p className="doctor-name">{apptDetails.doctor}</p>
+          <p className="doctor-name">{apptDetails.doctor.name}</p>
         </div>
         <div className="details card-location">
           <h5 className="label">Location:</h5>
-          <p className="address-street">{apptDetails.locStreet}</p>
-          <p className="address-town-state">{apptDetails.locCity}</p>
+          <p className="address-town-state">{apptDetails.location.city}</p>
         </div>
       </div>
       <div className="card-btn-group">
