@@ -21,6 +21,7 @@ function Card({ setCancelOpen, setRescheduleOpen, setApptDetails }) {
   };
 
   const handleCancelClick = (e) => {
+    e.preventDefault();
     setCancelOpen(true);
     setApptDetails(apptDetails);
   };
