@@ -1,6 +1,12 @@
 import { Alert } from "@blueprintjs/core";
 
-const CancelAppointmentConfirm = ({ isOpen, setCancelOpen }) => {
+const CancelAppointmentConfirm = ({
+  apptId,
+  isOpen,
+  setCancelOpen,
+  handleDeleteAppointment,
+  url,
+}) => {
   return (
     <Alert
       isOpen={isOpen}

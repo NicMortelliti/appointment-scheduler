@@ -5,7 +5,7 @@ import CancelAppointmentConfirm from "./CancelAppointmentConfirm";
 import Card from "./Card";
 import RescheduleForm from "./RescheduleForm";
 
-function Stack() {
+function Stack({ url }) {
   const [cancelConfirmOpen, setCancelConfirmOpen] = useState(false);
   const [rescheduleOpen, setRescheduleOpen] = useState(false);
   const [selectedAppointment, setSelectedAppointment] = useState(null);
@@ -20,6 +20,7 @@ function Stack() {
       <CancelAppointmentConfirm
         isOpen={cancelConfirmOpen}
         setCancelOpen={setCancelConfirmOpen}
+        url={url}
       />
       <RescheduleForm
         formOpen={rescheduleOpen}

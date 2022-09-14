@@ -29,7 +29,7 @@ function App() {
       <div className="main">
         <Switch>
           <Route exact path="/">
-            {user ? <Stack /> : <Login onLogin={setUser} />}
+            {user ? <Stack url={URL} /> : <Login onLogin={setUser} />}
           </Route>
           <Route path="/signup">
             <Signup />
