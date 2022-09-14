@@ -1,13 +1,14 @@
 export const doctors = [
-  { value: "1", label: "Jean-Martin Charcot" },
-  { value: "2", label: "John Down" },
+  { id: 1, name: "Jean-Martin Charcot" },
+  { id: 2, name: "John Down" },
 ];
 
 export const locations = [
-  { value: "1", label: "Lake Oswego" },
-  { value: "2", label: "Wilsonville" },
-  { value: "3", label: "Tigard" },
-  { value: "4", label: "Portland" },
+  { id: 1, city: "Lake Oswego" },
+  { id: 2, city: "Wilsonville" },
+  { id: 3, city: "Tigard" },
+  { id: 4, city: "Portland" },
+  { id: 5, city: "Hillsboro" },
 ];
 
 export const dates = [
@@ -19,8 +20,9 @@ export const dates = [
 ];
 
 export const times = [
-  { value: "1", label: "11:00 AM" },
-  { value: "2", label: "11:30 AM" },
-  { value: "3", label: "2:00 PM" },
-  { value: "4", label: "2:30 PM" },
+  { id: 1, time: "11:00 AM" },
+  { id: 2, time: "11:30 AM" },
+  { id: 3, time: "12:30 PM" },
+  { id: 4, time: "2:00 PM" },
+  { id: 5, time: "2:30 PM" },
 ];
