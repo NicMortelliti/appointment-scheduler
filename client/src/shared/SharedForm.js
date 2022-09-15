@@ -6,8 +6,7 @@ import { default as Select } from "./SharedSelect";
 import { default as Date } from "./SharedDateSelect";
 
 // Test data
-import { doctors, locations, times } from "./TestData";
-// import { dates } from "./TestData";
+import { dates, doctors, locations, times } from "./TestData";
 import { Button } from "@blueprintjs/core";
 
 function SharedForm({
@@ -44,6 +43,7 @@ function SharedForm({
         <Date
           label="Date"
           id="date"
+          options={dates}
           setFormData={setFormData}
           formData={formData}
         />
