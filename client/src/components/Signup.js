@@ -48,6 +48,7 @@ function Signup({ onLogin }) {
   }
 
   return (
+    <Card className="card card-small">
       <h1
         style={{
           color: "#5c255c",
@@ -58,33 +59,35 @@ function Signup({ onLogin }) {
       </h1>
       <h3 className="card-subtitle">Create an account</h3>
       <form onSubmit={handleSubmit} className="center">
-        <FormGroup label="First Name">
-          <input
-            type="text"
-            id="firstName"
-            className="form-field"
-            placeholder="Enter your first name"
-            autoComplete="off"
-            value={formData.firstName}
-            onChange={(e) =>
-              setFormData({ ...formData, [e.target.id]: e.target.value })
-            }
-          />
-        </FormGroup>
-        <FormGroup label="Last Name">
-          <input
-            type="text"
-            id="lastName"
-            className="styled-text-field"
-            placeholder="Enter your last name"
-            autoComplete="off"
-            value={formData.lastName}
-            onChange={(e) =>
-              setFormData({ ...formData, [e.target.id]: e.target.value })
-            }
-          />
-        </FormGroup>
-        <FormGroup label="Email">
+        <div className="name-line">
+          <FormGroup label="First Name" className="mt-20 left name">
+            <input
+              type="text"
+              id="firstName"
+              className="form-field"
+              placeholder="Enter your first name"
+              autoComplete="off"
+              value={formData.firstName}
+              onChange={(e) =>
+                setFormData({ ...formData, [e.target.id]: e.target.value })
+              }
+            />
+          </FormGroup>
+          <FormGroup label="Last Name" className="mt-20 left name">
+            <input
+              type="text"
+              id="lastName"
+              className="styled-text-field"
+              placeholder="Enter your last name"
+              autoComplete="off"
+              value={formData.lastName}
+              onChange={(e) =>
+                setFormData({ ...formData, [e.target.id]: e.target.value })
+              }
+            />
+          </FormGroup>
+        </div>
+        <FormGroup label="Email" className="mt-20 left">
           <input
             type="email"
             id="email"
@@ -96,7 +99,7 @@ function Signup({ onLogin }) {
             }
           />
         </FormGroup>
-        <FormGroup label="Password">
+        <FormGroup label="Password" className="mt-20 left">
           <input
             type="password"
             id="password"
@@ -108,7 +111,7 @@ function Signup({ onLogin }) {
             autoComplete="current-password"
           />
         </FormGroup>
-        <FormGroup label="Re-enter Password">
+        <FormGroup label="Re-enter Password" className="mt-20 left">
           <input
             type="password"
             id="password_confirmation"
@@ -120,9 +123,9 @@ function Signup({ onLogin }) {
             autoComplete="current-password"
           />
         </FormGroup>
-        <div>
+        <div className="mt-20">
           <Button className="primary" type="submit" large fill>
-            {isLoading ? "Loading..." : "Sign Up"}
+            {isLoading ? "Loading..." : "Submit"}
           </Button>
           <NavLink to="/">
             <Button minimal large fill>

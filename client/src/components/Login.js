@@ -34,6 +34,7 @@ function Login({ onLogin }) {
   }
 
   return (
+    <Card className="card card-small">
       <h1
         style={{
           color: "#5c255c",
@@ -44,7 +45,7 @@ function Login({ onLogin }) {
       </h1>
       <h3 className="card-subtitle">Please log in</h3>
       <form className="center" onSubmit={handleSubmit}>
-        <FormGroup label="Email">
+        <FormGroup label="Email" className="mt-20 left">
           <input
             type="email"
             className="styled-text-field"
@@ -57,7 +58,7 @@ function Login({ onLogin }) {
             }
           />
         </FormGroup>
-        <FormGroup label="Password">
+        <FormGroup label="Password" className="mt-20 left">
           <input
             type="password"
             id="password"
@@ -72,13 +73,13 @@ function Login({ onLogin }) {
         {errors.map((err) => (
           <Error key={err}>{err}</Error>
         ))}
-        <div>
+        <div className="mt-20">
           <Button className="primary" type="submit" large fill>
             {isLoading ? "Loading..." : "Log In"}
           </Button>
           <NavLink to="/signup">
             <Button minimal large fill>
-              Sign Up
+              or, sign up
             </Button>
           </NavLink>
         </div>
