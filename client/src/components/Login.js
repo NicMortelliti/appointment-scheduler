@@ -34,7 +34,7 @@ function Login({ onLogin }) {
   }
 
   return (
-    <Card>
+    <Card className="card">
       <form className="center" onSubmit={handleSubmit}>
         <FormGroup label="Email">
           <input

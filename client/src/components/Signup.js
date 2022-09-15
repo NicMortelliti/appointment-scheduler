@@ -48,7 +48,7 @@ function Signup({ onLogin }) {
   }
 
   return (
-    <Card>
+    <Card className="card">
       <form onSubmit={handleSubmit} className="center">
         <FormGroup label="First Name">
           <input
