@@ -48,7 +48,15 @@ function Signup({ onLogin }) {
   }
 
   return (
-    <Card className="card">
+      <h1
+        style={{
+          color: "#5c255c",
+          fontWeight: "bold",
+          fontFamily: "Poiret One",
+        }}>
+        PacNW Health
+      </h1>
+      <h3 className="card-subtitle">Create an account</h3>
       <form onSubmit={handleSubmit} className="center">
         <FormGroup label="First Name">
           <input
