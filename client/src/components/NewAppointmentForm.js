@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Card } from "@blueprintjs/core";
 
 // Components
 import { default as Form } from "../shared/SharedForm";
@@ -32,13 +33,18 @@ const NewAppointmentForm = () => {
   };
 
   return (
-    <Form
-      formData={formData}
-      setFormData={setFormData}
-      handleSubmit={handleSubmit}
-      handleCancel={handleCancel}
-      navlink="/"
-    />
+    <Card className="card">
+      <h2 className="card-subtitle" style={{ textAlign: "center" }}>
+        Schedule an appointment
+      </h2>
+      <Form
+        formData={formData}
+        setFormData={setFormData}
+        handleSubmit={handleSubmit}
+        handleCancel={handleCancel}
+        navlink="/"
+      />
+    </Card>
   );
 };
 
