@@ -12,6 +12,7 @@ const SharedDateSelect = ({ label, id, options, setFormData, formData }) => {
       <DatePicker
         value={formData.date ? formData.date : null}
         highlightCurrentDay
+        modifiers={modifiers}
         onChange={(date) => setFormData({ ...formData, date: date })}
       />
     </FormGroup>
