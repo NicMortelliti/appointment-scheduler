@@ -64,14 +64,16 @@ function Login({ onLogin }) {
         {errors.map((err) => (
           <Error key={err}>{err}</Error>
         ))}
-        <ButtonGroup vertical large>
-          <Button intent="primary" type="submit">
+        <div>
+          <Button className="primary" type="submit" large fill>
             {isLoading ? "Loading..." : "Log In"}
           </Button>
           <NavLink to="/signup">
-            <Button minimal>Sign Up</Button>
+            <Button minimal large fill>
+              Sign Up
+            </Button>
           </NavLink>
-        </ButtonGroup>
+        </div>
       </form>
     </Card>
   );
