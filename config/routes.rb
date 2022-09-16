@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  resources :appointments
   resources :doctors
   resources :patients
   # Routing logic: fallback requests for React Router.
