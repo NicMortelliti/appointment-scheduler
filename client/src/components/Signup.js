@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-import { Button, ButtonGroup, Card, FormGroup } from "@blueprintjs/core";
+import { Button, Card, FormGroup } from "@blueprintjs/core";
 import Error from "../style/Error";
 
 function Signup({ onLogin }) {
@@ -11,7 +11,7 @@ function Signup({ onLogin }) {
     lastName: "",
     email: "",
     password: "",
-    passwordConf: "",
+    passwordConfirmation: "",
   });
 
   function handleSubmit(e) {
@@ -23,7 +23,13 @@ function Signup({ onLogin }) {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ formData }),
+      body: JSON.stringify({
+        first_name: formData.firstName,
+        last_name: formData.lastName,
+        email: formData.email,
+        password: formData.password,
+        password_confirmation: formData.passwordConfirmation,
+      }),
     }).then((r) => {
       setIsLoading(false);
       if (r.ok) {
@@ -43,7 +49,7 @@ function Signup({ onLogin }) {
       lastName: "",
       email: "",
       password: "",
-      passwordConf: "",
+      passwordConfirmation: "",
     });
   }
 
@@ -114,9 +120,9 @@ function Signup({ onLogin }) {
         <FormGroup label="Re-enter Password" className="mt-20 left">
           <input
             type="password"
-            id="password_confirmation"
+            id="passwordConfirmation"
             placeholder="Repeat your password"
-            value={formData.passwordConf}
+            value={formData.passwordConfirmation}
             onChange={(e) =>
               setFormData({ ...formData, [e.target.id]: e.target.value })
             }
