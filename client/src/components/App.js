@@ -5,14 +5,13 @@ import { Route, Switch } from "react-router-dom";
 import Login from "./Login";
 import Navbar from "./Navbar";
 import NewAppointmentForm from "./NewAppointmentForm";
-import Signup from "./Signup";
 import Stack from "./Stack";
 
 // Set server URL variable
 const URL = `${process.env.REACT_APP_API_URL}`;
 
 function App() {
-  const [user, setUser] = useState("nic");
+  const [user, setUser] = useState(null);
 
   useEffect(() => {
     // auto-login
@@ -23,16 +22,16 @@ function App() {
     });
   }, []);
 
+  // If user is null, display the login screen
+  if (!user) return <Login onLogin={setUser} />;
+
   return (
     <>
-      {user && <Navbar user={user} setUser={setUser} />}
+      <Navbar user={user} setUser={setUser} />
       <div className="main">
         <Switch>
           <Route exact path="/">
-            {user ? <Stack url={URL} /> : <Login onLogin={setUser} />}
-          </Route>
-          <Route path="/signup">
-            <Signup />
+            <Stack url={URL} />
           </Route>
           <Route exact path="/new_appointment">
             <NewAppointmentForm />

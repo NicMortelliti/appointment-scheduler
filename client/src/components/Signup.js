@@ -1,9 +1,8 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
 import { Button, Card, FormGroup } from "@blueprintjs/core";
 import Error from "../style/Error";
 
-function Signup({ onLogin }) {
+function Signup({ onLogin, setShowLogin }) {
   const [errors, setErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({
@@ -133,11 +132,9 @@ function Signup({ onLogin }) {
           <Button className="primary" type="submit" large fill>
             {isLoading ? "Loading..." : "Submit"}
           </Button>
-          <NavLink to="/">
-            <Button minimal large fill>
-              I have an account
-            </Button>
-          </NavLink>
+          <Button minimal large fill onClick={() => setShowLogin(true)}>
+            I have an account
+          </Button>
         </div>
       </form>
       {errors.map((err) => (
