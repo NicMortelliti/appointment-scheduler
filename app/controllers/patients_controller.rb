@@ -8,7 +8,10 @@ class PatientsController < ApplicationController
     render json: user, status: :created
   end
 
-end
+  # GET '/me'
+  def show
+    render json: @current_user
+  end
 
   private
 
