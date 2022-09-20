@@ -30,7 +30,7 @@ function SharedForm({
           formData={formData}
         />
         {/* Location selection */}
-        <Select
+        {/* <Select
           label="Location"
           name="location"
           value={formData.location}
@@ -38,7 +38,7 @@ function SharedForm({
           optionLabel={(option) => option.city}
           setFormData={setFormData}
           formData={formData}
-        />
+        /> */}
         {/* Date selection */}
         <Date
           label="Date"
