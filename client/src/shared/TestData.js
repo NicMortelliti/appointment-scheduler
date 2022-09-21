@@ -20,9 +20,6 @@ export const dates = [
 ];
 
 export const times = [
-  { id: 1, time: "11:00 AM" },
-  { id: 2, time: "11:30 AM" },
-  { id: 3, time: "12:30 PM" },
-  { id: 4, time: "2:00 PM" },
-  { id: 5, time: "2:30 PM" },
+  { id: 1, hour: 11, label: "11:00 AM" },
+  { id: 2, hour: 14, label: "2:00 PM" },
 ];
