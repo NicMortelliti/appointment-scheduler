@@ -3,14 +3,14 @@ class AppointmentsController < ApplicationController
 
   # POST '/appointments'
   def create
-    appointment = Appointment.create!(appointment_params)
+    appointment = @current_user.appointments.create!(appointment_params)
     render json: appointment, status: :created
   end
 
   private
 
   def appointment_params
-    params.permit(:start, :doctor_id, :user_id)
+    params.permit(:start, :doctor_id)
   end
 
   def render_unprocessable_entity_response(exception)
