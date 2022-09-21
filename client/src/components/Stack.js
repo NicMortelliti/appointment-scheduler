@@ -12,7 +12,7 @@ function Stack({ url, allAppointments, setAllAppointments }) {
 
   // Fetch data from server
   useEffect(() => {
-    fetch(`/appointments`)
+    fetch("/appointments")
       .then((r) => r.json())
       .then((data) => setAllAppointments(data));
   }, []);
@@ -25,13 +25,22 @@ function Stack({ url, allAppointments, setAllAppointments }) {
     setAllAppointments(updatedData);
   };
 
+  const RenderCards = () =>
+    allAppointments.map((eachAppointment) => {
+      return (
+        <Card
+          key={eachAppointment.id}
+          details={eachAppointment}
+          setCancelOpen={setCancelConfirmOpen}
+          setRescheduleOpen={setRescheduleOpen}
+          setApptDetails={setSelectedAppointment}
+        />
+      );
+    });
+
   return (
     <div className="card-stack center">
-      <Card
-        setCancelOpen={setCancelConfirmOpen}
-        setRescheduleOpen={setRescheduleOpen}
-        setApptDetails={setSelectedAppointment}
-      />
+      <RenderCards />
       <CancelAppointmentConfirm
         apptId={selectedAppointment}
         isOpen={cancelConfirmOpen}
