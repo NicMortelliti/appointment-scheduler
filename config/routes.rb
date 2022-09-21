@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   delete '/logout', to: 'sessions#destroy'
 
+  get '/appointments', to: 'appointments#index'
   get '/doctors', to: 'doctors#index'
   get '/me', to: 'patients#show'
 

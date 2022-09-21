@@ -7,6 +7,11 @@ class AppointmentsController < ApplicationController
     render json: appointment, status: :created
   end
 
+  # GET '/appointments'
+  def index
+    render json: @current_user.appointments
+  end
+
   private
 
   def appointment_params
