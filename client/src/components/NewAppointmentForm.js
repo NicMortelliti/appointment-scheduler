@@ -12,21 +12,23 @@ const NewAppointmentForm = ({ allAppointments, setAllAppointments }) => {
     doctor: "",
   });
 
-  // Submit logic
+  // Submit data to API
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    // Add time selection to the selected date
     formData.date.setHours(formData.time.hour);
 
-    const sendFormData = {
-      start: formData.date,
-      doctor_id: formData.doctor.id,
-    };
+    // API POST to /appointments
     fetch("/appointments", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(sendFormData),
+      body: JSON.stringify({
+        start: formData.date,
+        doctor_id: formData.doctor.id,
+      }),
     }).then((r) => {
       if (r.ok) {
         r.json().then((appointment) => {
@@ -36,7 +38,9 @@ const NewAppointmentForm = ({ allAppointments, setAllAppointments }) => {
             doctor: "",
           });
           setErrors([]);
-          const newAllData = [...allAppointments, appointment];
+          const newAllData = allAppointments.isArray
+            ? [...allAppointments, appointment]
+            : appointment;
           setAllAppointments(newAllData);
         });
       } else {
@@ -46,10 +50,8 @@ const NewAppointmentForm = ({ allAppointments, setAllAppointments }) => {
   };
 
   // Cancel logic
-  // TODO Fetch Get to API "/"
   const handleCancel = (e) => {
     e.preventDefault();
-    console.log("Attempting to cancel");
     setFormData({
       date: "",
       time: "",
