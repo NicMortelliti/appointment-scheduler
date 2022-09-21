@@ -1,13 +1,13 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 
 // Components
-import { default as Select } from "./SharedSelect";
 import { default as Date } from "./SharedDateSelect";
 
 // Test data
-import { dates, doctors, locations, times } from "./TestData";
-import { Button } from "@blueprintjs/core";
+import { dates, times } from "./TestData";
+import { Button, FormGroup } from "@blueprintjs/core";
+import Select from "react-select";
 
 function SharedForm({
   formData,
@@ -16,29 +16,42 @@ function SharedForm({
   handleCancel,
   navlink = null,
 }) {
+  const [doctorArray, setDoctorArray] = useState(null);
+
+  useEffect(() => {
+    fetch(`/doctors`).then((r) => {
+      if (r.ok) {
+        r.json().then((doctors) =>
+          setDoctorArray({ data: doctors, error: null, status: "resolved" })
+        );
+      } else {
+        r.json().then((err) =>
+          setDoctorArray({ data: null, error: err.error, status: "rejected" })
+        );
+      }
+    });
+  }, []);
+
   const RenderForm = () => {
     return (
       <form onSubmit={handleSubmit} className="bp4-form-group">
         {/* Doctor selection */}
-        <Select
-          label="Doctor"
-          name="doctor"
-          value={formData.doctor}
-          options={doctors}
-          optionLabel={(option) => option.name}
-          setFormData={setFormData}
-          formData={formData}
-        />
-        {/* Location selection */}
-        {/* <Select
-          label="Location"
-          name="location"
-          value={formData.location}
-          options={locations}
-          optionLabel={(option) => option.city}
-          setFormData={setFormData}
-          formData={formData}
-        /> */}
+        <FormGroup label="Doctor">
+          <Select
+            id="doctor"
+            name="doctor"
+            large
+            fill
+            defaultValue={doctorArray ? doctorArray.data[0] : "Loading..."}
+            value={formData.doctor ? formData.doctor : "Loading..."}
+            options={doctorArray ? doctorArray.data : null}
+            getOptionLabel={(option) =>
+              `${option.title} ${option.first_name} ${option.last_name}`
+            }
+            getOptionValue={(option) => option.id}
+            onChange={(e) => setFormData({ ...formData, doctor: e })}
+          />
+        </FormGroup>
         {/* Date selection */}
         <Date
           label="Date"
@@ -48,15 +61,20 @@ function SharedForm({
           formData={formData}
         />
         {/* Time selection */}
-        <Select
-          label="Time"
-          name="time"
-          value={formData.time}
-          options={times}
-          optionLabel={(option) => option.time}
-          setFormData={setFormData}
-          formData={formData}
-        />
+        <FormGroup label="Time">
+          <Select
+            id="time"
+            name="time"
+            large
+            fill
+            defaultValue={times[0].label}
+            value={formData.time}
+            options={times}
+            getOptionLabel={(option) => option.label}
+            getOptionValue={(option) => option.id}
+            onChange={(e) => setFormData({ ...formData, time: e })}
+          />
+        </FormGroup>
         <Button className="primary" type="submit" text="Submit" fill large />
         {navlink ? (
           <NavLink to={navlink} exact>
