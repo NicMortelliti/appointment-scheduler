@@ -7,9 +7,6 @@ import Navbar from "./Navbar";
 import NewAppointmentForm from "./NewAppointmentForm";
 import Stack from "./Stack";
 
-// Set server URL variable
-const URL = `${process.env.REACT_APP_API_URL}`;
-
 function App() {
   const [user, setUser] = useState(null);
   const [allAppointments, setAllAppointments] = useState([]);
