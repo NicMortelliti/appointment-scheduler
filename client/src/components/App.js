@@ -12,6 +12,7 @@ const URL = `${process.env.REACT_APP_API_URL}`;
 
 function App() {
   const [user, setUser] = useState(null);
+  const [allAppointments, setAllAppointments] = useState(null);
 
   useEffect(() => {
     // auto-login
@@ -31,10 +32,17 @@ function App() {
       <div className="main">
         <Switch>
           <Route exact path="/">
-            <Stack url={URL} />
+            <Stack
+              url={URL}
+              allAppointments={allAppointments}
+              setAllAppointments={setAllAppointments}
+            />
           </Route>
           <Route exact path="/new_appointment">
-            <NewAppointmentForm />
+            <NewAppointmentForm
+              allAppointments={allAppointments}
+              setAllAppointments={setAllAppointments}
+            />
           </Route>
         </Switch>
       </div>

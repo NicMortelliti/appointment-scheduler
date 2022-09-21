@@ -4,19 +4,45 @@ import { Card } from "@blueprintjs/core";
 // Components
 import { default as Form } from "../shared/SharedForm";
 
-const NewAppointmentForm = () => {
+const NewAppointmentForm = ({ allAppointments, setAllAppointments }) => {
+  const [errors, setErrors] = useState([]);
   const [formData, setFormData] = useState({
     date: "",
     time: "",
-    location: "",
     doctor: "",
   });
 
   // Submit logic
-  // TODO Fetch POST to API "/newappointment"
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Submitting new appointment form!");
+    formData.date.setHours(formData.time.hour);
+
+    const sendFormData = {
+      start: formData.date,
+      doctor_id: formData.doctor.id,
+    };
+    fetch("/appointments", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(sendFormData),
+    }).then((r) => {
+      if (r.ok) {
+        r.json().then((appointment) => {
+          setFormData({
+            date: "",
+            time: "",
+            doctor: "",
+          });
+          setErrors([]);
+          const newAllData = [...allAppointments, appointment];
+          setAllAppointments(newAllData);
+        });
+      } else {
+        r.json().then((err) => setErrors(err.errors));
+      }
+    });
   };
 
   // Cancel logic

@@ -5,15 +5,14 @@ import CancelAppointmentConfirm from "./CancelAppointmentConfirm";
 import Card from "./Card";
 import RescheduleForm from "./RescheduleForm";
 
-function Stack({ url }) {
+function Stack({ url, allAppointments, setAllAppointments }) {
   const [cancelConfirmOpen, setCancelConfirmOpen] = useState(false);
   const [rescheduleOpen, setRescheduleOpen] = useState(false);
   const [selectedAppointment, setSelectedAppointment] = useState(null);
-  const [allAppointments, setAllAppointments] = useState(null);
 
   // Fetch data from server
   useEffect(() => {
-    fetch(`${url}appointments`)
+    fetch(`/appointments`)
       .then((r) => r.json())
       .then((data) => setAllAppointments(data));
   }, []);
