@@ -12,7 +12,7 @@ const URL = `${process.env.REACT_APP_API_URL}`;
 
 function App() {
   const [user, setUser] = useState(null);
-  const [allAppointments, setAllAppointments] = useState(null);
+  const [allAppointments, setAllAppointments] = useState([]);
 
   useEffect(() => {
     // auto-login
