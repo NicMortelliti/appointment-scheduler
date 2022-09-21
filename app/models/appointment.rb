@@ -1,4 +1,4 @@
 class Appointment < ApplicationRecord
-  has_one :patient
-  has_one :doctor
+  belongs_to :patient
+  belongs_to :doctor
 end
