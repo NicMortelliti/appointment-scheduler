@@ -36,10 +36,6 @@ function Card({ setCancelOpen, setRescheduleOpen, setApptDetails }) {
           <h5 className="label">Doctor:</h5>
           <p className="doctor-name">{apptDetails.doctor.name}</p>
         </div>
-        {/* <div className="details card-location">
-          <h5 className="label">Location:</h5>
-          <p className="address-town-state">{apptDetails.location.city}</p>
-        </div> */}
       </div>
       <div className="card-btn-group">
         <Button
