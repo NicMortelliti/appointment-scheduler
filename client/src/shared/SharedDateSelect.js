@@ -2,7 +2,7 @@ import React from "react";
 import { DatePicker } from "@blueprintjs/datetime";
 import { FormGroup } from "@blueprintjs/core";
 
-const SharedDateSelect = ({ label, id, options, setFormData, formData }) => {
+const SharedDateSelect = ({ label, options, setFormData, formData }) => {
   const modifiers = {
     highlighted: [...options],
   };
