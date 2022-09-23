@@ -28,13 +28,16 @@ function Card({ details, setCancelOpen, setApptDetails }) {
   const apptDate = new Date(details.start);
   const month = apptDate.toLocaleString("default", { month: "long" });
   const date = apptDate.getDate() + 1;
-  const hours = apptDate.getHours();
+  let hours = apptDate.getHours();
+  const amPM = hours < 12 ? "AM" : "PM";
+  if (hours > 12) {
+    hours = hours - 12;
+  }
   let minutes = apptDate.getMinutes();
   if (minutes < 10) {
     // suffix '0' if less than 10 minutes
     minutes = "0" + minutes;
   }
-  const amPM = hours < 12 ? "AM" : "PM";
   const time = `${hours}:${minutes} ${amPM}`;
 
   return (
