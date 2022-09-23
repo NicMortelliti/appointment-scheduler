@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 // Components
 import { default as DateSelect } from "./SharedDateSelect";
@@ -10,6 +10,7 @@ import { Button, Dialog, FormGroup } from "@blueprintjs/core";
 import Select from "react-select";
 
 function SharedForm({ selectedAppointment = null, setAppointments }) {
+  const history = useHistory();
   const [doctorArray, setDoctorArray] = useState(null);
   const [formData, setFormData] = useState({
     date: "",
@@ -57,8 +58,6 @@ function SharedForm({ selectedAppointment = null, setAppointments }) {
   // If selectedAppointment IS null (i.e. creating new appointment)
   // submit method will be POST.
   const handleSubmit = (e) => {
-    e.preventDefault();
-
     const dateTime = new Date(
       formData.date.getFullYear(),
       formData.date.getMonth() + 1,
@@ -89,14 +88,12 @@ function SharedForm({ selectedAppointment = null, setAppointments }) {
       }),
     })
       .then((r) => r.json())
-      .then((appointment) => handleDataUpdate(appointment));
+
+      // Redirect back home
+      .then(history.push("/"));
   };
 
-  const handleDataUpdate = (task) => console.log(task);
-
-  const handleCancel = () => {
-    console.log("cancelling...");
-  };
+  // const handleDataUpdate = (task) => console.log(task);
 
   // Render the form UI components
   const RenderForm = () => {
@@ -151,14 +148,7 @@ function SharedForm({ selectedAppointment = null, setAppointments }) {
           </FormGroup>
           <Button className="primary" type="submit" text="Submit" fill large />
           <Link to="/">
-            <Button
-              intent="danger"
-              minimal
-              text="Discard Changes"
-              fill
-              large
-              onClick={handleCancel}
-            />
+            <Button intent="danger" minimal text="Discard Changes" fill large />
           </Link>
         </form>
       </Dialog>
