@@ -16,7 +16,7 @@ function Stack({
     fetch("/appointments")
       .then((r) => r.json())
       .then((data) => setAllAppointments(data));
-  }, []);
+  }, [setAllAppointments]);
 
   // Delete appointment
   const handleDeleteAppointment = (id) => {
