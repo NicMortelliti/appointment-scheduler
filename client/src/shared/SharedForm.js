@@ -102,6 +102,9 @@ function SharedForm({ selectedAppointment = null, setAppointments }) {
         isOpen={true}
         autoFocus
         enforceFocus
+        canEscapeKeyClose={false}
+        canOutsideClickClose={false}
+        isCloseButtonShown={false}
         title={
           selectedAppointment ? "Modify Appointment" : "Schedule Appointment"
         }>
