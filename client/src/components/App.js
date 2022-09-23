@@ -4,7 +4,6 @@ import { Route, Switch } from "react-router-dom";
 // Import components
 import Login from "./Login";
 import Navbar from "./Navbar";
-import NewAppointmentForm from "./NewAppointmentForm";
 import SharedForm from "../shared/SharedForm";
 import Stack from "./Stack";
 
@@ -32,7 +31,6 @@ function App() {
         <Switch>
           <Route exact path="/">
             <Stack
-              url={URL}
               allAppointments={allAppointments}
               setAllAppointments={setAllAppointments}
               setSelectedAppointment={setSelectedAppointment}

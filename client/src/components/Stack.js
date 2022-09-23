@@ -5,7 +5,6 @@ import CancelAppointmentConfirm from "./CancelAppointmentConfirm";
 import Card from "./Card";
 
 function Stack({
-  url,
   allAppointments,
   setAllAppointments,
   setSelectedAppointment,
