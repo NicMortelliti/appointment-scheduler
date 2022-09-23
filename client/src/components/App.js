@@ -33,6 +33,7 @@ function App() {
             <Stack
               allAppointments={allAppointments}
               setAllAppointments={setAllAppointments}
+              selectedAppointment={selectedAppointment}
               setSelectedAppointment={setSelectedAppointment}
             />
           </Route>

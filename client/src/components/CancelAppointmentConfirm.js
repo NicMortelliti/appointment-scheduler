@@ -1,7 +1,7 @@
 import { Alert } from "@blueprintjs/core";
 
 const CancelAppointmentConfirm = ({
-  apptId,
+  selectedAppointment,
   isOpen,
   setCancelOpen,
   handleDeleteAppointment,
@@ -11,7 +11,7 @@ const CancelAppointmentConfirm = ({
   const handleDelete = (e) => {
     e.preventDefault();
     setCancelOpen(false)
-    fetch(`${url}/appointments/${apptId.id}`, {
+    fetch(`/appointments/${selectedAppointment.id}`, {
       method: "DELETE",
     })
       .then((r) => r.json())

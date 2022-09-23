@@ -7,6 +7,7 @@ import Card from "./Card";
 function Stack({
   allAppointments,
   setAllAppointments,
+  selectedAppointment,
   setSelectedAppointment,
 }) {
   const [cancelConfirmOpen, setCancelConfirmOpen] = useState(false);
@@ -42,6 +43,7 @@ function Stack({
     <div className="card-stack center">
       <RenderCards />
       <CancelAppointmentConfirm
+        selectedAppointment={selectedAppointment}
         isOpen={cancelConfirmOpen}
         setCancelOpen={setCancelConfirmOpen}
         handleDeleteAppointment={handleDeleteAppointment}
