@@ -3,23 +3,13 @@ import { Button, Card as CardComp } from "@blueprintjs/core";
 import { Link } from "react-router-dom";
 
 function Card({ details, setCancelOpen, setApptDetails }) {
-  const apptDetails = {
-    id: 1,
-    date: new Date("09/12/2022"),
-    time: { id: 3, time: "12:30 PM" },
-    doctor: { id: 2, name: "Joe Moe" },
-    location: { id: 5, city: "Hillsboro" },
-  };
-
-  const handleRescheduleClick = (e) => {
-    e.preventDefault();
-    setApptDetails(apptDetails);
-  };
-
+  // When Cancel button is clicked:
+  //  - Set selected appointment with the current appointment details.
+  //  - Open the cancel appointment dialog.
   const handleCancelClick = (e) => {
     e.preventDefault();
+    setApptDetails(details);
     setCancelOpen(true);
-    setApptDetails(apptDetails);
   };
 
   // The datetime object from rails gets converted
