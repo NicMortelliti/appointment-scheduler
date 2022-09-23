@@ -12,11 +12,11 @@ const CancelAppointmentConfirm = ({
     setCancelOpen(false);
     fetch(`/appointments/${selectedAppointment.id}`, {
       method: "DELETE",
-    })
-      .then((r) => r.json())
-      .then((deletedAppointment) =>
-        handleDeletedAppointment(deletedAppointment.id)
-      );
+    }).then((r) => {
+      if (r.ok) {
+        handleDeletedAppointment(selectedAppointment.id);
+      }
+    });
   };
 
   return (
