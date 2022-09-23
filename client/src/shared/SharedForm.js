@@ -33,7 +33,7 @@ function SharedForm({ selectedAppointment = null, setAppointments }) {
         time: hour,
       });
     }
-  }, []);
+  }, [selectedAppointment]);
 
   // Collect array of doctors from API when form loads
   useEffect(() => {
