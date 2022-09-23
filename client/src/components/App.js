@@ -45,6 +45,7 @@ function App() {
           </Route>
           <Route exact path="/edit_appointment">
             <SharedForm
+              allAppointments={allAppointments}
               selectedAppointment={selectedAppointment}
               setAppointments={setAllAppointments}
             />

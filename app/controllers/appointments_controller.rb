@@ -19,6 +19,17 @@ class AppointmentsController < ApplicationController
     render json: @current_user.appointments
   end
 
+  # PATCH '/appointments/[:id]'
+  def update
+    appointment = find_appointment
+    if appointment
+      appointment.update(appointment_params)
+      render json: appointment, status: :created
+    else
+      render json: { error: 'Appointment not found' }, status: :not_found
+    end
+  end
+
   private
 
   def appointment_params

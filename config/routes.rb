@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   get '/doctors', to: 'doctors#index'
   get '/me', to: 'patients#show'
 
+  patch '/appointments', to: 'appointments#update'
+
   post '/signup', to: 'patients#create'
   post '/login', to: 'sessions#create'
   post '/appointments', to: 'appointments#create'

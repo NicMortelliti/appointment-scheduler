@@ -9,7 +9,11 @@ import { dates, times } from "./TestData";
 import { Button, Dialog, FormGroup } from "@blueprintjs/core";
 import Select from "react-select";
 
-function SharedForm({ selectedAppointment = null, setAppointments }) {
+function SharedForm({
+  allAppointments,
+  selectedAppointment = null,
+  setAppointments,
+}) {
   const history = useHistory();
   const [doctorArray, setDoctorArray] = useState(null);
   const [formData, setFormData] = useState({
@@ -88,12 +92,29 @@ function SharedForm({ selectedAppointment = null, setAppointments }) {
       }),
     })
       .then((r) => r.json())
-
-      // Redirect back home
+      .then((appointment) => handleDataUpdate(appointment))
       .then(history.push("/"));
   };
 
-  // const handleDataUpdate = (task) => console.log(task);
+  const handleDataUpdate = (appointment) => {
+    let newAllAppointments;
+    if (selectedAppointment) {
+      // If editing existing appointment
+      newAllAppointments = allAppointments.map((eachAppointment) => {
+        if (eachAppointment.id === appointment.id) {
+          return appointment;
+        } else {
+          return eachAppointment;
+        }
+      });
+    } else {
+      // If adding new task
+      newAllAppointments = [...allAppointments, appointment];
+    }
+
+    // Set new data
+    setAppointments(newAllAppointments);
+  };
 
   // Render the form UI components
   const RenderForm = () => {
