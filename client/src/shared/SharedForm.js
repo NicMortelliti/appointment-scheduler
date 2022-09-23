@@ -17,9 +17,22 @@ function SharedForm({ selectedAppointment = null, setAppointments }) {
     doctor: "",
   });
 
+  // If editing appointment, populate form with appointment data.
   useEffect(() => {
-    console.log(formData);
-  }, [formData]);
+    if (selectedAppointment) {
+      const date = new Date(selectedAppointment.start);
+      date.setDate(date.getDate() + 1);
+
+      let hour = date.getHours();
+      times.filter((time) => time.hour === hour && (hour = time));
+
+      setFormData({
+        date: date,
+        doctor: selectedAppointment.doctor,
+        time: hour,
+      });
+    }
+  }, []);
 
   // Collect array of doctors from API when form loads
   useEffect(() => {
@@ -53,33 +66,30 @@ function SharedForm({ selectedAppointment = null, setAppointments }) {
       formData.time.hour
     );
 
-    console.log(`start: ${dateTime}, doctor_id: ${formData.doctor.id}`);
+    // Set path and method depending on whether we're adding
+    // a new appointment or updating an existing appointment.
+    let path, method;
+    if (selectedAppointment) {
+      path = `/appointments/${selectedAppointment.id}`;
+      method = "PATCH";
+    } else {
+      path = `/appointments`;
+      method = "POST";
+    }
 
-    selectedAppointment
-      ? fetch(`/appointments/${selectedAppointment.id}`, {
-          method: "PATCH",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            start: dateTime,
-            doctor_id: formData.doctor.id,
-          }),
-        })
-          .then((r) => r.json())
-          .then((updatedTask) => handleDataUpdate(updatedTask))
-      : fetch(`/appointments`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            start: dateTime,
-            doctor_id: formData.doctor.id,
-          }),
-        })
-          .then((r) => r.json())
-          .then((newTask) => handleDataUpdate(newTask));
+    // Send fetch to API
+    fetch(path, {
+      method: method,
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        start: dateTime,
+        doctor_id: formData.doctor.id,
+      }),
+    })
+      .then((r) => r.json())
+      .then((appointment) => handleDataUpdate(appointment));
   };
 
   const handleDataUpdate = (task) => console.log(task);
@@ -94,10 +104,7 @@ function SharedForm({ selectedAppointment = null, setAppointments }) {
       <Dialog
         isOpen={true}
         autoFocus
-        canEscapeKeyCancel
         enforceFocus
-        isCloseButtonShown
-        onClose={handleCancel}
         title={
           selectedAppointment ? "Modify Appointment" : "Schedule Appointment"
         }>

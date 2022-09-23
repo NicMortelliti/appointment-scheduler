@@ -1,7 +1,8 @@
 import React from "react";
 import { Button, Card as CardComp } from "@blueprintjs/core";
+import { Link } from "react-router-dom";
 
-function Card({ details, setCancelOpen, setRescheduleOpen, setApptDetails }) {
+function Card({ details, setCancelOpen, setApptDetails }) {
   const apptDetails = {
     id: 1,
     date: new Date("09/12/2022"),
@@ -13,7 +14,6 @@ function Card({ details, setCancelOpen, setRescheduleOpen, setApptDetails }) {
   const handleRescheduleClick = (e) => {
     e.preventDefault();
     setApptDetails(apptDetails);
-    setRescheduleOpen(true);
   };
 
   const handleCancelClick = (e) => {
@@ -54,13 +54,15 @@ function Card({ details, setCancelOpen, setRescheduleOpen, setApptDetails }) {
         </div>
       </div>
       <div className="card-btn-group">
-        <Button
-          fill
-          large
-          className="primary card-reschedule-btn"
-          text="Reschedule"
-          onClick={(e) => handleRescheduleClick(e)}
-        />
+        <Link to="/edit_appointment">
+          <Button
+            fill
+            large
+            className="primary card-reschedule-btn"
+            text="Reschedule"
+            onClick={() => setApptDetails(details)}
+          />
+        </Link>
         <Button
           minimal
           fill

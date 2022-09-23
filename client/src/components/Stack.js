@@ -3,12 +3,14 @@ import React, { useEffect, useState } from "react";
 // Components
 import CancelAppointmentConfirm from "./CancelAppointmentConfirm";
 import Card from "./Card";
-import RescheduleForm from "./RescheduleForm";
 
-function Stack({ url, allAppointments, setAllAppointments }) {
+function Stack({
+  url,
+  allAppointments,
+  setAllAppointments,
+  setSelectedAppointment,
+}) {
   const [cancelConfirmOpen, setCancelConfirmOpen] = useState(false);
-  const [rescheduleOpen, setRescheduleOpen] = useState(false);
-  const [selectedAppointment, setSelectedAppointment] = useState(null);
 
   // Fetch data from server
   useEffect(() => {
@@ -32,7 +34,6 @@ function Stack({ url, allAppointments, setAllAppointments }) {
           key={eachAppointment.id}
           details={eachAppointment}
           setCancelOpen={setCancelConfirmOpen}
-          setRescheduleOpen={setRescheduleOpen}
           setApptDetails={setSelectedAppointment}
         />
       );
@@ -42,16 +43,9 @@ function Stack({ url, allAppointments, setAllAppointments }) {
     <div className="card-stack center">
       <RenderCards />
       <CancelAppointmentConfirm
-        apptId={selectedAppointment}
         isOpen={cancelConfirmOpen}
         setCancelOpen={setCancelConfirmOpen}
         handleDeleteAppointment={handleDeleteAppointment}
-        url={url}
-      />
-      <RescheduleForm
-        formOpen={rescheduleOpen}
-        setFormOpen={setRescheduleOpen}
-        appointment={selectedAppointment}
       />
     </div>
   );
