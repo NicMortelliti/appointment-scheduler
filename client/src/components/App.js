@@ -5,11 +5,13 @@ import { Route, Switch } from "react-router-dom";
 import Login from "./Login";
 import Navbar from "./Navbar";
 import NewAppointmentForm from "./NewAppointmentForm";
+import SharedForm from "../shared/SharedForm";
 import Stack from "./Stack";
 
 function App() {
   const [user, setUser] = useState(null);
   const [allAppointments, setAllAppointments] = useState([]);
+  const [selectedAppointment, setSelectedAppointment] = useState(null);
 
   useEffect(() => {
     // auto-login
@@ -38,7 +40,13 @@ function App() {
           <Route exact path="/new_appointment">
             <NewAppointmentForm
               allAppointments={allAppointments}
-              setAllAppointments={setAllAppointments}
+              setAppointments={setAllAppointments}
+            />
+          </Route>
+          <Route exact path="/edit_appointment">
+            <SharedForm
+              selectedAppointment={selectedAppointment}
+              setAppointments={setAllAppointments}
             />
           </Route>
         </Switch>

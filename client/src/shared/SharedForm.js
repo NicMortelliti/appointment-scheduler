@@ -9,15 +9,16 @@ import { dates, times } from "./TestData";
 import { Button, FormGroup } from "@blueprintjs/core";
 import Select from "react-select";
 
-function SharedForm({
-  formData,
-  setFormData,
-  handleSubmit,
-  handleCancel,
-  navlink = null,
-}) {
+function SharedForm({ selectedAppointment = null, setAppointments }) {
   const [doctorArray, setDoctorArray] = useState(null);
+  const [formData, setFormData] = useState({
+    date: "",
+    time: "",
+    datetime: ,
+    doctorId: "",
+  });
 
+  // Collect array of doctors from API when form loads
   useEffect(() => {
     fetch(`/doctors`).then((r) => {
       if (r.ok) {
@@ -32,6 +33,34 @@ function SharedForm({
     });
   }, []);
 
+  // Handle form submit
+  //
+  // If selectedAppointment is NOT null (i.e.editing an appointment)
+  // submit method will be PATCH.
+  //
+  // If selectedAppointment IS null (i.e. creating new appointment)
+  // submit method will be POST.
+  selectedAppointment ?
+    fetch(`/appointment/${selectedAppointment.id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        start: formData.,
+        due_date: formData.due_date,
+        project_id: formData.project_id,
+        state: formData.state ? formData.state : 1,
+        story_points: formData.story_points,
+        user_id: formData.user_id,
+      }),
+    })
+      .then((r) => r.json())
+      .then((newTask) => handleDataUpdate(newTask))
+      .then((e = setOpenPanel(e)));
+  };
+
+  // Render the form UI components
   const RenderForm = () => {
     return (
       <form onSubmit={handleSubmit} className="bp4-form-group">
