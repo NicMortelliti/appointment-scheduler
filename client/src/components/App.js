@@ -38,7 +38,7 @@ function App() {
             />
           </Route>
           <Route exact path="/new_appointment">
-            <NewAppointmentForm
+            <SharedForm
               allAppointments={allAppointments}
               setAppointments={setAllAppointments}
             />

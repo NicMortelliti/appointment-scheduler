@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 // Components
-import { default as Date } from "./SharedDateSelect";
+import { default as DateSelect } from "./SharedDateSelect";
 
 // Test data
 import { dates, times } from "./TestData";
-import { Button, FormGroup } from "@blueprintjs/core";
+import { Button, Dialog, FormGroup } from "@blueprintjs/core";
 import Select from "react-select";
 
 function SharedForm({ selectedAppointment = null, setAppointments }) {
@@ -14,9 +14,12 @@ function SharedForm({ selectedAppointment = null, setAppointments }) {
   const [formData, setFormData] = useState({
     date: "",
     time: "",
-    datetime: ,
-    doctorId: "",
+    doctor: "",
   });
+
+  useEffect(() => {
+    console.log(formData);
+  }, [formData]);
 
   // Collect array of doctors from API when form loads
   useEffect(() => {
@@ -40,86 +43,118 @@ function SharedForm({ selectedAppointment = null, setAppointments }) {
   //
   // If selectedAppointment IS null (i.e. creating new appointment)
   // submit method will be POST.
-  selectedAppointment ?
-    fetch(`/appointment/${selectedAppointment.id}`, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        start: formData.,
-        due_date: formData.due_date,
-        project_id: formData.project_id,
-        state: formData.state ? formData.state : 1,
-        story_points: formData.story_points,
-        user_id: formData.user_id,
-      }),
-    })
-      .then((r) => r.json())
-      .then((newTask) => handleDataUpdate(newTask))
-      .then((e = setOpenPanel(e)));
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const dateTime = new Date(
+      formData.date.getFullYear(),
+      formData.date.getMonth() + 1,
+      formData.date.getDate(),
+      formData.time.hour
+    );
+
+    console.log(`start: ${dateTime}, doctor_id: ${formData.doctor.id}`);
+
+    selectedAppointment
+      ? fetch(`/appointments/${selectedAppointment.id}`, {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            start: dateTime,
+            doctor_id: formData.doctor.id,
+          }),
+        })
+          .then((r) => r.json())
+          .then((updatedTask) => handleDataUpdate(updatedTask))
+      : fetch(`/appointments`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            start: dateTime,
+            doctor_id: formData.doctor.id,
+          }),
+        })
+          .then((r) => r.json())
+          .then((newTask) => handleDataUpdate(newTask));
+  };
+
+  const handleDataUpdate = (task) => console.log(task);
+
+  const handleCancel = () => {
+    console.log("cancelling...");
   };
 
   // Render the form UI components
   const RenderForm = () => {
     return (
-      <form onSubmit={handleSubmit} className="bp4-form-group">
-        {/* Doctor selection */}
-        <FormGroup label="Doctor">
-          <Select
-            id="doctor"
-            name="doctor"
-            large
-            fill
-            defaultValue={doctorArray ? doctorArray.data[0] : "Loading..."}
-            value={formData.doctor ? formData.doctor : "Loading..."}
-            options={doctorArray ? doctorArray.data : null}
-            getOptionLabel={(option) =>
-              `${option.title} ${option.first_name} ${option.last_name}`
-            }
-            getOptionValue={(option) => option.id}
-            onChange={(e) => setFormData({ ...formData, doctor: e })}
+      <Dialog
+        isOpen={true}
+        autoFocus
+        canEscapeKeyCancel
+        enforceFocus
+        isCloseButtonShown
+        onClose={handleCancel}
+        title={
+          selectedAppointment ? "Modify Appointment" : "Schedule Appointment"
+        }>
+        <form onSubmit={(e) => handleSubmit(e)} className="bp4-form-group">
+          {/* Doctor selection */}
+          <FormGroup label="Doctor">
+            <Select
+              id="doctor"
+              name="doctor"
+              large
+              fill
+              defaultValue={doctorArray ? doctorArray.data[0] : "Loading..."}
+              value={formData.doctor ? formData.doctor : "Loading..."}
+              options={doctorArray ? doctorArray.data : null}
+              getOptionLabel={(option) =>
+                `${option.title} ${option.first_name} ${option.last_name}`
+              }
+              getOptionValue={(option) => option.id}
+              onChange={(e) => setFormData({ ...formData, doctor: e })}
+            />
+          </FormGroup>
+          {/* Date selection */}
+          <DateSelect
+            label="Date"
+            id="date"
+            options={dates}
+            setFormData={setFormData}
+            formData={formData}
           />
-        </FormGroup>
-        {/* Date selection */}
-        <Date
-          label="Date"
-          id="date"
-          options={dates}
-          setFormData={setFormData}
-          formData={formData}
-        />
-        {/* Time selection */}
-        <FormGroup label="Time">
-          <Select
-            id="time"
-            name="time"
-            large
-            fill
-            defaultValue={times[0].label}
-            value={formData.time}
-            options={times}
-            getOptionLabel={(option) => option.label}
-            getOptionValue={(option) => option.id}
-            onChange={(e) => setFormData({ ...formData, time: e })}
-          />
-        </FormGroup>
-        <Button className="primary" type="submit" text="Submit" fill large />
-        {navlink ? (
-          <NavLink to={navlink} exact>
-            <Button intent="danger" minimal text="Discard Changes" fill large />
-          </NavLink>
-        ) : (
-          <Button
-            intent="danger"
-            minimal
-            text="Discard Changes"
-            onClick={handleCancel}
-            fill
-            large
-          />
-        )}
-      </form>
+          {/* Time selection */}
+          <FormGroup label="Time">
+            <Select
+              id="time"
+              name="time"
+              large
+              fill
+              defaultValue={times[0].label}
+              value={formData.time}
+              options={times}
+              getOptionLabel={(option) => option.label}
+              getOptionValue={(option) => option.id}
+              onChange={(e) => setFormData({ ...formData, time: e })}
+            />
+          </FormGroup>
+          <Button className="primary" type="submit" text="Submit" fill large />
+          <Link to="/">
+            <Button
+              intent="danger"
+              minimal
+              text="Discard Changes"
+              fill
+              large
+              onClick={handleCancel}
+            />
+          </Link>
+        </form>
+      </Dialog>
     );
   };
   return <RenderForm />;
