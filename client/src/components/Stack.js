@@ -20,7 +20,7 @@ function Stack({
   }, [setAllAppointments]);
 
   // Delete appointment
-  const handleDeleteAppointment = (id) => {
+  const handleDeletedAppointment = (id) => {
     const updatedData = allAppointments.filter(
       (eachAppointment) => eachAppointment.id !== id
     );
@@ -46,7 +46,7 @@ function Stack({
         selectedAppointment={selectedAppointment}
         isOpen={cancelConfirmOpen}
         setCancelOpen={setCancelConfirmOpen}
-        handleDeleteAppointment={handleDeleteAppointment}
+        handleDeletedAppointment={handleDeletedAppointment}
       />
     </div>
   );

@@ -4,19 +4,18 @@ const CancelAppointmentConfirm = ({
   selectedAppointment,
   isOpen,
   setCancelOpen,
-  handleDeleteAppointment,
-  url,
+  handleDeletedAppointment,
 }) => {
   // Delete appointment from server and client
   const handleDelete = (e) => {
     e.preventDefault();
-    setCancelOpen(false)
+    setCancelOpen(false);
     fetch(`/appointments/${selectedAppointment.id}`, {
       method: "DELETE",
     })
       .then((r) => r.json())
       .then((deletedAppointment) =>
-        handleDeleteAppointment(deletedAppointment.id)
+        handleDeletedAppointment(deletedAppointment.id)
       );
   };
 
