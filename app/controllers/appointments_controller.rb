@@ -7,6 +7,13 @@ class AppointmentsController < ApplicationController
     render json: appointment, status: :created
   end
 
+  # DESTROY '/appointments/[:id]'
+  def destroy
+    appointment = find_appointment
+    appointment.destroy
+    head :no_content
+  end
+
   # GET '/appointments'
   def index
     render json: @current_user.appointments
@@ -16,6 +23,10 @@ class AppointmentsController < ApplicationController
 
   def appointment_params
     params.permit(:start, :doctor_id)
+  end
+
+  def find_appointment
+    Appointment.find(params[:id])
   end
 
   def render_unprocessable_entity_response(exception)

@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :doctors
   resources :patients
 
+  delete '/appoointments', to: 'appointments#destroy'
   delete '/logout', to: 'sessions#destroy'
 
   get '/appointments', to: 'appointments#index'
