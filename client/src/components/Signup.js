@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Card, FormGroup, InputGroup } from "@blueprintjs/core";
+import { Button, Card, InputGroup } from "@blueprintjs/core";
 import Error from "../style/Error";
 
 function Signup({ onLogin, setShowLogin }) {
