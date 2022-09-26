@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Card, FormGroup } from "@blueprintjs/core";
+import { Button, Card, FormGroup, InputGroup } from "@blueprintjs/core";
 
 // Components
 import Error from "../style/Error";
@@ -37,6 +37,13 @@ function Login({ onLogin }) {
     });
   }
 
+  // Shared function to handle updating fields
+  const handleFormFieldChange = (e) =>
+    setFormData({
+      ...formData,
+      [e.target.id]: e.target.value,
+    });
+
   return (
     <>
       {showLogin ? (
@@ -51,31 +58,27 @@ function Login({ onLogin }) {
           </h1>
           <h3 className="card-subtitle">Please log in</h3>
           <form className="center" onSubmit={handleSubmit}>
-            <FormGroup label="Email" className="mt-20 left">
-              <input
-                type="email"
-                className="styled-text-field"
-                id="email"
-                placeholder="Enter Email"
-                autoComplete="off"
-                value={formData.email}
-                onChange={(e) =>
-                  setFormData({ ...formData, [e.target.id]: e.target.value })
-                }
-              />
-            </FormGroup>
-            <FormGroup label="Password" className="mt-20 left">
-              <input
-                type="password"
-                id="password"
-                placeholder="Enter Password"
-                value={formData.password}
-                onChange={(e) =>
-                  setFormData({ ...formData, [e.target.id]: e.target.value })
-                }
-                autoComplete="current-password"
-              />
-            </FormGroup>
+            <InputGroup
+              id="email"
+              type="email"
+              autoComplete="off"
+              large
+              round
+              placeholder="Email"
+              value={formData.email}
+              style={{ marginBottom: "20px" }}
+              onChange={(e) => handleFormFieldChange(e)}
+            />
+            <InputGroup
+              id="password"
+              type="password"
+              autoComplete="off"
+              large
+              round
+              placeholder="Password"
+              value={formData.password}
+              onChange={(e) => handleFormFieldChange(e)}
+            />
             {errors.map((err) => (
               <Error key={err}>{err}</Error>
             ))}
