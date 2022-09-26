@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Card, FormGroup } from "@blueprintjs/core";
+import { Button, Card, FormGroup, InputGroup } from "@blueprintjs/core";
 import Error from "../style/Error";
 
 function Signup({ onLogin, setShowLogin }) {
@@ -39,18 +39,11 @@ function Signup({ onLogin, setShowLogin }) {
     });
   }
 
-  // Set signup to false and
-  // clear data from form
-  function resetForm(e) {
-    e.preventDefault();
+  const handleFormFieldChange = (e) =>
     setFormData({
-      firstName: "",
-      lastName: "",
-      email: "",
-      password: "",
-      passwordConfirmation: "",
+      ...formData,
+      [e.target.id]: e.target.value,
     });
-  }
 
   return (
     <Card className="card card-small">
@@ -65,69 +58,63 @@ function Signup({ onLogin, setShowLogin }) {
       <h3 className="card-subtitle">Create an account</h3>
       <form onSubmit={handleSubmit} className="center">
         <div className="name-line">
-          <FormGroup label="First Name" className="mt-20 left name">
-            <input
-              type="text"
-              id="firstName"
-              className="form-field"
-              placeholder="Enter your first name"
-              autoComplete="off"
-              value={formData.firstName}
-              onChange={(e) =>
-                setFormData({ ...formData, [e.target.id]: e.target.value })
-              }
-            />
-          </FormGroup>
-          <FormGroup label="Last Name" className="mt-20 left name">
-            <input
-              type="text"
-              id="lastName"
-              className="styled-text-field"
-              placeholder="Enter your last name"
-              autoComplete="off"
-              value={formData.lastName}
-              onChange={(e) =>
-                setFormData({ ...formData, [e.target.id]: e.target.value })
-              }
-            />
-          </FormGroup>
-        </div>
-        <FormGroup label="Email" className="mt-20 left">
-          <input
-            type="email"
-            id="email"
-            placeholder="Enter your email"
+          <InputGroup
+            id="firstName"
+            type="text"
             autoComplete="off"
-            value={formData.email}
-            onChange={(e) =>
-              setFormData({ ...formData, [e.target.id]: e.target.value })
-            }
+            large
+            round
+            placeholder="First Name"
+            value={formData.firstName}
+            style={{ marginBottom: "20px" }}
+            className="left name"
+            onChange={(e) => handleFormFieldChange(e)}
           />
-        </FormGroup>
-        <FormGroup label="Password" className="mt-20 left">
-          <input
-            type="password"
-            id="password"
-            placeholder="Enter a password"
-            value={formData.password}
-            onChange={(e) =>
-              setFormData({ ...formData, [e.target.id]: e.target.value })
-            }
-            autoComplete="current-password"
+          <InputGroup
+            id="lastName"
+            type="text"
+            autoComplete="off"
+            large
+            round
+            placeholder="Last Name"
+            value={formData.lastName}
+            style={{ marginBottom: "20px" }}
+            className="left name"
+            onChange={(e) => handleFormFieldChange(e)}
           />
-        </FormGroup>
-        <FormGroup label="Re-enter Password" className="mt-20 left">
-          <input
-            type="password"
-            id="passwordConfirmation"
-            placeholder="Repeat your password"
-            value={formData.passwordConfirmation}
-            onChange={(e) =>
-              setFormData({ ...formData, [e.target.id]: e.target.value })
-            }
-            autoComplete="current-password"
-          />
-        </FormGroup>
+        </div>
+        <InputGroup
+          id="email"
+          type="email"
+          autoComplete="off"
+          large
+          round
+          placeholder="Email"
+          value={formData.email}
+          style={{ marginBottom: "20px" }}
+          onChange={(e) => handleFormFieldChange(e)}
+        />
+        <InputGroup
+          id="password"
+          type="password"
+          autoComplete="off"
+          large
+          round
+          placeholder="Password"
+          value={formData.password}
+          style={{ marginBottom: "20px" }}
+          onChange={(e) => handleFormFieldChange(e)}
+        />
+        <InputGroup
+          id="passwordConfirmation"
+          type="password"
+          autoComplete="off"
+          large
+          round
+          placeholder="Repeat Password"
+          value={formData.passwordConfirmation}
+          onChange={(e) => handleFormFieldChange(e)}
+        />
         <div className="mt-20">
           <Button className="primary" type="submit" large fill>
             {isLoading ? "Loading..." : "Submit"}
