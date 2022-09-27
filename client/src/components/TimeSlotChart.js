@@ -44,7 +44,11 @@ function TimeSlotChart() {
               gridArea: `${index + 1} / ${columnNumber} / auto / auto`,
               marginBottom: "5px",
             }}>
-            <SlotButton startHour={hour} endHour={hours[index + 1]} />
+            <SlotButton
+              columnNumber={columnNumber}
+              startHour={hour}
+              endHour={hours[index + 1]}
+            />
           </div>
         )
       );
@@ -52,18 +56,35 @@ function TimeSlotChart() {
   };
 
   // Rendering of each time slot button
-  const SlotButton = ({ startHour, endHour }) => {
+  const SlotButton = ({ columnNumber, startHour, endHour }) => {
+    const buttonID = [columnNumber.columnNumber, startHour].join("");
     return (
       <Tag
+        active={selectedHour === buttonID ? true : false}
         interactive
         large
         round
         fill
-        style={{
-          background: "#5c255c",
-          fontWeight: "bold",
-        }}
-        onClick={(e) => setSelectedHour(startHour)}>
+        // intent="success"
+        style={
+          selectedHour === buttonID
+            ? {
+                background: "#8bcdbc",
+                color: "#5c255c",
+                fontWeight: "bold",
+                borderStyle: "solid",
+                borderWidth: "1px",
+                borderColor: "#8bcdbc",
+              }
+            : {
+                background: "none",
+                color: "black",
+                borderStyle: "solid",
+                borderWidth: "1px",
+                borderColor: "#b5a1a6",
+              }
+        }
+        onClick={(e) => setSelectedHour(buttonID)}>
         {`${startHour}:00 - ${endHour}:00`}
       </Tag>
     );
