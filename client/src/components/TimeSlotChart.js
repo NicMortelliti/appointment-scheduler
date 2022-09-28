@@ -2,20 +2,19 @@ import React, { useEffect, useState } from "react";
 
 import { Tag } from "@blueprintjs/core";
 
+// Get todays date and current week
+let currentDay = new Date();
+let currentWeek = [];
+for (let i = 1; i <= 7; i++) {
+  let first = currentDay.getDate() - currentDay.getDay() + i;
+  let day = new Date(currentDay.setDate(first)).toISOString().slice(0, 10);
+  currentWeek.push(day);
+}
+
 function TimeSlotChart() {
   const [selectedHour, setSelectedHour] = useState(null);
   const [blockedDates, setBlockedDates] = useState([]);
-
-  // Get todays date and current week
-  let currentDay = new Date();
-  let currentWeek = [];
-
-  for (let i = 1; i <= 7; i++) {
-    let first = currentDay.getDate() - currentDay.getDay() + i;
-    let day = new Date(currentDay.setDate(first)).toISOString().slice(0, 10);
-    currentWeek.push(day);
-    console.log(currentWeek);
-  }
+  const [displayedWeek, setDisplayedWeek] = useState(currentWeek);
 
   // Upon component load, fetch blocked dates from API
   useEffect(() => {
@@ -28,11 +27,19 @@ function TimeSlotChart() {
   const weekDays = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
   const hours = ["9", "10", "11", "12", "1", "2", "3", "4", "5"];
 
+  // Week switcher
+  const weekSwitcher = () => {};
+
   // Render entire chart
   const RenderChart = () => {
     // Display Column headers in grid
     return weekDays.map((weekDay, index) => {
       const columnNumber = index + 1;
+
+      const date = new Date(displayedWeek[index]);
+      const monthWord = date.toLocaleString("default", { month: "short" });
+      const dayNumber = date.getDate() + 1;
+
       return (
         <div
           key={index}
@@ -41,7 +48,10 @@ function TimeSlotChart() {
             marginLeft: ".5rem",
             marginRight: ".5rem",
           }}>
-          <h4>{weekDay}</h4>
+          <h4 style={{ marginBottom: 0 }}>{weekDay}</h4>
+          <h5 style={{ marginTop: 0, marginBottom: "10px" }}>
+            {monthWord} {dayNumber}
+          </h5>
           <RenderRows columnNumber={columnNumber} />
         </div>
       );
