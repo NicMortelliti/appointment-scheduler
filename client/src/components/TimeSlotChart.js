@@ -6,14 +6,22 @@ function TimeSlotChart() {
   const [selectedHour, setSelectedHour] = useState(null);
   const [blockedDates, setBlockedDates] = useState([]);
 
+  // Get todays date and current week
+  let currentDay = new Date();
+  let currentWeek = [];
+
+  for (let i = 1; i <= 7; i++) {
+    let first = currentDay.getDate() - currentDay.getDay() + i;
+    let day = new Date(currentDay.setDate(first)).toISOString().slice(0, 10);
+    currentWeek.push(day);
+    console.log(currentWeek);
+  }
+
   // Upon component load, fetch blocked dates from API
   useEffect(() => {
     fetch("/blocked")
       .then((r) => r.json())
-      .then((data) => {
-        setBlockedDates(data);
-        console.log(data);
-      });
+      .then((data) => setBlockedDates(data));
   }, []);
 
   // Arrays of days and hours
