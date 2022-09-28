@@ -1,5 +1,13 @@
 class AppointmentsController < ApplicationController
+
   rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
+
+  # GET '/blocked'
+  def blocked
+    # Only collect the start date/times
+    appointments = Appointment.all.pluck(:start)
+    render json: appointments
+  end
 
   # POST '/appointments'
   def create
