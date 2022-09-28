@@ -1,9 +1,20 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { Tag } from "@blueprintjs/core";
 
 function TimeSlotChart() {
   const [selectedHour, setSelectedHour] = useState(null);
+  const [blockedDates, setBlockedDates] = useState([]);
+
+  // Upon component load, fetch blocked dates from API
+  useEffect(() => {
+    fetch("/blocked")
+      .then((r) => r.json())
+      .then((data) => {
+        setBlockedDates(data);
+        console.log(data);
+      });
+  }, []);
 
   // Arrays of days and hours
   const weekDays = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
