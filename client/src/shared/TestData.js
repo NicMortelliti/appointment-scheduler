@@ -11,12 +11,16 @@ export const locations = [
   { id: 5, city: "Hillsboro" },
 ];
 
+const month = 10;
+const startingDay = 1;
+const year = 2022;
+
 export const dates = [
-  new Date("09/12/2022"),
-  new Date("09/13/2022"),
-  new Date("09/14/2022"),
-  new Date("09/15/2022"),
-  new Date("09/16/2022"),
+  new Date(`${month}/${startingDay}/${year}`),
+  new Date(`${month}/${startingDay + 1}/${year}`),
+  new Date(`${month}/${startingDay + 2}/${year}`),
+  new Date(`${month}/${startingDay + 3}/${year}`),
+  new Date(`${month}/${startingDay + 4}/${year}`),
 ];
 
 export const times = [
