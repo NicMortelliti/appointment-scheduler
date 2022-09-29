@@ -5,7 +5,7 @@ class AppointmentsController < ApplicationController
   # GET '/blocked'
   def blocked
     # Only collect the start date/times
-    appointments = Appointment.all.pluck(:start)
+    appointments = Appointment.all.pluck(:start, :doctor_id)
     render json: appointments
   end
 
