@@ -5,7 +5,13 @@ import TimeSlotCell from "./TimeSlotCell";
 // Arrays of days and hours
 const hours = ["9", "10", "11", "12", "13", "14", "15", "16", "17"];
 
-function TimeSlotRows({ columnNumber, selected, setSelected, date }) {
+function TimeSlotRows({
+  columnNumber,
+  selected,
+  setSelected,
+  date,
+  blockedDates,
+}) {
   return (
     // Display a row for each time slot in grid
     hours.map((hour, index) => {
@@ -28,6 +34,7 @@ function TimeSlotRows({ columnNumber, selected, setSelected, date }) {
               selected={selected}
               setSelected={setSelected}
               date={date}
+              blockedDates={blockedDates}
             />
           </div>
         )

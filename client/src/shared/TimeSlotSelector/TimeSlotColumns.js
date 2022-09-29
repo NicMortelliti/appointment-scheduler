@@ -5,7 +5,7 @@ import TimeSlotRows from "./TimeSlotRows";
 // Array of weekday names
 const weekDays = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
 
-function TimeSlotColumns({ week }) {
+function TimeSlotColumns({ week, blockedDates }) {
   const [selectedSlot, setSelectedSlot] = useState(null);
 
   return weekDays.map((weekDay, index) => {
@@ -51,6 +51,7 @@ function TimeSlotColumns({ week }) {
           selected={selectedSlot}
           setSelected={setSelectedSlot}
           date={date}
+          blockedDates={blockedDates}
         />
       </div>
     );

@@ -3,6 +3,7 @@ import { Link, useHistory } from "react-router-dom";
 
 // Components
 import { default as DateSelect } from "./SharedDateSelect";
+import TimeSlotSelector from "../shared/TimeSlotSelector/TimeSlotChart";
 
 // Test data
 import { dates, times } from "./TestData";
@@ -147,29 +148,12 @@ function SharedForm({
               onChange={(e) => setFormData({ ...formData, doctor: e })}
             />
           </FormGroup>
-          {/* Date selection */}
-          <DateSelect
-            label="Date"
-            id="date"
-            options={dates}
+          {/* Date/Time selection */}
+          <TimeSlotSelector
+            doctorId={formData.doctor.id}
             setFormData={setFormData}
             formData={formData}
           />
-          {/* Time selection */}
-          <FormGroup label="Time">
-            <Select
-              id="time"
-              name="time"
-              large
-              fill
-              defaultValue={times[0].label}
-              value={formData.time}
-              options={times}
-              getOptionLabel={(option) => option.label}
-              getOptionValue={(option) => option.id}
-              onChange={(e) => setFormData({ ...formData, time: e })}
-            />
-          </FormGroup>
           <Button className="primary" type="submit" text="Submit" fill large />
           <Link to="/">
             <Button intent="danger" minimal text="Discard Changes" fill large />

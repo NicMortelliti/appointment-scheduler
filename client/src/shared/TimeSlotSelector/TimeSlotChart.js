@@ -11,16 +11,29 @@ for (let i = 1; i <= 7; i++) {
   currentWeek.push(day);
 }
 
-function TimeSlotChart() {
-  const [blockedDates, setBlockedDates] = useState([]);
+function TimeSlotChart({ doctorId, setFormData, formData }) {
+  const [allBlockedDates, setAllBlockedDates] = useState([]);
+  const [doctorBlockedDates, setDoctorBlockedDates] = useState([]);
   const [displayedWeek, setDisplayedWeek] = useState(currentWeek);
 
   // Upon component load, fetch blocked dates from API
   useEffect(() => {
     fetch("/blocked")
       .then((r) => r.json())
-      .then((data) => setBlockedDates(data));
+      .then((data) => setAllBlockedDates(data));
   }, []);
+
+  // Filter blocked dates down to selected doctor
+  useEffect(() => {
+    // Filter function comparing selected doctor ID to each blockedDate doctor ID
+    // Push matches into local array variable
+    const doctorsBlockedDates = allBlockedDates.filter(
+      (eachDate) => eachDate[1] === doctorId
+    );
+
+    // setDoctorBlockedDates to value of local variable
+    setDoctorBlockedDates(doctorsBlockedDates);
+  }, [allBlockedDates, doctorId]);
 
   return (
     <div
@@ -28,7 +41,7 @@ function TimeSlotChart() {
         display: "grid",
         textAlign: "center",
       }}>
-      <TimeSlotColumns week={displayedWeek} />
+      <TimeSlotColumns week={displayedWeek} blockedDates={doctorBlockedDates} />
     </div>
   );
 }
