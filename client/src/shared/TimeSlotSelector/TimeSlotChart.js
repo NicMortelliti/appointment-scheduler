@@ -32,6 +32,12 @@ function TimeSlotChart({
   const weekDays = ["Mon", "Tue", "Wed", "Thu", "Fri"];
   const hours = Array.from({ length: 8 }, (_, i) => i + 9);
 
+  // Set selected slot state and form data dateTime state
+  const handleClick = (slotDateTime) => {
+    setSelected(slotDateTime);
+    setFormData({ ...formData, dateTime: new Date(slotDateTime) });
+  };
+
   // Generate table
   const Table = () =>
     weekDays.map((eachWeekDay, index) =>
@@ -63,20 +69,15 @@ function TimeSlotChart({
     );
   };
 
-  // Set selected slot state and form data dateTime state
-  const handleClick = (slotDateTime) => {
-    setSelected(slotDateTime);
-    setFormData({ ...formData, dateTime: new Date(slotDateTime) });
-  };
-
   // Generate each row of each column
   const row = (hour, day) => {
     // Set unique date time variable for each time slot
     const slotDateTime = new Date(day).setHours(hour, 0, 0, 0);
 
     return (
-      <div>
+      <div key={uuid()}>
         <Tag
+          key={slotDateTime}
           active={selected === slotDateTime}
           interactive
           large
