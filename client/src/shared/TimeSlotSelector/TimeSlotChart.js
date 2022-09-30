@@ -1,9 +1,16 @@
 import React, { useEffect, useState } from "react";
+import uuid from "react-uuid";
 
 import { Tag } from "@blueprintjs/core";
 
-function TimeSlotChart({ doctorId, setFormData, formData }) {
-  const [selectedSlot, setSelectedSlot] = useState(new Date());
+function TimeSlotChart({
+  doctorId,
+  setFormData,
+  formData,
+  setSelected,
+  selected,
+}) {
+  // const [selectedSlot, setSelectedSlot] = useState(null);
   const [displayedWeek, setDisplayedWeek] = useState([]);
 
   // Set initial state of displayed week to current week
@@ -43,6 +50,7 @@ function TimeSlotChart({ doctorId, setFormData, formData }) {
 
     return (
       <div
+        key={uuid()}
         style={{
           gridArea: `1 / ${index + 1} / auto / auto`,
         }}>
@@ -55,22 +63,27 @@ function TimeSlotChart({ doctorId, setFormData, formData }) {
     );
   };
 
+  // Set selected slot state and form data dateTime state
+  const handleClick = (slotDateTime) => {
+    setSelected(slotDateTime);
+    setFormData({ ...formData, dateTime: new Date(slotDateTime) });
+  };
+
   // Generate each row of each column
-  const row = (eachHour, day) => {
+  const row = (hour, day) => {
     // Set unique date time variable for each time slot
-    const slotDateTime = new Date(day).setHours(eachHour, 0, 0, 0);
+    const slotDateTime = new Date(day).setHours(hour, 0, 0, 0);
 
     return (
       <div>
         <Tag
+          active={selected === slotDateTime}
           interactive
           large
           round
           fill
-          onClick={(e) =>
-            setFormData({ ...formData, dateTime: new Date(slotDateTime) })
-          }>
-          {eachHour <= 12 ? eachHour : eachHour - 12}:00
+          onClick={() => handleClick(slotDateTime)}>
+          {hour <= 12 ? hour : hour - 12}:00
         </Tag>
       </div>
     );

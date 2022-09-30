@@ -2,11 +2,10 @@ import React, { useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 
 // Components
-import { default as DateSelect } from "./SharedDateSelect";
 import TimeSlotSelector from "../shared/TimeSlotSelector/TimeSlotChart";
 
 // Test data
-import { dates, times } from "./TestData";
+import { times } from "./TestData";
 import { Button, Dialog, FormGroup } from "@blueprintjs/core";
 import Select from "react-select";
 
@@ -17,6 +16,7 @@ function SharedForm({
 }) {
   const history = useHistory();
   const [doctorArray, setDoctorArray] = useState(null);
+  const [selectedTimeSlot, setSelectedTimeSlot] = useState(null);
   const [formData, setFormData] = useState({
     dateTime: "",
     doctor: "",
@@ -112,16 +112,12 @@ function SharedForm({
   // Render the form UI components
   const RenderForm = () => {
     return (
-      <Dialog
-        isOpen={true}
-        autoFocus
-        enforceFocus
-        canEscapeKeyClose={false}
-        canOutsideClickClose={false}
-        isCloseButtonShown={false}
-        title={
-          selectedAppointment ? "Modify Appointment" : "Schedule Appointment"
-        }>
+      <div style={{ textAlign: "center" }}>
+        <h2>
+          {selectedAppointment
+            ? "Modify your appointment"
+            : "Schedule a new appointment"}
+        </h2>
         <form onSubmit={(e) => handleSubmit(e)} className="bp4-form-group">
           {/* Doctor selection */}
           <FormGroup label="Doctor">
@@ -145,13 +141,15 @@ function SharedForm({
             doctorId={formData.doctor.id}
             setFormData={setFormData}
             formData={formData}
+            setSelected={setSelectedTimeSlot}
+            selected={selectedTimeSlot}
           />
           <Button className="primary" type="submit" text="Submit" fill large />
           <Link to="/">
             <Button intent="danger" minimal text="Discard Changes" fill large />
           </Link>
         </form>
-      </Dialog>
+      </div>
     );
   };
   return <RenderForm />;

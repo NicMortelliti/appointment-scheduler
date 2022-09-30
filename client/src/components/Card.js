@@ -17,7 +17,7 @@ function Card({ details, setCancelOpen, setApptDetails }) {
   // turn it into a date object.
   const apptDate = new Date(details.start);
   const month = apptDate.toLocaleString("default", { month: "long" });
-  const date = apptDate.getDate() + 1;
+  const date = apptDate.getDate();
   let hours = apptDate.getHours();
   const amPM = hours < 12 ? "AM" : "PM";
   if (hours > 12) {
