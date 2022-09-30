@@ -2,11 +2,11 @@ import React, { useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 
 // Components
-import TimeSlotSelector from "../shared/TimeSlotSelector/TimeSlotChart";
+import TimeSlotSelector from "../shared/TimeSlotChart";
 
 // Test data
 import { times } from "./TestData";
-import { Button, Dialog, FormGroup } from "@blueprintjs/core";
+import { Button, FormGroup } from "@blueprintjs/core";
 import Select from "react-select";
 
 function SharedForm({
