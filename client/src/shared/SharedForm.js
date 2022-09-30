@@ -18,8 +18,7 @@ function SharedForm({
   const history = useHistory();
   const [doctorArray, setDoctorArray] = useState(null);
   const [formData, setFormData] = useState({
-    date: "",
-    time: "",
+    dateTime: "",
     doctor: "",
   });
 
@@ -63,13 +62,6 @@ function SharedForm({
   // If selectedAppointment IS null (i.e. creating new appointment)
   // submit method will be POST.
   const handleSubmit = (e) => {
-    const dateTime = new Date(
-      formData.date.getFullYear(),
-      formData.date.getMonth() + 1,
-      formData.date.getDate(),
-      formData.time.hour
-    );
-
     // Set path and method depending on whether we're adding
     // a new appointment or updating an existing appointment.
     let path, method;
@@ -88,7 +80,7 @@ function SharedForm({
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        start: dateTime,
+        start: formData.dateTime,
         doctor_id: formData.doctor.id,
       }),
     })
@@ -97,20 +89,20 @@ function SharedForm({
       .then(history.push("/"));
   };
 
-  const handleDataUpdate = (appointment) => {
+  const handleDataUpdate = (newUpdatedAppointment) => {
     let newAllAppointments;
     if (selectedAppointment) {
       // If editing existing appointment
-      newAllAppointments = allAppointments.map((eachAppointment) => {
-        if (eachAppointment.id === appointment.id) {
-          return appointment;
+      newAllAppointments = allAppointments.map((existingAppointment) => {
+        if (existingAppointment.id === newUpdatedAppointment.id) {
+          return newUpdatedAppointment;
         } else {
-          return eachAppointment;
+          return existingAppointment;
         }
       });
     } else {
       // If adding new task
-      newAllAppointments = [...allAppointments, appointment];
+      newAllAppointments = [...allAppointments, newUpdatedAppointment];
     }
 
     // Set new data
