@@ -195,6 +195,12 @@ input {
   color: rgb(75, 62, 62);
 }
 
+.bp4-tag:hover {
+  background: var(--sixty) !important;
+  color: rgb(75, 62, 62) !important;
+  font-weight: bold !important;
+}
+
 .bp4-tag.bp4-active {
   background-color: var(--brand) !important;
   font-weight: bolder;
