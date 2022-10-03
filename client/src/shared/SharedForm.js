@@ -8,11 +8,7 @@ import TimeSlotSelector from "../shared/TimeSlotChart";
 import { Button, FormGroup } from "@blueprintjs/core";
 import Select from "react-select";
 
-function SharedForm({
-  allAppointments,
-  selectedAppointment = null,
-  setAppointments,
-}) {
+function SharedForm({ allAppointments, selectedAppointment, setAppointments }) {
   const history = useHistory();
   const [doctorArray, setDoctorArray] = useState(null);
   const [selectedTimeSlot, setSelectedTimeSlot] = useState(null);
@@ -25,17 +21,19 @@ function SharedForm({
   useEffect(() => {
     if (selectedAppointment) {
       const date = new Date(selectedAppointment.start);
-      date.setDate(date.getDate() + 1);
+      const milliDate = date.getTime();
 
-      let hour = date.getHours();
-
+      // Populate form data with existing appointment data
       setFormData({
-        date: date,
+        dateTime: selectedAppointment.start,
         doctor: selectedAppointment.doctor,
-        time: hour,
       });
+
+      // Set selected timeslot to existing timeslot to allow
+      // highlighting of the timeslot in the chart
+      setSelectedTimeSlot(milliDate);
     }
-  }, [selectedAppointment]);
+  }, []);
 
   // Collect array of doctors from API when form loads
   useEffect(() => {
@@ -136,7 +134,6 @@ function SharedForm({
           </FormGroup>
           {/* Date/Time selection */}
           <TimeSlotSelector
-            doctorId={formData.doctor.id}
             setFormData={setFormData}
             formData={formData}
             setSelected={setSelectedTimeSlot}
