@@ -74,11 +74,13 @@ function TimeSlotChart({
     // Set unique date time variable for each time slot
     const slotDateTime = new Date(day).setHours(hour, 0, 0, 0);
 
+    const active = selected === slotDateTime;
+
     return (
-      <div key={uuid()}>
+      <div key={uuid()} style={{ margin: "5px" }}>
         <Tag
           key={slotDateTime}
-          active={selected === slotDateTime}
+          active={active}
           interactive
           large
           round
