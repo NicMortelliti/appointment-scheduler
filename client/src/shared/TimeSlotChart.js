@@ -3,14 +3,7 @@ import uuid from "react-uuid";
 
 import { Tag } from "@blueprintjs/core";
 
-function TimeSlotChart({
-  doctorId,
-  setFormData,
-  formData,
-  setSelected,
-  selected,
-}) {
-  // const [selectedSlot, setSelectedSlot] = useState(null);
+function TimeSlotChart({ setFormData, formData, setSelected, selected }) {
   const [displayedWeek, setDisplayedWeek] = useState([]);
 
   // Set initial state of displayed week to current week
