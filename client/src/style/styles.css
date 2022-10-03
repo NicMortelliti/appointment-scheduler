@@ -189,3 +189,13 @@ input {
   border-radius: 50% !important;
   font-weight: bold;
 }
+
+.bp4-tag {
+  background-color: lightgray;
+  color: rgb(75, 62, 62);
+}
+
+.bp4-tag.bp4-active {
+  background-color: var(--brand) !important;
+  font-weight: bolder;
+}
