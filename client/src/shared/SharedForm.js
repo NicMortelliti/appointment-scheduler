@@ -5,7 +5,6 @@ import { Link, useHistory } from "react-router-dom";
 import TimeSlotSelector from "../shared/TimeSlotChart";
 
 // Test data
-import { times } from "./TestData";
 import { Button, FormGroup } from "@blueprintjs/core";
 import Select from "react-select";
 
@@ -29,7 +28,6 @@ function SharedForm({
       date.setDate(date.getDate() + 1);
 
       let hour = date.getHours();
-      times.filter((time) => time.hour === hour && (hour = time));
 
       setFormData({
         date: date,
