@@ -28,8 +28,11 @@ function Stack({
     setAllAppointments(updatedData);
   };
 
-  const RenderCards = () =>
-    allAppointments.map((eachAppointment) => {
+  const RenderCards = () => {
+    const sortedAppointments = allAppointments
+      .sort((a, b) => new Date(...a.start) - new Date(...b.start))
+      .reverse();
+    return sortedAppointments.map((eachAppointment) => {
       return (
         <Card
           key={eachAppointment.id}
@@ -39,6 +42,7 @@ function Stack({
         />
       );
     });
+  };
 
   const userFirstNameCapitalized =
     user.first_name.charAt(0).toUpperCase() +
