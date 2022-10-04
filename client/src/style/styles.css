@@ -25,11 +25,6 @@ body {
   margin: 0.5rem auto;
 }
 
-.calendar {
-  width: auto;
-  float: left;
-}
-
 .card {
   width: 80%;
   margin: 2rem auto;
