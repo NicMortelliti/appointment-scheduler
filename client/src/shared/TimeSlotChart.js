@@ -75,8 +75,8 @@ function TimeSlotChart({ setFormData, formData, setSelected, selected }) {
         style={{
           gridArea: `1 / ${index + 1} / auto / auto`,
         }}>
-        <h3>{eachWeekDay}</h3>
-        <h4>
+        <h3 style={{ marginBottom: "2px" }}>{eachWeekDay}</h3>
+        <h4 style={{ margin: "2px" }}>
           {displayedMonth} {displayedDayNumber}
         </h4>
         {hours.map((eachHour) => row(eachHour, day))}
