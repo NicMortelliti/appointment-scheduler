@@ -33,7 +33,7 @@ function SharedForm({ allAppointments, selectedAppointment, setAppointments }) {
       // highlighting of the timeslot in the chart
       setSelectedTimeSlot(milliDate);
     }
-  }, []);
+  }, [selectedAppointment]);
 
   // Collect array of doctors from API when form loads
   useEffect(() => {
