@@ -19,6 +19,8 @@ function TimeSlotChart({ setFormData, formData, setSelected, selected }) {
       currentWeek.push(day);
     }
 
+    setDisplayedWeek(currentWeek);
+
     fetch(`/blocked`).then((r) => {
       if (r.ok) {
         r.json().then((blockedDates) =>
@@ -38,9 +40,7 @@ function TimeSlotChart({ setFormData, formData, setSelected, selected }) {
         );
       }
     });
-
-    setDisplayedWeek(currentWeek);
-  }, []);
+  }, [formData]);
 
   // Create arrays for weekdays and hours
   const weekDays = ["Mon", "Tue", "Wed", "Thu", "Fri"];
@@ -95,6 +95,19 @@ function TimeSlotChart({ setFormData, formData, setSelected, selected }) {
     let interactive = true;
     if (new Date() > slotDateTime) {
       interactive = false;
+    }
+
+    if (blockedDatesArray.data) {
+      for (let i = 0; i < blockedDatesArray.data.length; i++) {
+        if (blockedDatesArray.data[i][1] === formData.doctor.id) {
+          if (
+            new Date(blockedDatesArray.data[i][0]).getTime() === slotDateTime
+          ) {
+            interactive = false;
+            break;
+          }
+        }
+      }
     }
 
     return (
