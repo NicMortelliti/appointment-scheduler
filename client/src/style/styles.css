@@ -164,32 +164,6 @@ input {
   font-weight: bold;
 }
 
-.DayPicker-Day {
-  color: lightgray;
-  pointer-events: none;
-}
-
-.DayPicker-Day--today {
-  font-weight: bold;
-  background-color: lightgray;
-  color: gray;
-}
-
-.DayPicker-Day--highlighted {
-  background-color: var(--ten);
-  background-size: contain;
-  color: var(--thirty);
-  font-weight: bold;
-  pointer-events: auto;
-}
-
-.DayPicker-Day--selected {
-  background-color: var(--brand) !important;
-  color: black !important;
-  border-radius: 50% !important;
-  font-weight: bold;
-}
-
 .bp4-tag {
   pointer-events: none;
   background: none;
