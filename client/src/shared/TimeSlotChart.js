@@ -5,6 +5,7 @@ import { Tag } from "@blueprintjs/core";
 
 function TimeSlotChart({ setFormData, formData, setSelected, selected }) {
   const [displayedWeek, setDisplayedWeek] = useState([]);
+  const [blockedDatesArray, setBlockedDatesArray] = useState([]);
 
   // Set initial state of displayed week to current week
   useEffect(() => {
@@ -17,6 +18,26 @@ function TimeSlotChart({ setFormData, formData, setSelected, selected }) {
       day = new Date(currentDay.setDate(day)).toISOString();
       currentWeek.push(day);
     }
+
+    fetch(`/blocked`).then((r) => {
+      if (r.ok) {
+        r.json().then((blockedDates) =>
+          setBlockedDatesArray({
+            data: blockedDates,
+            error: null,
+            status: "resolved",
+          })
+        );
+      } else {
+        r.json().then((err) =>
+          setBlockedDatesArray({
+            data: null,
+            error: err.error,
+            status: "rejected",
+          })
+        );
+      }
+    });
 
     setDisplayedWeek(currentWeek);
   }, []);
