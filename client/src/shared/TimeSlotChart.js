@@ -69,12 +69,19 @@ function TimeSlotChart({ setFormData, formData, setSelected, selected }) {
 
     const active = selected === slotDateTime;
 
+    // Determine if the time slot is blocked.
+    // If blocked, the button is not interactive
+    let interactive = true;
+    if (new Date() > slotDateTime) {
+      interactive = false;
+    }
+
     return (
       <div key={uuid()} style={{ margin: "5px" }}>
         <Tag
           key={slotDateTime}
           active={active}
-          interactive
+          interactive={interactive}
           large
           round
           fill
