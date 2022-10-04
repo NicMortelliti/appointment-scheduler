@@ -97,9 +97,14 @@ function TimeSlotChart({ setFormData, formData, setSelected, selected }) {
       interactive = false;
     }
 
+    // Remove button interactivity if the timeslot with
+    // the selected doctor is already reserved as indicated
+    // by the data retrieved from the server (/blocked)
     if (blockedDatesArray.data) {
       for (let i = 0; i < blockedDatesArray.data.length; i++) {
+        // Check if selected doctor id matches blocked time slot doctor id
         if (blockedDatesArray.data[i][1] === formData.doctor.id) {
+          // Check if blocked date matches slotDateTime
           if (
             new Date(blockedDatesArray.data[i][0]).getTime() === slotDateTime
           ) {
