@@ -9,6 +9,7 @@ function Stack({
   setAllAppointments,
   selectedAppointment,
   setSelectedAppointment,
+  user,
 }) {
   const [cancelConfirmOpen, setCancelConfirmOpen] = useState(false);
 
@@ -40,14 +41,28 @@ function Stack({
     });
 
   return (
-    <div className="card-stack center">
-      <RenderCards />
-      <CancelAppointmentConfirm
-        selectedAppointment={selectedAppointment}
-        isOpen={cancelConfirmOpen}
-        setCancelOpen={setCancelConfirmOpen}
-        handleDeletedAppointment={handleDeletedAppointment}
-      />
+    <div>
+      {allAppointments > 0 ? (
+        <div className="card-stack center">
+          <RenderCards />
+          <CancelAppointmentConfirm
+            selectedAppointment={selectedAppointment}
+            isOpen={cancelConfirmOpen}
+            setCancelOpen={setCancelConfirmOpen}
+            handleDeletedAppointment={handleDeletedAppointment}
+          />
+        </div>
+      ) : (
+        <div style={{ textAlign: "center" }}>
+          <h1>
+            Hi there,{" "}
+            {user.first_name.charAt(0).toUpperCase() +
+              user.first_name.slice(1).toLowerCase()}
+            !
+          </h1>
+          <h2>It looks like you don't have any appointments scheduled.</h2>
+        </div>
+      )}
     </div>
   );
 }

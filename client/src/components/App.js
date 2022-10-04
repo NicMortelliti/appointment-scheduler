@@ -35,6 +35,7 @@ function App() {
               setAllAppointments={setAllAppointments}
               selectedAppointment={selectedAppointment}
               setSelectedAppointment={setSelectedAppointment}
+              user={user}
             />
           </Route>
           <Route exact path="/new_appointment">
