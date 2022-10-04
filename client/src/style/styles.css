@@ -154,6 +154,14 @@ input {
   box-shadow: inset 5px 5px 10px #ae7685, inset -5px -5px 10px #eca0b3 !important;
 }
 
+.bp4-disabled {
+  background: none !important;
+  border-color: lightgray !important;
+  border: solid;
+  border-width: 1px;
+  color: lightgray !important;
+}
+
 .secondary {
   color: var(--thirty) !important;
   font-weight: bold;

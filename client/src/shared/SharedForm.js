@@ -133,25 +133,37 @@ function SharedForm({ allAppointments, selectedAppointment, setAppointments }) {
             />
           </FormGroup>
           {/* Date/Time selection */}
-          <TimeSlotSelector
-            setFormData={setFormData}
-            formData={formData}
-            setSelected={setSelectedTimeSlot}
-            selected={selectedTimeSlot}
-          />
-          <Button
-            style={{
-              marginTop: "20px",
-            }}
-            className="primary"
-            type="submit"
-            text="Submit"
-            fill
-            large
-          />
-          <Link to="/">
-            <Button intent="danger" minimal text="Discard Changes" fill large />
-          </Link>
+          {formData.doctor && (
+            <TimeSlotSelector
+              setFormData={setFormData}
+              formData={formData}
+              setSelected={setSelectedTimeSlot}
+              selected={selectedTimeSlot}
+            />
+          )}
+
+          <div style={{ margin: "20px auto", width: "40%" }}>
+            <Button
+              disabled={
+                formData.doctor ? (formData.dateTime ? false : true) : true
+              }
+              style={{ margin: "20px auto" }}
+              className="primary"
+              type="submit"
+              text="Submit"
+              fill
+              large
+            />
+            <Link to="/">
+              <Button
+                intent="danger"
+                minimal
+                text="Discard Changes"
+                fill
+                large
+              />
+            </Link>
+          </div>
         </form>
       </div>
     );

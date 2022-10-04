@@ -22,13 +22,28 @@ function Navbar({ user, setUser }) {
         background: "#8BCDBC",
       }}>
       <Nav.Group>
-        <Nav.Heading
-          style={{
-            color: "#5c255c",
-            fontWeight: "bold",
-            fontFamily: "Poiret One",
-          }}>
-          PacNW Health
+        <Nav.Heading>
+          <h4
+            style={{
+              margin: "10px auto 0px",
+              color: "#5c255c",
+              fontWeight: "bold",
+              fontFamily: "Poiret One",
+              textAlign: "center",
+            }}>
+            PacNW
+          </h4>
+          <p
+            style={{
+              margin: "0px auto 8px",
+              color: "#5c255c",
+              fontWeight: "lighter",
+              fontFamily: "Poiret One",
+              fontSize: "14px",
+              textAlign: "center",
+            }}>
+            Health
+          </p>
         </Nav.Heading>
         <Nav.Divider />
         <NavLink to="/" activeClassName="active" exact>
