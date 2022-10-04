@@ -191,17 +191,33 @@ input {
 }
 
 .bp4-tag {
-  background-color: lightgray;
+  pointer-events: none;
+  background: none;
+  color: lightgray;
+  border-color: lightgray;
+  border: solid;
+  border-width: 1px;
+  font-weight: bold;
+}
+
+.bp4-tag.bp4-interactive {
+  pointer-events: auto;
+  background: lightgray;
+  border-color: lightgray;
   color: rgb(75, 62, 62);
 }
 
-.bp4-tag:hover {
+.bp4-tag.bp4-interactive:hover {
   background: var(--sixty) !important;
+  border-color: var(--sixty);
   color: rgb(75, 62, 62) !important;
   font-weight: bold !important;
 }
 
 .bp4-tag.bp4-active {
-  background-color: var(--brand) !important;
-  font-weight: bolder;
+  pointer-events: none;
+  background: var(--brand) !important;
+  border-color: var(--brand);
+  color: white !important;
+  font-weight: bold !important;
 }
