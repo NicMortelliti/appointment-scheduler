@@ -139,7 +139,16 @@ function SharedForm({ allAppointments, selectedAppointment, setAppointments }) {
             setSelected={setSelectedTimeSlot}
             selected={selectedTimeSlot}
           />
-          <Button className="primary" type="submit" text="Submit" fill large />
+          <Button
+            style={{
+              marginTop: "20px",
+            }}
+            className="primary"
+            type="submit"
+            text="Submit"
+            fill
+            large
+          />
           <Link to="/">
             <Button intent="danger" minimal text="Discard Changes" fill large />
           </Link>
