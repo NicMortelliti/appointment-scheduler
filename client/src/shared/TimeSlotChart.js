@@ -21,6 +21,7 @@ function TimeSlotChart({ setFormData, formData, setSelected, selected }) {
 
     setDisplayedWeek(currentWeek);
 
+    // Collect blocked time slots from server
     fetch(`/blocked`).then((r) => {
       if (r.ok) {
         r.json().then((blockedDates) =>
