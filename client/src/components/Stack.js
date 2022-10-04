@@ -52,7 +52,7 @@ function Stack({
             Hey, {userFirstNameCapitalized}!
           </h1>
           <h2 style={{ textAlign: "center" }}>
-            Below are your scheduled appointments.
+            Here are your scheduled appointments:
           </h2>
           <RenderCards />
           <CancelAppointmentConfirm
