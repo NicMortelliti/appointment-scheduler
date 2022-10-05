@@ -48,4 +48,6 @@ group :test do
   gem 'shoulda-matchers', '~> 4.0'
 end
 
+gem 'net-smtp'
+
 gem "active_model_serializers", "~> 0.10.12"
