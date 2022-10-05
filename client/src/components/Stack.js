@@ -29,9 +29,12 @@ function Stack({
   };
 
   const RenderCards = () => {
+    // Sort the appointments in ascending order by date
     const sortedAppointments = allAppointments
-      .sort((a, b) => new Date(...a.start) - new Date(...b.start))
-      .reverse();
+      .slice()
+      .sort((a, b) => new Date(a.start) - new Date(b.start));
+
+    // console.log(sortedAppointments);
     return sortedAppointments.map((eachAppointment) => {
       return (
         <Card
