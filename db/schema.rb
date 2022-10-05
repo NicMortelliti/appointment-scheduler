@@ -10,14 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_09_16_175849) do
+ActiveRecord::Schema.define(version: 2022_10_05_183220) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "appointments", force: :cascade do |t|
     t.datetime "start"
-    t.datetime "end"
     t.integer "patient_id"
     t.integer "doctor_id"
     t.datetime "created_at", precision: 6, null: false
