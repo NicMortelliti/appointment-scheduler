@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 
 // Components
+import Error from "../style/Error";
 import TimeSlotSelector from "../shared/TimeSlotChart";
 
 // Test data
@@ -10,6 +11,7 @@ import Select from "react-select";
 
 function SharedForm({ allAppointments, selectedAppointment, setAppointments }) {
   const history = useHistory();
+  const [errors, setErrors] = useState([]);
   const [doctorArray, setDoctorArray] = useState(null);
   const [selectedTimeSlot, setSelectedTimeSlot] = useState(null);
   const [formData, setFormData] = useState({
@@ -58,6 +60,9 @@ function SharedForm({ allAppointments, selectedAppointment, setAppointments }) {
   // If selectedAppointment IS null (i.e. creating new appointment)
   // submit method will be POST.
   const handleSubmit = (e) => {
+    e.preventDefault();
+    setErrors([]);
+
     // Set path and method depending on whether we're adding
     // a new appointment or updating an existing appointment.
     let path, method;
@@ -79,10 +84,15 @@ function SharedForm({ allAppointments, selectedAppointment, setAppointments }) {
         start: formData.dateTime,
         doctor_id: formData.doctor.id,
       }),
-    })
-      .then((r) => r.json())
-      .then((appointment) => handleDataUpdate(appointment))
-      .then(history.push("/"));
+    }).then((r) => {
+      if (r.ok) {
+        r.json().then((appointment) =>
+          handleDataUpdate(appointment).then(history.push("/"))
+        );
+      } else {
+        r.json().then((err) => setErrors(err.errors));
+      }
+    });
   };
 
   const handleDataUpdate = (newUpdatedAppointment) => {
@@ -144,9 +154,6 @@ function SharedForm({ allAppointments, selectedAppointment, setAppointments }) {
 
           <div style={{ margin: "20px auto", width: "40%" }}>
             <Button
-              disabled={
-                formData.doctor ? (formData.dateTime ? false : true) : true
-              }
               style={{ margin: "20px auto" }}
               className="primary"
               type="submit"
@@ -165,6 +172,9 @@ function SharedForm({ allAppointments, selectedAppointment, setAppointments }) {
             </Link>
           </div>
         </form>
+        {errors.map((err) => (
+          <Error key={err}>{err}</Error>
+        ))}
       </div>
     );
   };
