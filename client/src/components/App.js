@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { Route, Switch } from "react-router-dom";
+import { NavLink, Route, Switch } from "react-router-dom";
 
 // Import components
 import Login from "./Login";
 import Navbar from "./Navbar";
 import SharedForm from "../shared/SharedForm";
 import Stack from "./Stack";
+import ManageDoctors from "./ManageDoctors";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -30,6 +31,9 @@ function App() {
       <div className="main">
         <Switch>
           <Route exact path="/">
+            <NavLink to="/add_doc" activeClassName="active" exact>
+              <button style={{ background: "none", border: "none" }}></button>
+            </NavLink>
             <Stack
               allAppointments={allAppointments}
               setAllAppointments={setAllAppointments}
@@ -50,6 +54,9 @@ function App() {
               selectedAppointment={selectedAppointment}
               setAppointments={setAllAppointments}
             />
+          </Route>
+          <Route exact path="/add_doc">
+            <ManageDoctors />
           </Route>
         </Switch>
       </div>
