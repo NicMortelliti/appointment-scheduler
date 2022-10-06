@@ -6,7 +6,9 @@ class PatientsController < ApplicationController
     user = Patient.create!(user_params)
     session[:user_id] = user.id
     render json: user, status: :created
-  end
+  rescue ActiveRecord::RecordInvalid => e
+      render json: { errors: e.record.errors.full_messages }, status: :unauthorized
+    end
 
   # GET '/me'
   def show

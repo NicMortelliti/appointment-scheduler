@@ -4,7 +4,7 @@ function Error({ children }) {
   return (
     <Wrapper>
       <Alert>!</Alert>
-      <Message>{children}</Message>
+      <Message style={{ textAlign: "left" }}>{children}</Message>
     </Wrapper>
   );
 }
