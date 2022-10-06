@@ -4,7 +4,7 @@ function Error({ children }) {
   return (
     <Wrapper>
       <Alert>!</Alert>
-      <Message style={{ textAlign: "left" }}>{children}</Message>
+      <Message>{children}</Message>
     </Wrapper>
   );
 }
@@ -17,7 +17,7 @@ const Wrapper = styled.div`
   padding: 8px;
   align-items: center;
   gap: 8px;
-  margin: 8px 0;
+  margin: 8px 20px;
 `;
 
 const Alert = styled.span`
@@ -32,6 +32,7 @@ const Alert = styled.span`
 
 const Message = styled.p`
   margin: 0;
+  text-align: left;
 `;
 
 export default Error;
