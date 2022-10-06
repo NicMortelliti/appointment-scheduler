@@ -13,6 +13,7 @@ Rails.application.routes.draw do
 
   patch '/appointments/:id', to: 'appointments#update'
 
+  post '/doctors', to: 'doctors#create'
   post '/signup', to: 'patients#create'
   post '/login', to: 'sessions#create'
   post '/appointments', to: 'appointments#create'
