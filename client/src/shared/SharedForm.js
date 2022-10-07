@@ -86,9 +86,9 @@ function SharedForm({ allAppointments, selectedAppointment, setAppointments }) {
       }),
     }).then((r) => {
       if (r.ok) {
-        r.json().then((appointment) =>
-          handleDataUpdate(appointment).then(history.push("/"))
-        );
+        r.json()
+          .then((appointment) => handleDataUpdate(appointment))
+          .then(history.push("/"));
       } else {
         r.json().then((err) => setErrors(err.errors));
       }
