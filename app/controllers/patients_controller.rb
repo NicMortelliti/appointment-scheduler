@@ -7,8 +7,8 @@ class PatientsController < ApplicationController
     session[:user_id] = user.id
     render json: user, status: :created
   rescue ActiveRecord::RecordInvalid => e
-      render json: { errors: e.record.errors.full_messages }, status: :unauthorized
-    end
+    render json: { errors: e.record.errors.full_messages }, status: :unauthorized
+  end
 
   # GET '/me'
   def show
