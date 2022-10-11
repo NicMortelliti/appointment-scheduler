@@ -45,7 +45,7 @@ class AppointmentsController < ApplicationController
   end
 
   def find_appointment
-    Appointment.find(params[:id])
+    @current_user.appointments.find(params[:id])
   end
 
   def render_unprocessable_entity_response(exception)
