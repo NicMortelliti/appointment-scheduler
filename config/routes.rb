@@ -1,22 +1,14 @@
 Rails.application.routes.draw do
-  # resources :appointments
-  # resources :doctors
-  # resources :patients
+  resources :appointments, only: [:create, :destroy, :index, :update]
+  resources :doctors, only: [:create, :index]
+  resources :patients, only: [:create, :show]
 
-  delete '/appointments/:id', to: 'appointments#destroy'
   delete '/logout', to: 'sessions#destroy'
 
-  get '/appointments', to: 'appointments#index'
   get '/blocked', to: 'appointments#blocked'
-  get '/doctors', to: 'doctors#index'
   get '/me', to: 'patients#show'
 
-  patch '/appointments/:id', to: 'appointments#update'
-
-  post '/doctors', to: 'doctors#create'
-  post '/signup', to: 'patients#create'
   post '/login', to: 'sessions#create'
-  post '/appointments', to: 'appointments#create'
 
   # Routing logic: fallback requests for React Router.
   # Leave this here to help deploy your app later!
