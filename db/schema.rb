@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_10_05_183220) do
+ActiveRecord::Schema.define(version: 2022_10_27_204649) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,26 @@ ActiveRecord::Schema.define(version: 2022_10_05_183220) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "flights", force: :cascade do |t|
+    t.integer "vehicle_id"
+    t.integer "origin_id"
+    t.integer "destination_id"
+    t.datetime "departure"
+    t.datetime "arrival"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "distance"
+  end
+
+  create_table "locations", force: :cascade do |t|
+    t.string "name"
+    t.string "icao"
+    t.string "macro_place"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "dist_to_sun"
+  end
+
   create_table "patients", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
@@ -38,6 +58,33 @@ ActiveRecord::Schema.define(version: 2022_10_05_183220) do
     t.string "password_digest"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "reservations", force: :cascade do |t|
+    t.string "user_id"
+    t.string "flight_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "email"
+    t.string "password_digest"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.boolean "admin"
+  end
+
+  create_table "vehicles", force: :cascade do |t|
+    t.string "make"
+    t.string "model"
+    t.string "name"
+    t.integer "pax_capacity"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "image"
   end
 
 end
