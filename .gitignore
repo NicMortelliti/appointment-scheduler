@@ -32,3 +32,6 @@
 
 # Ignore notes file
 NOTES.md
+
+# Environment file
+.env
